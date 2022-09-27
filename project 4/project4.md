@@ -382,7 +382,7 @@ For this - you need to open TCP port 3300 in your AWS Web Console for your EC2 I
 
 You are supposed to know how to do it, if you have forgotten - refer to [Project 1](https://starter-pbl.darey.io/en/latest/) (Step 1 — Installing Apache and Updating the Firewall)
 
-Your Sercurity group shall look like this:
+Your Security group shall look like this:
 
 ![](images/open_port_3300.png)
 
