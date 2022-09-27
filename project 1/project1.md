@@ -520,7 +520,7 @@ You can always recreate this page if you need to access the information again la
 
 Credit: [This guide was inspired by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04#step-3-%E2%80%94-installing-php)
 
-Congratulations! You have finished your very first **REAL LIFE PROJECT** by deploying a LAMP stack website in AWS Cloud!
+ You have finished your very first **REAL LIFE PROJECT** by deploying a LAMP stack website in AWS Cloud!
 
 ![](images/medal1.png)
 

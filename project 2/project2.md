@@ -543,7 +543,7 @@ That means your PHP environment is ready to connect and interact with your MySQL
 
 #### Congratulations!
 
-In this guide, we have built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database management system.
+In this , we have built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database management system.
 
 ![](images/medal_2.png)
 
