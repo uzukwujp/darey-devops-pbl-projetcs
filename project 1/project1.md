@@ -4,7 +4,7 @@ WEB STACK IMPLEMENTATION (LAMP STACK) IN AWS
 
 #### Welcome to your very first PBL Project
 
-You must be really excited to start getting your hands dirty. There is a lot of projects ahead, so without any delay, lest get started.
+You must be really excited to start getting your hands dirty. There is a lot of projects ahead, so without any delay, let's get started.
 
 As you kick off your career in DevOps, you will soon realise that everything you will be doing as a DevOps engineer is around software, websites, applications etc. And, there are different stack of technologies that make different solutions possible. These stack of technologies are regarded as **WEB STACKS**. Examples of Web Stacks include **LAMP**, **LEMP**, **MEAN**, and **MERN** stacks. As you proceed in your journey, you will be required to understand and implement all of these technology stacks. Lets have a short close up on what a Technology stack is.
 
@@ -520,7 +520,7 @@ You can always recreate this page if you need to access the information again la
 
 Credit: [This guide was inspired by Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04#step-3-%E2%80%94-installing-php)
 
- You have finished your very first **REAL LIFE PROJECT** by deploying a LAMP stack website in AWS Cloud!
+Congratulations, You have finished your very first **REAL LIFE PROJECT** by deploying a LAMP stack website in AWS Cloud!
 
 ![](images/medal1.png)
 
