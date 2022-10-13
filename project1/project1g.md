@@ -44,6 +44,8 @@ When you are finished, save and close the file, refresh the page and you will se
 
 ![](https://drive.google.com/uc?export=view&id=1ibJUPX_HrKyL-SuSrLfvcgWmH_aUdEAY)
 
+
+
 This page provides information about your server from the perspective of PHP. It is useful for debugging and to ensure that your settings are being applied correctly.
 
 If you can see this page in your browser, then your PHP installation is working as expected.
