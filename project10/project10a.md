@@ -26,7 +26,7 @@ This project consists of two parts:
 
 Your target architecture will look like this:
 
-![](./images/nginx_lb.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project10/nginx_lb.png)
 
 Let us get started!
 

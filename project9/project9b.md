@@ -28,7 +28,7 @@ sudo systemctl status jenkins
 
 4. By default Jenkins server uses TCP port 8080 - open it by creating a new Inbound Rule in your EC2 Security Group
 
-![](./images/open_port8080.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/open_port8080.png)
 
 5. Perform initial Jenkins setup.
 
@@ -36,7 +36,7 @@ From your browser access `http://<Jenkins-Server-Public-IP-Address-or-Public-DNS
 
 You will be prompted to provide a default admin password
 
-![](./images/unlock_jenkins.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/unlock_jenkins.png)
 
 Retrieve it from your server:
 
@@ -46,11 +46,11 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 Then you will be asked which plugings to install - choose suggested plugins.
 
-![](./images/jenkins_plugins.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/jenkins_plugins.png)
 
 Once plugins installation is done - create an admin user and you will get your Jenkins server address.
 
 The installation is completed!
 
-![](./images/jenkins_ready.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/jenkins_ready.png)
 

@@ -90,7 +90,7 @@ exit
 
 **Hint:** Do not forget to open MySQL port 3306 on DB Server EC2. For extra security, you shall allow access to the DB server **ONLY** from your Web Server's IP address, so in the Inbound Rule configuration specify source as <Your-Web-Server-PrivateIP>/32
 
-![](./images/DB_inbound_rule.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/DB_inbound_rule.png)
 
 1. Install MySQL client and test that you can connect from your Web Server to your DB server by using `mysql-client`
 
@@ -107,15 +107,15 @@ sudo mysql -u admin -p -h <DB-Server-Private-IP-address>
 
 6. Try to access from your browser the link to your WordPress `http://<Web-Server-Public-IP-Address>/wordpress/`
 
-![](./images/wp_config.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/wp_config.png)
 
 Fill out your DB credentials:
 
-![](./images/wp_config1.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/wp_config1.png)
 
 If you see this message - it means your WordPress has successfully connected to your remote MySQL database
 
-![](./images/wp_config_success.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/wp_config_success.png)
 
 **Important**: Do not forget to **STOP** your EC2 instances after completion of the project to avoid extra costs.
 
@@ -123,4 +123,4 @@ If you see this message - it means your WordPress has successfully connected to 
 
 You have learned how to configure Linux storage susbystem and have also deployed a full-scale Web Solution using WordPress CMS and MySQL RDBMS!
 
-![](./images/congrats.jpg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/congrats.jpg)

@@ -6,7 +6,7 @@ Le us explore how we can migrate our codes to Terraform Cloud and manage our AWS
 
 Follow [this link](https://app.terraform.io/signup/account), create a new account, verify your email and you are ready to start
 
-![](./images/terraform_cloud_welcome.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project19/terraform_cloud_welcome.png)
 
 Most of the features are free, but if you want to explore the difference between free and paid plans - you can check it on [this page](https://www.hashicorp.com/products/terraform/pricing).
 
@@ -24,7 +24,7 @@ Create a new repository in your GitHub and call it `terraform-cloud`, push your 
 
 Choose `version control workflow` and you will be promped to connect your GitHub account to your workspace - follow the prompt and add your newly created repository to the workspace.
 
-![](./images/terraform_cloud_github.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project19/terraform_cloud_github.png)
 
 Move on to "Configure settings", provide a description for your workspace and leave all the rest settings default, click "Create workspace".
 

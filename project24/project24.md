@@ -643,9 +643,9 @@ kubectl logs jenkins-0 -c jenkins --kubeconfig [kubeconfig file]
           ```
           kubectl --namespace default port-forward svc/jenkins 8080:8080
           ```
-        ![](./images/Jenkins-Port-forward.png)
+        ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project24/Jenkins-Port-forward.png)
     3. Go to the browser `localhost:8080` and authenticate with the username and password from number 1 above
-        ![](./images/Jenkins-UI.png)
+        ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project24/Jenkins-UI.png)
 
 
 #### Now setup the following tools using Helm

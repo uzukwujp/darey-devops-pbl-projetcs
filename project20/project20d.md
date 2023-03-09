@@ -115,7 +115,7 @@ docker compose ls
 
 #### Congratulations!
 
-![](./images/docker_great20.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project20/docker_great20.png)
 
 You have started your journey into migrating an application running on virtual machines into the Cloud with containerization.
 

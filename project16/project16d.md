@@ -109,7 +109,7 @@ Run `terraform plan` and ensure everything works
 
 You have learned how to create and delete AWS Network Infrastructure programmatically with Terraform!
 
-![](./images/well_done_16.jpg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/well_done_16.jpg)
 
 In the next project we will expand the infrastructure further with more Terraform automation and learn more AWeSome stuff. 
 

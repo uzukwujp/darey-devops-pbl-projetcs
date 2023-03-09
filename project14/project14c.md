@@ -4,7 +4,7 @@ As part of the ongoing infrastructure development with Ansible started from *Pro
 
 The problem with that approach is, it would be difficult to package and version the software for different releases. And so, in this project, we will be using a different approach for releases, rather than downloading directly from git, we will be using Ansible [`uri` module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/uri_module.html).
 
-![](./images/CI_CD-Pipeline-For-PHP-ToDo-Application.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/CI_CD-Pipeline-For-PHP-ToDo-Application.png)
 
 ## Set Up
 
@@ -26,14 +26,14 @@ Both `SIT` - For System Integration Testing and `UAT` - User Acceptance Testing 
 
 What we want to achieve, is having Nginx to serve as a [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) for our sites and tools. Each environment setup is represented in the below table and diagrams.
 
-![](./images/Environment-setup.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Environment-setup.png)
 
 ###             CI-Environment
-![](./images/Project-14-CI-Environment.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-CI-Environment.png)
 
 
 ###             Other Environments from Lower To Higher
-![](./images/Project-14-Pentest-Environment.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-Pentest-Environment.png)
 
 
 ### DNS requirements

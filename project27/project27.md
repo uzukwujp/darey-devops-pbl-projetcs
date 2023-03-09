@@ -199,7 +199,7 @@ In summary it specifies the following;
 - The resource(s) to be created - Such as a namespace or deployment
 - A `commonLabel` field which ensures that kubernetes labels and selectors are automatically injected into the resources being created. such as below;
 
-![](../project27/images/kustomize-common-label.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/kustomize-common-label.png)
 
 
 Generally, A kustomization file contains fields falling into four categories (although not all have been used in the example above):
@@ -789,7 +789,7 @@ Follow the next steps to initialize the Vault cluster.
   kubectl exec -n vault -it <running_vault_pod_name> -- /bin/sh
   ```
 
-  ![vault-running-pod](images/vault-get-pods-cli.png)
+  ![vault-running-pod](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/vault-get-pods-cli.png)
   `pod/vault-0` is the pod in running status in this image
 
 - Check the status the vault cluster `vault status`, you should get an output similar to this:
@@ -1028,21 +1028,21 @@ Working with the Vault UI
 
 We have been using the **vault cli** for our vault configurations but you can also use the **vault UI** to do some of the configurations. To view the vault UI, copy and paste the vault address on your browser, then you will see the login page.
 
-![vault-login-page](images/vault-ui-login-page.png)
+![vault-login-page](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/vault-ui-login-page.png)
 
 You can login using the token you got after initializing the vault cluster. Check the database KV secret created before which is at the path `app/database/config/dev`.
 
-![vault-secrets](images/secrets-engine-vault-ui.png)
-![database-kv-secret](images/dev-kv-v2-secrets-vault-ui.png)
+![vault-secrets](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/secrets-engine-vault-ui.png)
+![database-kv-secret](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/dev-kv-v2-secrets-vault-ui.png)
 
 Check the **tooling-role** kubernetes auth method role.
 
-![vault-auth-methods](images/authentication-methods-vault-ui.png)
-![vault-kubernetes-auth](images/tooling-role-kube-authMethod.png)
+![vault-auth-methods](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/authentication-methods-vault-ui.png)
+![vault-kubernetes-auth](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/tooling-role-kube-authMethod.png)
 
 Navigate to the vault policy attached to the **tooling-role** kubernetes auth method.
 
-![vault-policy](images/tooling-db-policy-vault-ui.png)
+![vault-policy](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/tooling-db-policy-vault-ui.png)
 <!-- 
 You can inform the developers to write a code that will use the database credentials from the path -->
 

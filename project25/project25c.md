@@ -13,14 +13,14 @@ To see the list of trusted root Certification Authorities (CA) and their certifi
    
 2. Search for `security`
    
-    ![](./images/chrome-certificates-1.png)
+    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-1.png)
 3. Select `Manage Certificates`
    
-   ![](./images/chrome-certificates-2.png) 
+   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-2.png) 
 
 4. View the installed certificates in your browser
    
-    ![](./images/chrome-certificates-3.png)
+    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-3.png)
 
 
 ## Certificate Management in Kubernetes
@@ -37,13 +37,13 @@ Similar to how Ingress Controllers are able to enable the creation of *Ingress* 
 
 It can issue certificates from a variety of supported sources, including [Let's Encrypt](https://letsencrypt.org/), [HashiCorp Vault](https://www.vaultproject.io/), and [Venafi](https://www.venafi.com/) as well as [private PKI](https://www.csoonline.com/article/3400836/what-is-pki-and-how-it-secures-just-about-everything-online.html). The issued certificates get stored as kubernetes secret which holds both the private key and public certificate.
 
-![](./images/cert-manager-high-level-overview.svg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-high-level-overview.svg)
 
 In this project, We will use Let's Encrypt with cert-manager. The certificates issued by Let's Encrypt will work with most browsers because the root certificate that validates all it's certificates is called **“ISRG Root X1”** which is already trusted by most browsers and servers.
 
 You will find `ISRG Root X1` in the list of certificates already installed in your browser.
 
-![](./images/chrome-certificates-4.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-4.png)
 
 [Read the official documentation here](https://letsencrypt.org/docs/certificate-compatibility/)
 
@@ -55,7 +55,7 @@ Cert-manager works by having administrators create a resource in kubernetes call
 
 Whenever it is time to create a certificate for a specific host or website address, the process follows the pattern seen in the image below.
 
-![](./images/cert-manager-1.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png)
 
 After we have deployed cert-manager, you will see all of this in action.
 

@@ -93,7 +93,7 @@ To test this, you can update inventory for each environment and run Ansible agai
 
 You have learned and practiced how to use Ansible configuration management tool to prepare UAT environment for Tooling web solution.
 
-![](./images/great_job13.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project13/great_job13.png)
 
 #### Next project
 
@@ -101,4 +101,4 @@ Next project is a capstone project for this part of your **Project Based Learnin
 
 Get ready for new challenges ahead! Full Speed Forward!
 
-![](./images/full-throttle-closeup_13.jpg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project13/full-throttle-closeup_13.jpg)

@@ -59,19 +59,19 @@ Now its time to re-initialize the backend. Run `terraform init` and confirm you 
 Before doing anything if you opened AWS now to see what happened you should be able to see the following:
 - `.tfstatefile` is now inside the S3 bucket 
 
-![](./images/tfstat_s3.PNG)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_s3.PNG)
 
 - DynamoDB table which we create has an entry which includes state file status 
 
-![](./images/tfstat_beforelock.PNG)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_beforelock.PNG)
 
 Navigate to the DynamoDB table inside AWS and leave the page open in your browser.  Run `terraform plan` and while that is running, refresh the browser and see how the lock is being handled:
 
-![](./images/tfstat_locked.PNG)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_locked.PNG)
 
 After `terraform plan` completes, refresh DynamoDB table. 
 
-![](./images/tfstat_afterfinishingplan.PNG)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_afterfinishingplan.PNG)
 
 
 5. Add Terraform Output
@@ -99,7 +99,7 @@ Terraform will automatically read the latest state from the S3 bucket to determi
 
 Now, head over to the S3 console again, refresh the page, and click the grey “Show” button next to “Versions.” You should now see several versions of your terraform.tfstate file in the S3 bucket:
 
-![](./images/tfstate_vesrsions.PNG)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstate_vesrsions.PNG)
 
 With help of remote backend and locking configuration that we have just configured, collaboration is no longer a problem.
 

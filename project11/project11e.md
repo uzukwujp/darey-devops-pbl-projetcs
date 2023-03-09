@@ -19,11 +19,11 @@ ansible-playbook -i inventory/dev.yml playbooks/common.yml
 
 You can go to each of the servers and check if `wireshark` has been installed by running `which wireshark` or `wireshark --version`
 
- ![version](./images/wireshark.png)
+ ![version](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/wireshark.png)
   
 Your updated with Ansible architecture now looks like this:
 
-![](./images/ansible_architecture.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/ansible_architecture.png)
 
 #### Optional step - Repeat once again
 
@@ -33,5 +33,5 @@ Update your ansible playbook with some new Ansible tasks and go through the full
 
 You have just automated your routine tasks by implementing your first Ansible project! There is more exciting projects ahead, so lets keep it moving!
 
-![](./images/greatjob11.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/greatjob11.png)
 

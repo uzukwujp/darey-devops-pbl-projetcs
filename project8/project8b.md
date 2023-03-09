@@ -5,13 +5,13 @@ Make sure that you have following servers installed and configured within Projec
 2. One MySQL DB Server (based on Ubuntu 20.04)
 3. One RHEL8 NFS server
 
-![](./images/prerequisites-project8.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project8/prerequisites-project8.png)
 
 #### Configure Apache As A Load Balancer
 
 1. Create an Ubuntu Server 20.04 EC2 instance and name it `Project-8-apache-lb`, so your EC2 list will look like this:
 
-![](./images/project8_ec2.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project8/project8_ec2.png)
 
 2. Open TCP port 80 on `Project-8-apache-lb` by creating an Inbound Rule in Security Group.
 

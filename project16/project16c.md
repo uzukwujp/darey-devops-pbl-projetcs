@@ -186,7 +186,7 @@ Since `data.aws_availability_zones.available.names` returns a list like `["eu-ce
 
 Open up `terraform console` and try it
 
-![](./images/length-function.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/length-function.png)
 
 Now we can simply update the public subnet block like this 
 

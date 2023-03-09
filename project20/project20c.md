@@ -99,6 +99,6 @@ If everything works, you can open the browser and type `http://localhost:8085`
 
 You will see the login page.
 
-![](./images/Tooling-Login.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project20/Tooling-Login.png)
 
 The default email is `test@gmail.com`, the password is `12345` or you can check users' credentials stored in the `toolingdb.user` table.

@@ -5,23 +5,23 @@
   ```
   Manage Jenkins > Configure System
   ```
-  ![](./images/Jenkins-Sonar-Server.png)
+  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Sonar-Server.png)
 - Generate authentication token in SonarQube 
   ```
   User > My Account > Security > Generate Tokens
   ```
-  ![](./images/Sonarqube-Token.png)
+  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Token.png)
 - Configure Quality Gate Jenkins Webhook in SonarQube - The URL should point to your Jenkins server http://{JENKINS_HOST}/sonarqube-webhook/
   ```
   Administration > Configuration > Webhooks > Create
   ```
-  ![](./images/Sonar-Jenkins-Webhook.png)
+  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonar-Jenkins-Webhook.png)
 
 - Setup SonarQube scanner from Jenkins - Global Tool Configuration
   ```
   Manage Jenkins > Global Tool Configuration 
   ```
-  ![](./images/Jenkins-SonarScanner.png)
+  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarScanner.png)
 
 ### Update Jenkins Pipeline to include SonarQube scanning and Quality Gate
 
@@ -66,7 +66,7 @@ sonar.php.tests.reportPath=build/logs/junit.xml
 
 **HINT**: To know what exactly to put inside the `sonar-scanner.properties` file, SonarQube has a configurations page where you can get some directions.
 
-![](./images/sonar-scanner-properties.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/sonar-scanner-properties.png)
 
 
 A brief explanation of what is going on the the stage - set the environment variable for the `scannerHome` use the same name used when you configured SonarQube Scanner from **Jenkins Global Tool Configuration**. If you remember, the name was `SonarQubeScanner`. Then, within the `steps` use shell to run the scanner from `bin` directory. 
@@ -98,11 +98,11 @@ So far you have been given code snippets on each of the stages within the `Jenki
 Dashboard > php-todo > Pipeline Syntax 
 ```
 
-![](./images/Jenkins-Pipeline-Syntax.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Pipeline-Syntax.png)
 
 - Click on Steps and select `withSonarQubeEnv` - This appears in the list because of the previous SonarQube configurations you have done in Jenkins. Otherwise, it would not be there.
 
-![](./images/Jenkins-SonarQube-Pipeline-Syntax.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarQube-Pipeline-Syntax.png)
 
 Within the generated block, you will use the `sh` command to run shell on the server. For more advanced usage in other projects, you can add to bookmarks this [SonarQube documentation page](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/) in your browser.
 
@@ -110,7 +110,7 @@ Within the generated block, you will use the `sh` command to run shell on the se
 
 Indeed, this has been one of the longest projects from Project 1, and if everything has worked out for you so far, you should have a view like below:
 
-![](./images/Jenkins-End-To-End.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-End-To-End.png)
 
 But we are not completely done yet!
 
@@ -118,13 +118,13 @@ The quality gate we just included has no effect. Why? Well, because if you go to
 
 - Navigate to `php-todo` project in SonarQube
 
-![](./images/Sonarqube-Anaysis.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Anaysis.png)
 
 There are bugs, and there is 0.0% code coverage. (*code coverage is a percentage of unit tests added by developers to test functions and objects in the code*)
 
 - If you click on `php-todo` project for further analysis, you will see that there is 6 hours' worth of technical debt, code smells and security issues in the code.
 
-![](./images/SonarQube-Analysis2.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/SonarQube-Analysis2.png)
 
 In the development environment, this is acceptable as developers will need to keep iterating over their code towards perfection. But as a DevOps engineer working on the pipeline, we must ensure that the quality gate step causes the pipeline to fail if the conditions for quality are not met.
 
@@ -201,7 +201,7 @@ Notice that with the current state of the code, it cannot be deployed to Integra
 
 Congratulations! You have just experienced one of the most interesting and complex projects in your Project Based Learning journey so far. The vast experience and knowledge you have acquired here will set the stage for the next 6 projects to come. You should be ready to start applying for DevOps jobs after completing Project 20.
 
-![](./images/awesome14.jpg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/awesome14.jpg)
 
 #### Instructions On How To Submit Your Work For Review And Feedback
 

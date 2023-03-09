@@ -19,7 +19,7 @@ You will build a secure infrastructure inside AWS [VPC (Virtual Private Cloud)](
 
 Cost, Security, and Scalability are the major requirements for this project. Hence, implementing the architecture designed below, ensure that infrastructure for both websites, WordPress and Tooling, is resilient to Web Server's failures, can accomodate to increased traffic and, at the same time, has reasonable cost.
 
-![](./images/tooling_project_15.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project15/tooling_project_15.png)
 
 #### Starting Off Your AWS Cloud Project
 
