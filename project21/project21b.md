@@ -11,7 +11,7 @@ First, you will need some client tools installed and configurations made on your
 
 Configure AWS CLI to access all AWS services used, for this you need to have a user with programmatic access keys configured in AWS Identity and Access Management (IAM):
 
-![](./images/iam_keys.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/iam_keys.png)
 
 Generate access keys and store them in a safe place.
 

@@ -19,7 +19,7 @@ Or follow the instructions below.
 1. Register a new AWS account following [this instruction](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
 2. Select your preferred region (the closest to you) and launch a new EC2 instance of t2.micro family with Ubuntu Server 20.04 LTS (HVM)
 
-![launch EC2](images/LaunchEC2.gif)
+![launch EC2](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/LaunchEC2.gif)
 
 ***IMPORTANT*** - save your private key (.pem file) securely and do not share it with anyone! If you lose it, you will not be able to connect to your server ever again!
 
@@ -82,11 +82,11 @@ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
 
 Congratulations! You have just created your very first Linux Server in the Cloud and our set up looks like this now: (You are the client)
 
-![Connect to EC2 via SSH](images/AWS_EC2_diagram.png)
+![Connect to EC2 via SSH](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/AWS_EC2_diagram.png)
 
 
 Please read information about AWS [free tier limits](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc) and make sure that you ***STOP*** your EC2 instance when you are not using it. 
-![Stop EC2](images/stopEC2.png)
+![Stop EC2](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/stopEC2.png)
 
 All we need to know right now is that we can use 750 hours (31.25 days) of t2.micro server per month for the first 12 months **FOR FREE**.
 

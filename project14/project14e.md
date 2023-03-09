@@ -18,7 +18,7 @@ You can [watch a 10 minutes video here](https://youtu.be/PRpEbFZi7nI) to guide y
 
 https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
 
-![](./images/Jenkins-Workspace-Env-Var.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Workspace-Env-Var.png)
 
 **Possible issues to watch out for when you implement this**
 
@@ -79,11 +79,11 @@ pipeline {
 
 From now on, each time you hit on execute, it will expect an input.
 
-![](./images/Jenkins-Parameter.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Parameter.png)
 
 Notice that the default value loads up, but we can now specify which environment we want to deploy the configuration to. Simply type `sit` and hit **Run**
 
-![](./images/Jenkins-Parameter-Sit.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Parameter-Sit.png)
 
 
 4. Add another parameter. This time, introduce `tagging` in Ansible. You can limit the Ansible execution to a specific role or playbook desired.  Therefore, add an Ansible tag to run against `webserver` only. Test this locally first to get the experience. Once you understand this, update `Jenkinsfile` and run it from Jenkins.

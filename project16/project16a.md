@@ -4,7 +4,7 @@ After you have built AWS infrastructure for 2 websites manually, it is time to a
 
 Let us start building the same set up with the power of Infrastructure as Code (IaC)
 
-![](./images/tooling_project_16.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/tooling_project_16.png)
 
 #### Instructions On How To Submit Your Work For Review And Feedback
 

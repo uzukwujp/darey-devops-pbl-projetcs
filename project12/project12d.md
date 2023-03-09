@@ -49,7 +49,7 @@ or
 
 Your Ansible architecture now looks like this:
 
-![](./images/project12_architecture.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project12/project12_architecture.png)
 
 
 In Project 13, you will see the difference between **Static** and **Dynamic** assignments.
@@ -58,4 +58,4 @@ In Project 13, you will see the difference between **Static** and **Dynamic** as
 
 You have learned how to deploy and configure UAT Web Servers using Ansible `imports` and `roles`!
 
-![](./images/good_job12.jpg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project12/good_job12.jpg)

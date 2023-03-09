@@ -27,7 +27,7 @@ vim names.csv
 
 Insert some random names into it. (*One name per line*)
 
-![](./images/names.JPG)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/aux-project-1/names.JPG)
 
 3. The script you created should read the CSV file, create each user on the server, and add to an existing group called `developers` (*You will need to manually create this group ahead*).
    

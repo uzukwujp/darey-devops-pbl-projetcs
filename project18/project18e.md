@@ -46,4 +46,4 @@ We will also see how to use terraform cloud for our backends.
 
 You have done a great job developing and refactoring AWS Infrastructure as Code with Terraform! 
 
-![](./images/awesome_18.jpeg)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/awesome_18.jpeg)

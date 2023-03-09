@@ -138,3 +138,5 @@ cd ..
 
 cd project27
 aws s3 sync images/ s3://dareyio-nonprod-pbl-projects/project27/
+
+

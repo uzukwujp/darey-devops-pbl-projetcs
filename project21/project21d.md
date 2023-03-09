@@ -53,7 +53,7 @@ for i in 0 1 2; do
 done
 ```
 
-![](./images/Master-nodes.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Master-nodes.png)
 
 **EC2 Instances for Worker Nodes**
 
@@ -81,7 +81,7 @@ for i in 0 1 2; do
 done
 ```
 
-![](./images/All-nodes.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/All-nodes.png)
 #### Step 3 Prepare The Self-Signed Certificate Authority And Generate TLS Certificates
 
 The following components running on the Master node will require TLS certificates.

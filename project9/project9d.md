@@ -10,7 +10,7 @@ On main dashboard select "Manage Jenkins" and choose "Manage Plugins" menu item.
 
 On "Available" tab search for "Publish Over SSH" plugin and install it
 
-![](./images/plugin_ssh_install.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/plugin_ssh_install.png)
 
 2. Configure the job/project to copy artifacts over to NFS server.
 
@@ -26,16 +26,16 @@ Scroll down to Publish over SSH plugin configuration section and configure it to
 
 Test the configuration and make sure the connection returns `Success`. Remember, that TCP port 22 on NFS server must be open to receive SSH connections.
 
-![](./images/publish_ssh_config.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/publish_ssh_config.png)
 
 Save the configuration, open your Jenkins job/project configuration page and add another one "Post-build Action"
 
-![](./images/send_build.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/send_build.png)
 
 Configure it to send all files probuced by the build into our previouslys define remote directory. In our case we want to copy all files and directories - so we use `**`.
 If you want to apply some particular pattern to define which files to send - [use this syntax](http://ant.apache.org/manual/dirtasks.html#patterns). 
 
-![](./images/send_build1.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/send_build1.png)
 
 Save this configuration and go ahead, change something in `README.MD` file in your GitHub Tooling repository.
 

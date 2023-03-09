@@ -35,7 +35,7 @@ ssh -i <Your-private-key.pem> ubuntu@<EC2-Public-IP-address>
 
 It will look like this:
 
-![](images/gitbash_EC2.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/gitbash_EC2.png)
 
 
 

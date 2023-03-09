@@ -149,7 +149,7 @@ You are supposed to know how to do it, if you have forgotten - refer to [Project
 
 Your Security group shall look like this:
 
-![](images/open_port_3300.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project4/open_port_3300.png)
 
 Now you can access our Book Register web application from the Internet with a browser using Public IP address or Public DNS name.
  
@@ -160,11 +160,11 @@ Quick reminder how to get your server's Public IP and public DNS name:
 
 This is how your Web Book Register Application will look like in browser:
 
-![](images/books_register.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project4/books_register.png)
 
 #### Congratulations!
 
 You have now completed all 'PBL Progressive' projects and are ready to move on to more complex and fun ['PBL Professional' projects](https://professional-pbl.darey.io/en/latest/)!!!
 
-![](images/celebrate.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project4/celebrate.png)
 

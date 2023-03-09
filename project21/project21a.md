@@ -17,7 +17,7 @@ This project is the first of a series Kubernetes-related practice projects, so g
 
 *Kubernetes (κυβερνήτης, Greek for "helmsman" or "pilot" or "governor", and the etymological root of cybernetics)
 
-![](./images/kubernetes_sail.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/kubernetes_sail.png)
 
 ### Why migrate from Docker Compose to K8s
 
@@ -70,7 +70,7 @@ Kubernetes is a not a single package application that you can install with one c
 
 Let us take a look at Kubernetes architecture diagram below:
 
-![](./images/K8s_architecture.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/K8s_architecture.png)
 
 Read about every component in the [official documentation](https://kubernetes.io/docs/concepts/overview/components/).
 

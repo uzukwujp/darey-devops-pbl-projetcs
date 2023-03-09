@@ -23,7 +23,7 @@ After all, DevOps is all about continuous delivery or deployment, and being able
   - Production issues – Capture issues with database connections, query timeouts, and other related issues
 
     Presenting error rate metrics like this simply gives greater insights into where to focus attention.
-![](./images/Error-Rate.png )
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Error-Rate.png )
 
 10 **Application usage & traffic**: After a deployment, we want to see if the number of transactions or users accessing our system looks normal. If we suddenly have no traffic or a giant spike in traffic, something could be wrong. An attacker may be routing traffic elsewhere, or initiating a [DDOS attack](https://us.norton.com/internetsecurity-emerging-threats-what-is-a-ddos-attack-30sectech-by-norton.html)
 
@@ -31,7 +31,7 @@ After all, DevOps is all about continuous delivery or deployment, and being able
 
 It might be common after a deployment to see major changes in the usage of specific SQL queries, web service or HTTP calls, and other application dependencies. These monitoring tools can provide valuable visualizations like this one below that helps make it easy to spot problems.
 
-![](./images/Application-Performance.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Application-Performance.png)
 
 12 **Mean time to detection (MTTD)**: When problems happen, it is important that we identify them quickly. The last thing we want is to have a major partial or complete system outage and not know about it. Having robust application monitoring and good observability tools in place will help us detect issues quickly. Once they are detected, we also must fix them quickly!
 

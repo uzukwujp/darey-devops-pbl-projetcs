@@ -26,7 +26,7 @@ As your Terraform code base grows, your DevOps team might want to create you own
 
 ### Congratulations!
 ![](https://darey.io/wp-content/uploads/2021/07/terraform_cup.png)
-![](./images/terraform_cup.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project19/terraform_cup.png)
 
 ![](https://darey.io/wp-content/uploads/2021/07/terraform_cup.png)
 

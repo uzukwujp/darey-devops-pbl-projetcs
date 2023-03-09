@@ -310,7 +310,7 @@ Click to read more about each of the network plugins below:
 - [Weave Net](https://www.weave.works/docs/net/latest/overview/)
 - [flannel](https://github.com/flannel-io/flannel)
 
-![](../images/project21/CNI-features.png) [source](https://rancher.com/docs/rancher/v2.x/en/faq/networking/cni-providers/)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/CNI-features.png) [source](https://rancher.com/docs/rancher/v2.x/en/faq/networking/cni-providers/)
 
 
 Sometimes you can combine more than one plugin together to maximize the use of features from different providers. Or simply use a CNI network provider such as [canal](https://github.com/projectcalico/canal) that gives you the best of Flannel and Calico.

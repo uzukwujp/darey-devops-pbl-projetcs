@@ -27,11 +27,11 @@ https://github.com/darey-devops/php-todo.git
 
 4. In Jenkins UI configure Artifactory
 
-![](./images/Jenkins-Configure-System1.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System1.png)
 
 Configure the server ID, URL and Credentials, run Test Connection.
 
-![](./images/Jenkins-Configure-System2.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System2.png)
 
 #### Phase 2 - Integrate Artifactory repository with Jenkins
 
@@ -139,7 +139,7 @@ This plugin provides generic plotting (or graphing) capabilities in Jenkins. It 
 
 You should now see a `Plot` menu item on the left menu. Click on it to see the charts. (The analytics may not mean much to you as it is meant to be read by developers. So, you need not worry much about it - this is just to give you an idea of the real-world implementation).
 
-![](./images/Jenkins-PHPloc-Plot.png)
+![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-PHPloc-Plot.png)
 
 3. Bundle the application code for into an artifact (archived package) upload to Artifactory
 
