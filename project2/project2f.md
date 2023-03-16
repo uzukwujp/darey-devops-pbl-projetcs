@@ -26,7 +26,7 @@ http://`server_domain_or_IP`/info.php
 ```
 You will see a web page containing detailed information about your server:
 
-![](https://drive.google.com/uc?export=view&id=1ibJUPX_HrKyL-SuSrLfvcgWmH_aUdEAY)
+<img src="https://drive.google.com/uc?export=view&id=1ibJUPX_HrKyL-SuSrLfvcgWmH_aUdEAY"  width="936px" height="550px">
 
 After checking the relevant information about your PHP server through that page, it’s best to remove the file you created as it contains sensitive information about your PHP environment and your Ubuntu server. You can use `rm` to remove that file:
 

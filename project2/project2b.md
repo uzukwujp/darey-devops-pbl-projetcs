@@ -56,6 +56,6 @@ The URL in browser shall also work if you do not specify port number since all w
 
 If you see following page, then your web server is now correctly installed and accessible through your firewall.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/Nginx_welcome.png)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/Nginx_welcome.png"  width="936px" height="550px">
 
 In fact, it is the same content that you previously got by 'curl' command, but represented in nice [HTML](https://en.wikipedia.org/wiki/HTML) formatting by your web browser.
