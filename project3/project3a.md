@@ -12,7 +12,8 @@ In this project, you are tasked to implement a web solution based on **MERN** st
 
 4. [**N**ode.js](https://nodejs.org/en/): A JavaScript runtime environment. It is used to run JavaScript on a machine rather than in a browser.
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/MERN-stack.png "MERN STACK")
+
+<img src="https://darey.io/wp-content/uploads/2021/02/MERN-stack.png"  width="936px" height="550px">
 
 
 As shown on the illustration above, a user interacts with the ReactJS UI components at the application front-end residing in the browser. This frontend is served by the application backend residing in a server, through ExpressJS running on top of NodeJS.
@@ -39,7 +40,7 @@ If you do not have an AWS account - go back to **[Project 1 Step 0](https://star
 
 **Hint #1:** When you create your EC2 Instances, you can add Tag "Name" to it with a value that corresponds to a current project you are working on - it will be reflected in the name of the EC2 Instance. Like this:
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/EC2_tag.png "EC2 Tag")
+<img src="https://darey.io/wp-content/uploads/2021/02/EC2_tag.png"  width="936px" height="550px">
 
 
 **Hint #2 (for Windows users only):** In previous projects we used Putty and Git Bash to connect to our EC2 Instances. 
@@ -63,7 +64,7 @@ You can also watch this [video](https://youtu.be/g8XiC9Q2EEE) to set up your mob
 
 To deploy a simple **To-Do** application that creates To-Do lists like this:
 
-![](https://drive.google.com/uc?export=view&id=1lVpIHgDj6hUknNZu4yHO-Nrr4OyiO2fs)
+<img src="https://drive.google.com/uc?export=view&id=1lVpIHgDj6hUknNZu4yHO-Nrr4OyiO2fs"  width="936px" height="550px">
 
 
 
