@@ -24,9 +24,8 @@ Before we can receive any traffic by our Web Server, we need to open [TCP port 8
 
 As we know, we have TCP port 22 open by default on our EC2 machine to access it via SSH, so we need to add a rule to EC2 configuration to open inbound connection through port 80:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/OpenPort80.gif)
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/OpenPort80.gif"  width="100px" height="100">
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/OpenPort80.gif"  width="936px" height="400px">
 
 Our server is running and we can access it locally and from the Internet (Source 0.0.0.0/0 means 'from any IP address').
 
