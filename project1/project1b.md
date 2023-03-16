@@ -19,7 +19,7 @@ Or follow the instructions below.
 1. Register a new AWS account following [this instruction](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
 2. Select your preferred region (the closest to you) and launch a new EC2 instance of t2.micro family with Ubuntu Server 20.04 LTS (HVM)
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/LaunchEC2.gif"  width="500" height="300">
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/LaunchEC2.gif"  width="100" height="100">
 
 ***IMPORTANT*** - save your private key (.pem file) securely and do not share it with anyone! If you lose it, you will not be able to connect to your server ever again!
 
