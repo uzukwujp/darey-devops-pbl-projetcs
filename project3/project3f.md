@@ -12,14 +12,18 @@ You should test all the API endpoints and make sure they are working. For the en
 Now open your Postman, create a POST request to the API `http://<PublicIP-or-PublicDNS>:5000/api/todos`. This request sends a new task to our To-Do list so the application could store it in the database.
 
 **Note:** make sure your set header key `Content-Type` as `application/json`
-![Alt text](https://darey.io/wp-content/uploads/2021/02/postman_header.png "PostMan")
+
+<img src="https://darey.io/wp-content/uploads/2021/02/postman_header.png" title="PostMan" width="936px" height="550px">
 
 Check the image below:
-![Alt text](https://darey.io/wp-content/uploads/2021/02/post-request.jpg "PostMan")
+
+
+<img src="https://darey.io/wp-content/uploads/2021/02/post-request.jpg" title="PostMan" width="936px" height="550px">
 
 Create a GET request to your API on `http://<PublicIP-or-PublicDNS>:5000/api/todos`. This request retrieves all existing records from out To-do application (backend requests these records from the database and sends it us back as a response to GET request).
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/get-request.jpg "get request")
+
+<img src="https://darey.io/wp-content/uploads/2021/02/get-request.jpg" title="get request" width="936px" height="550px">
 
 
 **Optional task:** Try to figure out how to send a DELETE request to delete a task from out To-Do list.

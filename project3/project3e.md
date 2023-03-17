@@ -4,21 +4,21 @@ We need a database where we will store our data. For this we will make use of **
 
 Complete a get started checklist as shown on the image below
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/MLab-dashboard.png "Mlab")
+<img src="https://darey.io/wp-content/uploads/2021/02/MLab-dashboard.png" title="Mlab" width="936px" height="550px">
 
 Allow access to the MongoDB database from anywhere (*Not secure, but it is ideal for testing*)
 
 **IMPORTANT NOTE**
 In the image below, make sure you change the time of deleting the entry from 6 Hours to 1 Week
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/MogoDB-Network-Access.png "MongoDB")
+
+<img src="https://darey.io/wp-content/uploads/2021/02/MogoDB-Network-Access.png" title="MongoDB" width="936px" height="550px">
 
 Create a MongoDB database and collection inside mLab
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-1.png "MongoDB")
+<img src="https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-1.png" title="MongoDB" width="936px" height="550px">
 
-
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-2.png "MongoDB")
+<img src="https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-2.png " title="MongoDB" width="936px" height="550px">
 
 In the `index.js` file, we specified `process.env` to access environment variables, but we have not yet created this file. So we need to do that now.
 
@@ -38,9 +38,10 @@ DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites
 Ensure to update `<username>`, `<password>`, `<network-address>` and `<database>` according to your setup
 
 Here is how to get your connection string
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-connect1.png "Mongo Connect")
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-connect2.png "Mongo Connect2")
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-connect3.png "Mongo Connect3")
+
+<img src="https://darey.io/wp-content/uploads/2021/02/Mongo-connect1.png " title="Mongo Connect" width="936px" height="550px">
+<img src="https://darey.io/wp-content/uploads/2021/02/Mongo-connect2.png " title="Mongo Connect" width="936px" height="550px">
+<img src="https://darey.io/wp-content/uploads/2021/02/Mongo-connect3.png " title="Mongo Connect" width="936px" height="550px">
 
 
 

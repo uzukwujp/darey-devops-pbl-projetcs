@@ -54,8 +54,7 @@ It it a great combination of tools responsible for different parts of your appli
 - **Ansible** for cluster master and worker nodes configuration
 - **Kubernetes** for deploying your containerized application and orchestrating the deployment
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/ter_ans_kub.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/ter_ans_kub.png" width="936px" height="550px">
 Other options will be to leverage a [Managed Service](https://www.adept.co.uk/the-benefits-of-cloud-managed-services-for-business/) Kubernetes cluster from public cloud providers such as: [AWS EKS](https://aws.amazon.com/eks), [Microsoft AKS](https://azure.microsoft.com/en-gb/services/kubernetes-service), or [Google Cloud Platform GKE](https://cloud.google.com/kubernetes-engine). There are so many more options out there. Regardless of whichever one you choose, the experience is usually very similar.
 
 Most organisations choose Managed Service options for obvious reasons such as:
@@ -73,8 +72,7 @@ However, there is usually strong reasons why organisations with very strict comp
 
 Some setup options can combine both public and private cloud together. For example, the master nodes, `etcd` clusters, and some worker nodes that run [stateful](https://whatis.techtarget.com/definition/stateful-app) applications can be configured in private datacentres, while worker nodes that require heavy computations and [stateless](https://www.redhat.com/en/topics/cloud-native-apps/stateful-vs-stateless) applications can run in public clouds. This kind of hybrid architecture is ideal to satisfy compliance, while also benefiting from other public cloud capabilities.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/hybrid_k8s.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/hybrid_k8s.png" width="936px" height="550px">
 ### Deploying the Tooling app using Kubernetes objects
 
 In this section, you will begin to write configuration files for Kubernetes objects (they are usually referred as `manifests`) in the form of files with `yaml` syntax and deploy them using `kubectl` console. But first, let us understand what a Kubernetes object is.
@@ -333,8 +331,7 @@ kubectl  port-forward svc/nginx-service 8089:80
 
 **8089** is an arbitrary port number on your laptop or client PC, and we want to tunnel traffic through it to the port number of the `nginx-service` **80**.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/port_fwd.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/port_fwd.png" width="936px" height="550px">
 Unfortunately, this will not work quite yet. Because there is no way the service will be able to select the actual Pod it is meant to route traffic to. If there are hundreds of Pods running, there must be a way to ensure that the service only forwards requests to the specific Pod it is intended for.
 
 To make this work, you must reconfigure the Pod manifest and introduce **labels** to match the **selectors** key in the field section of the service manifest.
@@ -380,9 +377,7 @@ Forwarding from [::1]:8089 -> 80
 ```
 
 Then go to your web browser and enter `localhost:8089` - You should now be able to see the nginx page in the browser.
-
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-pod.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-pod.png" width="936px" height="550px">
 
 Let us try to understand a bit more about how the service object is able to route traffic to the Pod. 
 
@@ -460,8 +455,7 @@ What has changed is:
 1. Specified the type of service (Nodeport)
 2. Specified the NodePort number to use.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service.png" width="936px" height="550px">
 To access the service, you must:
 
 - Allow the inbound traffic in your EC2's Security Group to the NodePort range `30000-32767`
@@ -469,8 +463,7 @@ To access the service, you must:
 
 You must understand that the port number `30080` is a port on the node in which the Pod is scheduled to run. If the Pod ever gets rescheduled elsewhere, that the same port number will be used on the new node it is running on. So, if you have multiple Pods running on several nodes at the same time - they all will be exposed on respective nodes' IP addresses with a static port number. 
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service-browser.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service-browser.png" width="936px" height="550px">
 Read some more information regarding Services in Kubernetes in [this article](https://medium.com/avmconsulting-blog/service-types-in-kubernetes-24a1587677d6).
 
 #### How Kubernetes ensures desired number of Pods is always running?
@@ -744,12 +737,10 @@ nginx-service   LoadBalancer   10.100.71.130   aab159950f39e43d39195e23c77417f8-
 
 An ELB resource will be created in your AWS console.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-description.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-description.png" width="936px" height="550px">
 A Kubernetes component in the control plane called **[Cloud-controller-manager](https://kubernetes.io/docs/concepts/architecture/cloud-controller)** is responsible for triggeriong this action. It connects to your specific cloud provider's (AWS) APIs and create resources such as Load balancers. It will ensure that the resource is appropriately tagged:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-type.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-type.png" width="936px" height="550px">
 Get the output of the entire `yaml` for the service. You will some additional  information about this service in which you did not define them in the yaml manifest. Kubernetes did this for you.
 
 ```
@@ -804,8 +795,7 @@ status:
 
 Copy and paste the load balancer's address to the browser, and you will access the Nginx service
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-load-balancer-browser.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-load-balancer-browser.png" width="936px" height="550px">
 #### Do not Use Replication Controllers - Use Deployment Controllers Instead
 
 Kubernetes is loaded with a lot of features, and with its vibrant open source community, these features are constantly evolving and adding up. 
@@ -996,8 +986,7 @@ server {
 
 Now, as we have got acquainted with most common Kubernetes workloads to deploy applications: 
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_workloads.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_workloads.png" width="936px" height="550px">
 it is time to explore how Kubernetes is able to manage persistent data.
 
 #### Persisting Data for Pods
@@ -1074,8 +1063,7 @@ for skills acquisition
 
 5. Check the browser - You should see this
    
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Dareyio-web-pod.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Dareyio-web-pod.png" width="936px" height="550px">
 6. Now, delete the only running Pod so that a new one is automatically recreated.
 
 ```
@@ -1084,9 +1072,8 @@ pod "nginx-deployment-56466d4948-tg9j8" deleted
 ```
 
 7. Refresh the web page - You will see that the content you saved in the container is no longer there. That is because Pods do not store data when they are being recreated - that is why they are called `ephemeral` or `stateless`. (*But not to worry, we will address this with persistent volumes in the next project*)
-   
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-page.png)
-
+  
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-page.png" width="936px" height="550px">
 Storage is a critical part of running containers, and Kubernetes offers some powerful primitives for managing it. **Dynamic volume provisioning**, a feature unique to Kubernetes, which allows storage volumes to be created on-demand. Without dynamic provisioning, DevOps engineers must manually make calls to the cloud or storage provider to create new storage volumes, and then create **PersistentVolume** objects to represent them in Kubernetes. The dynamic provisioning feature eliminates the need for DevOps to pre-provision storage. Instead, it automatically provisions storage when it is requested by users.
 
 To make the data persist in case of a Pod's failure, you will need to configure the Pod to use **Volumes**:
@@ -1104,4 +1091,4 @@ In the next project,
 
 Keep it up!
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_medal.png)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_medal.png" width="936px" height="550px">

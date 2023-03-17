@@ -9,8 +9,7 @@ Open your Visual Studio Code and:
 
 Your setup should look like this.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/terraform1.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/terraform1.png" width="936px" height="550px">
 #### Provider and VPC resource section
 
 Set up Terraform CLI as per [this instruction](https://learn.hashicorp.com/tutorials/terraform/install-cli).
@@ -40,7 +39,6 @@ resource "aws_vpc" "main" {
 * Lets accomplish this with `terraform init` command as seen in the below demonstration.
 
 ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/Terraform1.gif)
-
 ***Observations***: 
 - Notice that a new directory has been created: `.terraform\...`. This is where Terraform keeps plugins. Generally, it is safe to delete this folder. It just means that you must execute `terraform init` again, to download them.
 

@@ -124,18 +124,15 @@ The `NODE` column shows the node the pode is running on
 kubectl describe node ip-10-0-3-233.eu-west-2.compute.internal 
 ```
 The information is written in the labels section of the descibe command.
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/region_zone_of_pod.png)
-
+ <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/region_zone_of_pod.png" width="936px" height="550px">
 4. So, in the case above, we know the AZ for the node is in `eu-west-2c` hence, the volume must be created in the same AZ. Choose the size of the required volume.
 
 The **create volume** selection should be like:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/create-volume-in-region.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/create-volume-in-region.png" width="936px" height="550px">
 5. Copy the VolumeID
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/volumeID.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/volumeID.png" width="936px" height="550px">
 6. Update the deployment configuration with the volume spec.
 
 ```
@@ -171,8 +168,7 @@ EOF
 ```
 Apply the new configuration and check the pod. As you can see, the old pod is being terminated while the updated one is up and running.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/apply-pod-config.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/apply-pod-config.png" width="936px" height="550px">
 Now, the new pod has a volume attached to it, and can be used to run a container for statefuleness. Go ahead and explore the running pod. Run `describe` on both the **pod** and **deployment**
 
 At this point, even though the pod can be used for a stateful application, the configuration is not yet complete. This is because, the volume is not yet mounted onto any specific filesystem inside the container. The directory `/usr/share/nginx/html` which holds the software/website code is still ephemeral, and if there is any kind of update to the `index.html` file, the new changes will only be there for as long as the pod is still running. If the pod dies after, all previously written data will be erased.
@@ -228,8 +224,7 @@ Notice the newly added section:
 In as much as we now have a way to persist data, we also have new problems.
 
 1. If you port forward the service and try to reach the endpoint, you will get a `403` error. This is because mounting a volume on a filesystem that already contains data will automatically erase all the existing data. This strategy for statefulness is preferred if the mounted volume already contains the data which you want to be made available to the container
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/403-error.png)
-
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/403-error.png" width="936px" height="550px">
 2. It is still a manual process to create a volume, manually ensure that the volume  created is in the same Avaioability zone in which the pod is running, and then update the manifest file to use the volume ID. All of these is against DevOps principles because it will mean having a lot of road blocks to getting a simple thing done.
 
 The more elegant way to achieve this is through Persistent Volume and Persistent Volume claims.
@@ -416,8 +411,7 @@ pvc-89ba00d9-68f4-4039-b19e-a6471aad6a1e   2Gi        RWO            Delete     
 
 You can copy the PV Name and search in the AWS console. You will notice that the volum has been dynamically created there.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/PV-volume.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/PV-volume.png" width="936px" height="550px">
 Approach 2 (Attempt this on your own). [See an example here](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-volume-claim-templates.html)
 
 1. Create a `volumeClaimTemplate` within the Pod spec. This approach is simply adding the manifest for PVC right within the Pod spec of the deployment.
@@ -445,8 +439,7 @@ Lets go through the below process so that you can see an example of a `configMap
     ```
       cat /usr/share/nginx/html/index.html 
     ```
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/cat-indexfile.png)
-   
+   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/cat-indexfile.png" width="936px" height="550px">
 4. Copy the output and save the file on your local pc because we will need it to create a configmap.
 
 ### Persisting configuration data with configMaps
@@ -611,8 +604,7 @@ data:
 
 Without restarting the pod, your site should be loaded automatically.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/updated-configmap.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/updated-configmap.png" width="936px" height="550px">
 
 If you wish to restart the deployment for any reason, simply use the command
 
