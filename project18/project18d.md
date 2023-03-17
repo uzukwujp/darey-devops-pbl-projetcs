@@ -72,6 +72,7 @@ module "VPC" {
   source = "./modules/VPC"
   region = var.region
   ...
+}
 ```
 
 b. Refer to a module's output by specifying the full path to the output variable by using `module.%module_name%.%output_name%` construction:

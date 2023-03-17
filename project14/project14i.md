@@ -5,24 +5,24 @@
   ```
   Manage Jenkins > Configure System
   ```
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Sonar-Server.png)
+  
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Sonar-Server.png" width="936px" height="550px">
 - Generate authentication token in SonarQube 
   ```
   User > My Account > Security > Generate Tokens
   ```
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Token.png)
+  
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Token.png" width="936px" height="550px">
 - Configure Quality Gate Jenkins Webhook in SonarQube - The URL should point to your Jenkins server http://{JENKINS_HOST}/sonarqube-webhook/
   ```
   Administration > Configuration > Webhooks > Create
   ```
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonar-Jenkins-Webhook.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonar-Jenkins-Webhook.png" width="936px" height="550px">
 - Setup SonarQube scanner from Jenkins - Global Tool Configuration
   ```
   Manage Jenkins > Global Tool Configuration 
-  ```
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarScanner.png)
-
+  ``` 
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarScanner.png" width="936px" height="550px">
 ### Update Jenkins Pipeline to include SonarQube scanning and Quality Gate
 
 Below is the snippet for a **Quality Gate** stage in `Jenkinsfile`. 
@@ -66,8 +66,7 @@ sonar.php.tests.reportPath=build/logs/junit.xml
 
 **HINT**: To know what exactly to put inside the `sonar-scanner.properties` file, SonarQube has a configurations page where you can get some directions.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/sonar-scanner-properties.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/sonar-scanner-properties.png" width="936px" height="550px">
 
 A brief explanation of what is going on the the stage - set the environment variable for the `scannerHome` use the same name used when you configured SonarQube Scanner from **Jenkins Global Tool Configuration**. If you remember, the name was `SonarQubeScanner`. Then, within the `steps` use shell to run the scanner from `bin` directory. 
 
@@ -98,34 +97,29 @@ So far you have been given code snippets on each of the stages within the `Jenki
 Dashboard > php-todo > Pipeline Syntax 
 ```
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Pipeline-Syntax.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Pipeline-Syntax.png" width="936px" height="550px">
 - Click on Steps and select `withSonarQubeEnv` - This appears in the list because of the previous SonarQube configurations you have done in Jenkins. Otherwise, it would not be there.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarQube-Pipeline-Syntax.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarQube-Pipeline-Syntax.png" width="936px" height="550px">
 Within the generated block, you will use the `sh` command to run shell on the server. For more advanced usage in other projects, you can add to bookmarks this [SonarQube documentation page](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/) in your browser.
 
 ### End-to-End Pipeline Overview
 
 Indeed, this has been one of the longest projects from Project 1, and if everything has worked out for you so far, you should have a view like below:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-End-To-End.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-End-To-End.png" width="936px" height="550px">
 But we are not completely done yet!
 
 The quality gate we just included has no effect. Why? Well, because if you go to the SonarQube UI, you will realise that we just pushed a poor-quality code onto the development environment. 
 
 - Navigate to `php-todo` project in SonarQube
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Anaysis.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Anaysis.png" width="936px" height="550px">
 There are bugs, and there is 0.0% code coverage. (*code coverage is a percentage of unit tests added by developers to test functions and objects in the code*)
 
 - If you click on `php-todo` project for further analysis, you will see that there is 6 hours' worth of technical debt, code smells and security issues in the code.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/SonarQube-Analysis2.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/SonarQube-Analysis2.png" width="936px" height="550px">
 In the development environment, this is acceptable as developers will need to keep iterating over their code towards perfection. But as a DevOps engineer working on the pipeline, we must ensure that the quality gate step causes the pipeline to fail if the conditions for quality are not met.
 
 ### Conditionally deploy to higher environments
@@ -184,8 +178,7 @@ To test, create different branches and push to GitHub. You will realise that onl
 
 If everything goes well, you should be able to see something like this:
 
-![](./image/Jenkins-Skipped-Deployment.png)
-
+<img src="./image/Jenkins-Skipped-Deployment.png" width="936px" height="550px">
 Notice that with the current state of the code, it cannot be deployed to Integration environments due to its quality. In the real world, DevOps engineers will push this back to developers to work on the code further, based on SonarQube quality report. Once everything is good with code quality, the pipeline will pass and proceed with sipping the codes further to a higher environment.
 
 ## Complete the following tasks to finish Project 14
@@ -201,8 +194,7 @@ Notice that with the current state of the code, it cannot be deployed to Integra
 
 Congratulations! You have just experienced one of the most interesting and complex projects in your Project Based Learning journey so far. The vast experience and knowledge you have acquired here will set the stage for the next 6 projects to come. You should be ready to start applying for DevOps jobs after completing Project 20.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/awesome14.jpg)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/awesome14.jpg" width="936px" height="550px">
 #### Instructions On How To Submit Your Work For Review And Feedback
 
 To submit your work for review and feedback - follow [**this instruction**](https://starter-pbl.darey.io/en/latest/submission.html).

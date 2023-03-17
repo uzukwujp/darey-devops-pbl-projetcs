@@ -177,5 +177,4 @@ In addition to regular project submissions, include the following:
 ### Congratulations!
 
 Now you have fully automated creation of AWS Infrastructure for 2 websites with Terraform. In the next project, we will further enhance our codes by refactoring and introducing more exciting Terraform concepts! Go ahead and continue your PBL journey with us!
-
-![](./images/awesome_17.jpg)
+<img src="./images/awesome_17.jpg" width="936px" height="550px">

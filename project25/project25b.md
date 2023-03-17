@@ -7,7 +7,7 @@ An ingress is an API object that manages external access to the services in a ku
 
 Here is a simple example where an Ingress sends all its traffic to one Service:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/ingress.svg)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/ingress.svg" width="936px" height="550px">
 *image credit:* kubernetes.io
 
 An ingress resource for Artifactory would like like below
@@ -118,8 +118,7 @@ The `ingress-nginx-controller` service that was created is of the type `LoadBala
 
 If you go ahead to AWS console, copy the address in the **EXTERNAL-IP** column, and search for the loadbalancer, you will see an output like below.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/ingress-classic-load-balancer.png)
-
+<img src="(https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/ingress-classic-load-balancer.png" width="936px" height="550px">
 
 5. Check the IngressClass that identifies this ingress controller.
 
@@ -136,8 +135,7 @@ nginx   k8s.io/ingress-nginx   <none>       105s
 
 Now, it is time to configure the ingress so that we can route traffic to the Artifactory internal service, through the ingress controller's load balancer.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/ingress.svg)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/ingress.svg" width="936px" height="550px">
 Notice the `spec` section with the configuration that selects the ingress controller using the **ingressClassName** 
 
 ```
@@ -182,8 +180,7 @@ If anyone were to visit the tool, it would be very inconvenient sharing the long
 
 The `sandbox.svc.darey.io` part of the domain is the configured **HOSTED ZONE** in AWS. So you will need to configure Hosted Zone in AWS console or as part of your infrastructure as code using terraform. 
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/hosted-zone.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/hosted-zone.png" width="936px" height="550px">
 If you purchased the domain directly from AWS, the hosted zone will be automatically configured for you. But if your domain is registered with a different provider such as **freenon** or **namechaep**, you will have to create the hosted zone and update the name servers.
 
 ### Create Route53 record
@@ -194,21 +191,23 @@ Within the hosted zone is where all the necessary DNS records will be created. S
 
 1. Select the **HOSTED ZONE** you wish to use, and click on the create record button
    
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-1.png)
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-1.png" width="936px" height="550px">
 2. Add the subdomain `tooling.artifactory`, and select the record type `CNAME`
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record--cname.png)
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record--cname.png" width="936px" height="550px">
 3. Successfully created record
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-cname-2.png)
+   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-cname-2.png" width="936px" height="550px">
 4. Confirm that the DNS record has been properly propergated. Visit https://dnschecker.org and check the record. Ensure to select CNAME. The search should return green ticks for each of the locations on the left.
    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/dns-checker.png)
 
 #### **AWS Alias Method**
 
 1. In the create record section, type in the record name, and toggle the `alias` button to enable an alias. An alias is of the `A` DNS record type which basically routes directly to the load balancer. In the `choose endpoint` bar, select `Alias to Application and Classic Load Balancer`
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-alias-1.png)
+ 
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-alias-1.png" width="936px" height="550px">
 
 2. Select the region and the load balancer required. You will not need to type in the load balancer, as it will already populate.
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-alias-2.png)
+
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/create-r53-record-alias-2.png" width="936px" height="550px">
 
 For detailed read on selecting between CNAME and Alias based records, read the [official documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)
 
@@ -218,30 +217,23 @@ So far, we now have an application running in Kubernetes that is also accessible
 
 Using Chrome browser will show something like the below. It shows that the site is indeed reachable, but insecure. This is because Chrome browsers do not load insecure sites by default. It is insecure because it either does not have a trusted TLS/SSL certificate, or it doesn't have any at all.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web.png" width="936px" height="550px">
 Nginx Ingress Controller does configure a default TLS/SSL certificate. But it is not trusted because it is a self signed certificate that browsers are not aware of.
 
 To confirm this,
 
 1. Click on the **Not Secure** part of the browser.
    
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-2.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-2.png" width="936px" height="550px">
 2. Select the **Certificate is not valid** menu
-
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-3.png) 
-
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-3.png" width="936px" height="550px">
 3. You will see the details of the certificate. There you can confirm that yes indeed there is encryption configured for the traffic, the browser is just not cool with it.
-   
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-4.png) 
-
+    
+   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-4.png" width="936px" height="550px">
 Now try another browser. For example Internet explorer or Safari
 
-
-![Safari](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-5.png)
-
-![Microsoft Edge](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-6.png)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-5.png" title="Safari" width="936px" height="550px">
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/insecure-web-6.png" title="Microsoft Edge" width="936px" height="550px">
 
 
 ### Explore Artifactory Web UI
@@ -277,38 +269,41 @@ Congratulations. You have just deployed JFrog Artifactory!
 ```
 
 2. Insert the username and password to load the Get Started page
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-1.png)
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-1.png" width="936px" height="550px">
 
 3. Reset the admin password
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-2.png) 
+    
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-2.png" width="936px" height="550px"> 
 
 4. Activate the Artifactory License. You will need to purchase a license to use Artifactory enterprise features. 
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-3.png)  
+    
+   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-3.png" width="936px" height="550px">
 
 5. For learning purposes, you can apply for a free trial license. [Simply fill the form here](https://jfrog.com/start-free/) and a license key will be delivered to your email in few minutes.
- ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/Artifactory-License.png)  
+   
+ <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/Artifactory-License.pngg" width="936px" height="550px">
 
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-4.png) 
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-4.png" width="936px" height="550px"> 
 
 6. In exactly 1 minute, the license key had arrived. Simply copy the key and apply to the console.
 
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-5.png)  
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-5.png" width="936px" height="550px">  
 
 7. Set the Base URL. Ensure to use `https`
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-6.png)  
+  
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-6.png" width="936px" height="550px"> 
 
-8. Skip the Proxy setting
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-7.png) 
+8. Skip the Proxy setting 
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-7.png" width="936px" height="550px">
    
 9. Skip creation of repositories for now. You will create them yourself later on.
-    
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-8.png)  
+      
+  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-8.png" width="936px" height="550px">
 
 10. finish the setup
-    
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-9.png)  
-
-  ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-10.png)  
-
+     
+   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-9.png" width="936px" height="550px"> 
+  
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-10.png" width="936px" height="550px">
 
 Next, its time to fix the TLS/SSL configuration so that we will have a trusted **HTTPS** URL
