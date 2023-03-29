@@ -57,7 +57,7 @@ Watch this videos to learn how to set up windows terminal on your pc;
 
 You can also watch this [video](https://youtu.be/g8XiC9Q2EEE) to set up your mobaxterm.
 
-
+## Note: **Use ubuntu 20.04 for implementation of this Project**
 
 #### Task
 

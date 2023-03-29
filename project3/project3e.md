@@ -4,7 +4,10 @@ We need a database where we will store our data. For this we will make use of **
 
 Complete a get started checklist as shown on the image below
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/MLab-dashboard.png "Mlab")
+![Alt text](./Images/Create%20a%20Cluster.PNG)
+
+![Alt text](./Images/ceration%20of%20username%20and%20password.PNG)
+
 
 Allow access to the MongoDB database from anywhere (*Not secure, but it is ideal for testing*)
 
@@ -15,10 +18,10 @@ In the image below, make sure you change the time of deleting the entry from 6 H
 
 Create a MongoDB database and collection inside mLab
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-1.png "MongoDB")
+![Alt text](./Images/Browse%20Collections.PNG)
 
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-2.png "MongoDB")
+![Alt text](./Images/Build%20a%20Database.PNG)
 
 In the `index.js` file, we specified `process.env` to access environment variables, but we have not yet created this file. So we need to do that now.
 
@@ -38,9 +41,9 @@ DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites
 Ensure to update `<username>`, `<password>`, `<network-address>` and `<database>` according to your setup
 
 Here is how to get your connection string
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-connect1.png "Mongo Connect")
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-connect2.png "Mongo Connect2")
-![Alt text](https://darey.io/wp-content/uploads/2021/02/Mongo-connect3.png "Mongo Connect3")
+![Alt text](./Images/connect%20to%20cluster.PNG)
+![Alt text](./Images/click%20on%20mongodb%20driver.PNG)
+![Alt text](./Images/connect%20to%20cluster1.PNG)
 
 
 
