@@ -33,61 +33,46 @@ By default, Artifactory uses a global virtual repository that is available at `h
 
 - Click on **administration**, **Repositoris** , and **Add repositories as shown in the image below.
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo1.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo1.png" width="936px" height="550px">
 - Since we are exploring **Local Repositories**, select **Local Repository**
   
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo2.png)
-
+      <img src="hhttps://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo2.png" width="936px" height="550px">
 - Type **Docker** in the search box and select the **Docker** icon
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo3.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo3.png" width="936px" height="550px">
 - In the **Repository Key** box, type in the name of the repository you wh=ish to create. For example `tooling`. So that all the docker images for tooling app can be pushed there. 
   
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo4.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo4.png" width="936px" height="550px">
 - Click on the **Create Local Repository** button.
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo5.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo5.png" width="936px" height="550px">
 - Now you can see that a **Docker Repository** for `tooling` has been created.
   
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo6.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo6.png" width="936px" height="550px">
 - Create a second **Local Repository** for `Jenkins`
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo7.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo7.png" width="936px" height="550px">
 ### Lets create a Virtual Repository
 
 Remember, a virtual repository aggregates several repositories under a common URL. You can get artifacts from it but you cannot deploy anything to it. 
 
 - Select **virtual Repository**
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo8.png)
-
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo8.png" width="936px" height="550px">
 - Name the **virtual Repository** as you deem fit, click on the **create Virtual Repository** button
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo9.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo9.png" width="936px" height="550px">
 - Now that the virtual repository is created, it is time to add local repositories to it. You can see in the image below that it is a **virtual** repo, and it will only be used by **Docker**.
-  
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo10.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo10.png" width="936px" height="550px">
 - Scroll down the page to see the local repositories. This is where you select which local repository that will be part of the virtual repository. Click on the double arrows to move them.
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo11.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo11.png" width="936px" height="550px">
 - Once moved, you will see them in the included items section.
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo12.png)
-
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo13.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo12.png" width="936px" height="550px">
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo13.png" width="936px" height="550px">
 - To see the address of the virtual repository, simply click on the square icon at the top left, click on **Artifacts** and select the repository you wish to see more information on. 
-  
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo14.png)
 
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo14.png" width="936px" height="550px">
 ### Push docker images to the repository
 
 You can either pull and push docker images to the local repository for each application, or simply pull from the virtual repository.
@@ -119,8 +104,7 @@ Lets get docker images from docker hub and push to our private registry.
   ```
 
 - Tag the image so that it can pushed to Artifactory. The image below shows how to get the repository URL address.
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo15.png)
-
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/create-repo15.png" width="936px" height="550px">
   ```
   docker tag jenkins/jenkins:jdk11 https://tooling.artifactory.sandbox.svc.darey.io/jenkins/jenkins:jdk11
   ```
@@ -337,8 +321,7 @@ If you are wondering how to get the correct plugin version number, it is already
 
 Lets take the Blue Ocean plugin as an example. Navigate to https://plugins.jenkins.io/blueocean/ and see the Version section as shown below.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/blueocean-version.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/blueocean-version.png" width="936px" height="550px">
 
 **Option 2** requires an extra overhead. Because you must create a Dockerfile for the Jenkins Controller or (Master), package the Jenkins docker image with the plugins already installed, then update the `image:` value in the helm values override file. The good thing about this approach, despite its overhead is that even when the Kubernetes cluster is locked down in a private network, the dependencies are already packaged into the image and there is no need to download anything from the internet.
 
@@ -473,8 +456,7 @@ To enable that section, simply remove the `{}` and uncomment the first key `welc
 ```
  Upgrade Jenkins with the latest update and you should see the system message like below.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/jcasc-system-message.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/jcasc-system-message.png" width="936px" height="550px">
 The JCasC functionality is actually a Jenkins plugin. It is one of the most interesting plugins that makes configuring Jenkins very easy. It's source code can be found here https://github.com/jenkinsci/configuration-as-code-plugin
 
 Without the **JCasC** plugin, setting up Jenkins is a complex process, as both Jenkins and its plugins require some tuning and configuration, with dozens of parameters to set within the web UI manage section.
@@ -489,15 +471,12 @@ Now let's see the latest configuration applied to Jenkins through JCasC and Helm
 
 1. Navigate to Configuration as code section in Jenkins UI. Click on **Configuration as Code**
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC1.png)
-
+     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC1.png" width="936px" height="550px">
 2. Click on **View Configuration**
 
-    ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC2.png)
-
+      <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC2.png" width="936px" height="550px">
 3. You will see the updated code configuration here.
-       ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC3.png)
-
+         <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC3.png" width="936px" height="550px">
 
 Another example of automating Jenkins as code, is to create a multibranch pipline as part of Jenkins bootstrapping. Rather than going into the console to manually configure a pipeline.
 
@@ -523,9 +502,7 @@ NOTE: *There is minimal guide on how to do the things listed below*
 
 In the Jenkins values file, you will set the values correctly so that the secret created above can be used. 
    [If you click here to see the documentation in artifacthub.io](https://artifacthub.io/packages/helm/jenkinsci/jenkins?modal=values&path=controller.initScripts), as shown in the image below. 
-
-   ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/jenkins-secrets-values.png)
-
+    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/jenkins-secrets-values.png" width="936px" height="550px">
 Let's analyse what is written there. 
 
 -  ***'name' is a name of an existing secret in same namespace as jenkins***. This refers to the secret created above. **github** 
@@ -561,8 +538,7 @@ Then, create a folder to hold your pipelines
 
 When you apply the latest changes, you should be able to see the folder created as shown below. But it doesn't have any pipline.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/jenkins-folder.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/jenkins-folder.png" width="936px" height="550px">
 
 Now, Lets create a pipline that will automatically be added to the folder upon installation.
 
@@ -627,8 +603,7 @@ controller:
 
 The most important part you must take note of is the credentials section where the secret we created earlier is used. Remember, the first part is the secret name `github`, while the second part is the "key name" used in the secret. `github_token`. Both are concatenated with an "hyphen"
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/credential-password.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/credential-password.png" width="936px" height="550px">
 
 
 The jenkins image used in the above values already has all the necessary plugins. Below is the exact `install-plugins.sh` script used for that image tag. You can use it for most use cases. But always remember to go to https://plugins.jenkins.io/ to search for plugins and get the latest version.
@@ -745,19 +720,15 @@ done
 
 You can see the multiPipelineJob now created.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/multi-pipeline-tooling1.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/multi-pipeline-tooling1.png" width="936px" height="550px">
 All the branches have automatically triggered their respective pipeliines.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/multi-pipeline-tooling2.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/multi-pipeline-tooling2.png" width="936px" height="550px">
 This implementation is ideal, and gives the confidence of a re-usable code and infrastructure, should anything go wrong, you can easily recreate all you have configured.
 
 You should also explore the JCasC section and see all the configured credentials and pipelines.
 
-
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC4.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project26/JCasC4.png" width="936px" height="550px">
 
 
 You can now create more secrets to connect to other tools, such as Sonarqube, AWS, KUBECONFIG etc...

@@ -25,10 +25,9 @@ As your Terraform code base grows, your DevOps team might want to create you own
 
 
 ### Congratulations!
-![](https://darey.io/wp-content/uploads/2021/07/terraform_cup.png)
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project19/terraform_cup.png)
-
-![](https://darey.io/wp-content/uploads/2021/07/terraform_cup.png)
+<img src="https://darey.io/wp-content/uploads/2021/07/terraform_cup.png" width="936px" height="550px">
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project19/terraform_cup.png" width="936px" height="550px">
+<img src="https://darey.io/wp-content/uploads/2021/07/terraform_cup.png" width="936px" height="550px">
 
 You have learned how to effectively use managed version of Terraform - Terraform Cloud. You have also practiced in finding modules in a Public Module Registry as well as build and deploy your own modules to a Private Module Registry.
 

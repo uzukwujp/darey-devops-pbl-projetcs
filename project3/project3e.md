@@ -14,12 +14,12 @@ Allow access to the MongoDB database from anywhere (*Not secure, but it is ideal
 **IMPORTANT NOTE**
 In the image below, make sure you change the time of deleting the entry from 6 Hours to 1 Week
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/MogoDB-Network-Access.png "MongoDB")
 
-Create a MongoDB database and collection inside mLab
+<img src="https://darey.io/wp-content/uploads/2021/02/MogoDB-Network-Access.png" title="MongoDB" width="936px" height="550px">
 
 ![Alt text](./Images/Browse%20Collections.PNG)
 
+<img src="https://darey.io/wp-content/uploads/2021/02/Mongo-create-DB-1.png" title="MongoDB" width="936px" height="550px">
 
 ![Alt text](./Images/Build%20a%20Database.PNG)
 

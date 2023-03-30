@@ -29,12 +29,11 @@ Remember, this is only internal configuration and it is also local to your LB se
 
 Now your set up looks like this:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project8/project8_final.png)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project8/project8_final.png" width="936px" height="550px">
 
 #### Congratulations! 
 
 You have just implemented a Load balancing Web Solution for your DevOps team.
 
-
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project8/proj_8_complete.jpg)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project8/proj_8_complete.jpg" width="936px" height="550px">
 
