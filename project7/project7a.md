@@ -32,6 +32,14 @@ In this project you will implement a solution that consists of following compone
 5. **Programming Language**: PHP   
 6. **Code Repository**: [GitHub](https://github.com/darey-io/tooling.git) 
 
+## For Rhel 8 server use this ami `ami-07b1305cd78401892`
+
+![](./images/AMI-prj7.PNG)
+
+![](./images/public%20images%20prj7.PNG) ![](./images/search%20for%20AMI.PNG)
+
+![](./images/launch%20instance%20from%20template.PNG)
+
 On the diagram below you can see a common pattern where several stateless Web Servers share a common database and also access the same files using [Network File Sytem (NFS)](https://en.wikipedia.org/wiki/Network_File_System) as a shared file storage. Even though the NFS server might be located on a completely separate hardware - for Web Servers it look like a local file system from where they can serve the same files.
 
 <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/Tooling-Website-Infrastructure.png" width="936px" height="550px">
