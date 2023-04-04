@@ -398,7 +398,7 @@ NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE   SELECT
 nginx-service   ClusterIP   10.100.71.130   <none>        80/TCP    4d    app=nginx-pod
 ```
 
-As you already know, the service's type is `ClusterIP`, and in the above output, it has the IP address of `10.100.71.130` - This IP works just like an internal loadbalancer. It accepts requests and forwards it to an IP address of any Pod that has the respective `selector` label. In this case, it is `app=nginx-pod`. If there is more than one Pod with that label, service will distribute the traffic to all theese pofs in a [Round Robin](https://en.wikipedia.org/wiki/Round-robin_scheduling) fashion.
+As you already know, the service's type is `ClusterIP`, and in the above output, it has the IP address of `10.100.71.130` - This IP works just like an internal loadbalancer. It accepts requests and forwards it to an IP address of any Pod that has the respective `selector` label. In this case, it is `app=nginx-pod`. If there is more than one Pod with that label, service will distribute the traffic to all theese pods in a [Round Robin](https://en.wikipedia.org/wiki/Round-robin_scheduling) fashion.
 
 Now, let us have a look at what the Pod looks like:
 
