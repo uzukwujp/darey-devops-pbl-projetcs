@@ -1,5 +1,5 @@
-Shell Scripting 
-=====================================
+Shell Scripting. 
+=================
 
 You have been learning about Linux for some time, and it is time to start getting a feel of how to automate some work using Shell Scripts.
 
