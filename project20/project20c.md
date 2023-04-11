@@ -32,7 +32,7 @@ git clone https://github.com/darey-devops/tooling.git
 2. On your terminal, export the location of the SQL file
 
 ```
-export tooling_db_schema=<path-to-tooling-schema-tile>/tooling_db_schema.sql
+export tooling_db_schema=~/tooling/html/tooling_db_schema.sql
 ```
 
 You can find the `tooling_db_schema.sql` in the `html` folder of cloned repo.
