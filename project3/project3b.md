@@ -64,7 +64,7 @@ $ cd Todo
 Next, you will use the command `npm init` to initialise your project, so that a new file named `package.json` will be created. This file will normally contain information about your application and the dependencies that it needs to run. Follow the prompts after running the command. You can press `Enter` several times to accept default values, then accept to write out the `package.json` file by typing `yes`.
 
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/npm-init.png "npm Init")
+<img src="https://darey.io/wp-content/uploads/2021/02/npm-init.png" title="npm init" width="936px" height="550px">
 
 
 Run the command `ls` to confirm that you have package.json file created.

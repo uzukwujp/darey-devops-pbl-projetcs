@@ -18,8 +18,7 @@ You can [watch a 10 minutes video here](https://youtu.be/PRpEbFZi7nI) to guide y
 
 https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Workspace-Env-Var.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Workspace-Env-Var.png" width="936px" height="550px">
 **Possible issues to watch out for when you implement this**
 
 1. Remember that `ansible.cfg` must be exported to environment variable so that Ansible knows where to find `Roles`. But because you will possibly run Jenkins from different git branches, the location of Ansible roles will change. Therefore, you must handle this dynamically. You can use Linux [**Stream Editor** `sed`](https://www.gnu.org/software/sed/manual/sed.html) to update the section `roles_path` each time there is an execution. You may not have this issue if you run only from the **main** branch.
@@ -79,11 +78,10 @@ pipeline {
 
 From now on, each time you hit on execute, it will expect an input.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Parameter.png)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Parameter.png" width="936px" height="550px">
 
 Notice that the default value loads up, but we can now specify which environment we want to deploy the configuration to. Simply type `sit` and hit **Run**
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Parameter-Sit.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Parameter-Sit.png" width="936px" height="550px">
 
 4. Add another parameter. This time, introduce `tagging` in Ansible. You can limit the Ansible execution to a specific role or playbook desired.  Therefore, add an Ansible tag to run against `webserver` only. Test this locally first to get the experience. Once you understand this, update `Jenkinsfile` and run it from Jenkins.

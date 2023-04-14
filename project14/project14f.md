@@ -27,12 +27,10 @@ https://github.com/darey-devops/php-todo.git
 
 4. In Jenkins UI configure Artifactory
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System1.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System1.png" width="936px" height="550px">
 Configure the server ID, URL and Credentials, run Test Connection.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System2.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System2.png" width="936px" height="550px">
 #### Phase 2 - Integrate Artifactory repository with Jenkins
 
 1. Create a dummy `Jenkinsfile` in the repository
@@ -89,7 +87,7 @@ Notice the **Prepare Dependencies** section
 1. Update the `Jenkinsfile` to include Unit tests step
 
 ```
-    stage('Execute Unit Tests') {
+    stage('Execute Unit Tests') 
       steps {
              sh './vendor/bin/phpunit'
       } 
@@ -139,8 +137,7 @@ This plugin provides generic plotting (or graphing) capabilities in Jenkins. It 
 
 You should now see a `Plot` menu item on the left menu. Click on it to see the charts. (The analytics may not mean much to you as it is meant to be read by developers. So, you need not worry much about it - this is just to give you an idea of the real-world implementation).
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-PHPloc-Plot.png)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-PHPloc-Plot.png" width="936px" height="550px">
 3. Bundle the application code for into an artifact (archived package) upload to Artifactory
 
 ```

@@ -59,20 +59,16 @@ Now its time to re-initialize the backend. Run `terraform init` and confirm you 
 Before doing anything if you opened AWS now to see what happened you should be able to see the following:
 - `.tfstatefile` is now inside the S3 bucket 
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_s3.PNG)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_s3.PNG" width="936px" height="550px">
 - DynamoDB table which we create has an entry which includes state file status 
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_beforelock.PNG)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_beforelock.PNG" width="936px" height="550px">
 Navigate to the DynamoDB table inside AWS and leave the page open in your browser.  Run `terraform plan` and while that is running, refresh the browser and see how the lock is being handled:
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_locked.PNG)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_locked.PNG" width="936px" height="550px">
 After `terraform plan` completes, refresh DynamoDB table. 
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_afterfinishingplan.PNG)
-
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstat_afterfinishingplan.PNG" width="936px" height="550px">
 
 5. Add Terraform Output
 
@@ -100,7 +96,7 @@ Terraform will automatically read the latest state from the S3 bucket to determi
 Now, head over to the S3 console again, refresh the page, and click the grey “Show” button next to “Versions.” You should now see several versions of your terraform.tfstate file in the S3 bucket:
 
 ![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project18/tfstate_vesrsions.PNG)
-
+<img src="./images/awesome_17.jpg" width="936px" height="550px">
 With help of remote backend and locking configuration that we have just configured, collaboration is no longer a problem.
 
 However, there is still one more problem: **Isolation Of Environments**. Most likely we will need to create resources for different environments, such as: `Dev`, `sit`, `uat`, `preprod`, `prod`, etc. 

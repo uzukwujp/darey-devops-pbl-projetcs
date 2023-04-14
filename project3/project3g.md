@@ -36,7 +36,7 @@ $ npm install nodemon --save-dev
 },
 ```
 
-![Alt text](https://darey.io/wp-content/uploads/2021/02/script.jpg "Script")
+<img src="https://darey.io/wp-content/uploads/2021/02/script.jpg" title="Script" width="936px" height="550px">
 
 ##### Configure Proxy in `package.json`
 
