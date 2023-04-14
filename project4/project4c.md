@@ -28,11 +28,6 @@ Verify that the service is up and running
 sudo systemctl status mongodb
 ```
 
-Install `[npm](https://www.npmjs.com)` - Node package manager.
-
-```
-sudo apt install -y npm
-```
 
 Install '[body-parser](https://www.npmjs.com/package/body-parser) package
 
