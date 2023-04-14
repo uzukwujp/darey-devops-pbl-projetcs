@@ -19,7 +19,7 @@ Generally, web, or mobile solutions are implemented based on what is called the 
 
 **Three-tier Architecture** is a client-server software architecture pattern that comprise of 3 separate layers.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/six.JPG)
+<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/six.JPG" width="936px" height="550px">
 
 1. **Presentation Layer** (PL): This is the user interface such as the client server or browser on your laptop. 
 2. **Business Layer** (BL): This is the backend program that implements business logic. Application or Webserver
