@@ -32,7 +32,7 @@ In this project you will implement a solution that consists of following compone
 5. **Programming Language**: PHP   
 6. **Code Repository**: [GitHub](https://github.com/darey-io/tooling.git) 
 
-## For Rhel 8 server use this ami `RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2`
+## For Rhel 8 server use this ami `RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2 (ami-035c5dc086849b5de)`
 
 ![](./images/AMI-prj7.PNG)
 
