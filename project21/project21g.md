@@ -78,7 +78,7 @@ The primary purpose of the `etcd` component is to store the state of the cluster
 
 You should have a a similar pane like below. You should be able to see all the files that have been sent to the nodes. 
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Master-Nodes-Terminal.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Master-Nodes-Terminal.png" width="936px" height="550px">
 2. Download and install **etcd**
 
 ```
@@ -180,7 +180,7 @@ ed33b44c0b153ee3, started, master-2, https://172.31.0.12:2380, https://172.31.0.
 ```
 systemctl status etcd
 ```
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/etcd-service-status.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/etcd-service-status.png" width="936px" height="550px">
 ### Bootstrap the `Control Plane`
 
 In this section, you will configure the components for the control plane on the master/controller nodes.
@@ -445,7 +445,7 @@ curl --cacert /var/lib/kubernetes/ca.pem https://$INTERNAL_IP:6443/version
 ```
 kubectl get componentstatuses --kubeconfig admin.kubeconfig
 ```
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Check-componentStatus.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Check-componentStatus.png" width="936px" height="550px">
 5. On one of the controller nodes, configure Role Based Access Control (RBAC) so that the `api-server` has necessary authorization for for the `kubelet`.
    
 Create the **ClusterRole**:

@@ -199,7 +199,7 @@ In summary it specifies the following;
 - The resource(s) to be created - Such as a namespace or deployment
 - A `commonLabel` field which ensures that kubernetes labels and selectors are automatically injected into the resources being created. such as below;
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/kustomize-common-label.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/kustomize-common-label.png" width="936px" height="550px">
 
 Generally, A kustomization file contains fields falling into four categories (although not all have been used in the example above):
 
@@ -788,7 +788,7 @@ Follow the next steps to initialize the Vault cluster.
   kubectl exec -n vault -it <running_vault_pod_name> -- /bin/sh
   ```
 
-  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/vault-get-pods-cli.png" title="vault-running-pod" width="936px" height="550px">
+  <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/vault-get-pods-cli.png" title="vault-running-pod" width="936px" height="550px">
   `pod/vault-0` is the pod in running status in this image
 
 - Check the status the vault cluster `vault status`, you should get an output similar to this:
@@ -1027,21 +1027,21 @@ Working with the Vault UI
 
 We have been using the **vault cli** for our vault configurations but you can also use the **vault UI** to do some of the configurations. To view the vault UI, copy and paste the vault address on your browser, then you will see the login page.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/vault-ui-login-page.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/vault-ui-login-page.png" width="936px" height="550px">
 You can login using the token you got after initializing the vault cluster. Check the database KV secret created before which is at the path `app/database/config/dev`.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/secrets-engine-vault-ui.png" title="vault-secrets" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/secrets-engine-vault-ui.png" title="vault-secrets" width="936px" height="550px">
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/dev-kv-v2-secrets-vault-ui.png" title="database-kv-secret" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/dev-kv-v2-secrets-vault-ui.png" title="database-kv-secret" width="936px" height="550px">
 
 Check the **tooling-role** kubernetes auth method role.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/authentication-methods-vault-ui.png)" title="vault-auth-methods" width="936px" height="550px">
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/tooling-role-kube-authMethod.png"  title="vault-kubernetes-auth" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/authentication-methods-vault-ui.png)" title="vault-auth-methods" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/tooling-role-kube-authMethod.png"  title="vault-kubernetes-auth" width="936px" height="550px">
 
 Navigate to the vault policy attached to the **tooling-role** kubernetes auth method.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/tooling-db-policy-vault-ui.png" title= "vault-policy" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project27/tooling-db-policy-vault-ui.png" title= "vault-policy" width="936px" height="550px">
 <!-- 
 You can inform the developers to write a code that will use the database credentials from the path -->
 

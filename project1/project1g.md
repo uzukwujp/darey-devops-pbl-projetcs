@@ -62,4 +62,4 @@ Credit: [This guide was inspired by Digital Ocean](https://www.digitalocean.com/
 
 Congratulations, You have finished your very first **REAL LIFE PROJECT** by deploying a LAMP stack website in AWS Cloud!
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/medal1.png)
+![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/medal1.png)

@@ -4,7 +4,7 @@ After you have built AWS infrastructure for 2 websites manually, it is time to a
 
 Let us start building the same set up with the power of Infrastructure as Code (IaC)
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/tooling_project_16.png width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/tooling_project_16.png width="936px" height="550px">
 #### Instructions On How To Submit Your Work For Review And Feedback
 
 To submit your work for review and feedback - follow [**this instruction**](https://starter-pbl.darey.io/en/latest/submission.html).

@@ -48,7 +48,7 @@ Test secured access to your Web Solution by trying to reach `https://<your-domai
 You shall be able to access your website by using HTTPS protocol (that uses TCP port 443) and see a padlock pictogram in your browser's search string.
 Click on the padlock icon and you can see the details of the certificate issued for your website.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project10/cert_details.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project10/cert_details.png" width="936px" height="550px">
 
 6. Set up periodical renewal of your SSL/TLS certificate
 
@@ -84,4 +84,4 @@ You can also use this handy [online cron expression editor](https://crontab.guru
 
 You have just implemented an Nginx Load Balancing Web Solution with secured HTTPS connection with periodically updated SSL/TLS certificates.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project10/well_done_10.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project10/well_done_10.png" width="936px" height="550px">

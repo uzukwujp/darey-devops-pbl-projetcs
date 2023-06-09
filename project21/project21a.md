@@ -17,7 +17,7 @@ This project is the first of a series Kubernetes-related practice projects, so g
 
 *Kubernetes (κυβερνήτης, Greek for "helmsman" or "pilot" or "governor", and the etymological root of cybernetics)
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/kubernetes_sail.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/kubernetes_sail.png" width="936px" height="550px">
 ### Why migrate from Docker Compose to K8s
 
 In the previous project you successfully deployed your Docker containers using **Docker Compose**, it is a great tool that helps avoiding execution of multiple CLI commands by preparing a declarative configuration file. It is handy when you deploy one or a few containers, but in most cases, it does not fit for production deployments.
@@ -69,7 +69,7 @@ Kubernetes is a not a single package application that you can install with one c
 
 Let us take a look at Kubernetes architecture diagram below:
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/K8s_architecture.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/K8s_architecture.png" width="936px" height="550px">
 Read about every component in the [official documentation](https://kubernetes.io/docs/concepts/overview/components/).
 
 Make sure you understand the role of each component on the diagram above, without this understanding it will be extremely difficult for you to install and operate a K8s cluster, especially when it comes to troubleshooting and maintenance.

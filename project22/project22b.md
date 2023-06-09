@@ -208,7 +208,7 @@ kubectl  port-forward svc/nginx-service 8089:80
 
 **8089** is an arbitrary port number on your laptop or client PC, and we want to tunnel traffic through it to the port number of the `nginx-service` **80**.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/port_fwd.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/port_fwd.png" width="936px" height="550px">
 Unfortunately, this will not work quite yet. Because there is no way the service will be able to select the actual Pod it is meant to route traffic to. If there are hundreds of Pods running, there must be a way to ensure that the service only forwards requests to the specific Pod it is intended for.
 
 To make this work, you must reconfigure the Pod manifest and introduce **labels** to match the **selectors** key in the field section of the service manifest.
@@ -254,7 +254,7 @@ Forwarding from [::1]:8089 -> 80
 ```
 
 Then go to your web browser and enter `localhost:8089` - You should now be able to see the nginx page in the browser.
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-pod.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-pod.png" width="936px" height="550px">
 
 Let us try to understand a bit more about how the service object is able to route traffic to the Pod. 
 
