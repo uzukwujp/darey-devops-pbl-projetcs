@@ -4,7 +4,7 @@ As part of the ongoing infrastructure development with Ansible started from *Pro
 
 The problem with that approach is, it would be difficult to package and version the software for different releases. And so, in this project, we will be using a different approach for releases, rather than downloading directly from git, we will be using Ansible [`uri` module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/uri_module.html).
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/CI_CD-Pipeline-For-PHP-ToDo-Application.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/CI_CD-Pipeline-For-PHP-ToDo-Application.png" width="936px" height="550px">
 ## Set Up
 
 This project is partly a continuation of your Ansible work, so simply add and subtract based on the new setup in this project. It will require a lot of servers to simulate all the different environments from `dev/ci` all the way to `production`. This will be quite a lot of servers altogether (But you don't have to create them all at once. Only create servers required for an environment you are working with at the moment. For example, when doing deployments for development, do not create servers for integration, pentest, or production yet). 
@@ -25,15 +25,15 @@ Both `SIT` - For System Integration Testing and `UAT` - User Acceptance Testing 
 
 What we want to achieve, is having Nginx to serve as a [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) for our sites and tools. Each environment setup is represented in the below table and diagrams.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Environment-setup.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Environment-setup.png" width="936px" height="550px">
 
 ###   CI-Environment
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-CI-Environment.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-CI-Environment.png" width="936px" height="550px">
 
 ###             Other Environments from Lower To Higher
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-Pentest-Environment.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-Pentest-Environment.png" width="936px" height="550px">
 
 ### DNS requirements
 

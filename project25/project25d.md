@@ -13,12 +13,12 @@ To see the list of trusted root Certification Authorities (CA) and their certifi
    
 2. Search for `security`
    
-     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-1.png" width="936px" height="550px">
+     <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-1.png" width="936px" height="550px">
 3. Select `Manage Certificates` 
-      <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-2.png" width="936px" height="550px">
+      <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-2.png" width="936px" height="550px">
 4. View the installed certificates in your browser
    
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-3.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-3.png" width="936px" height="550px">
 
 ## Certificate Management in Kubernetes
 
@@ -34,12 +34,12 @@ Similar to how Ingress Controllers are able to enable the creation of *Ingress* 
 
 It can issue certificates from a variety of supported sources, including [Let's Encrypt](https://letsencrypt.org/), [HashiCorp Vault](https://www.vaultproject.io/), and [Venafi](https://www.venafi.com/) as well as [private PKI](https://www.csoonline.com/article/3400836/what-is-pki-and-how-it-secures-just-about-everything-online.html). The issued certificates get stored as kubernetes secret which holds both the private key and public certificate.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-high-level-overview.svg" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-high-level-overview.svg" width="936px" height="550px">
 In this project, We will use Let's Encrypt with cert-manager. The certificates issued by Let's Encrypt will work with most browsers because the root certificate that validates all it's certificates is called **“ISRG Root X1”** which is already trusted by most browsers and servers.
 
 You will find `ISRG Root X1` in the list of certificates already installed in your browser.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-4.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-4.png" width="936px" height="550px">
 [Read the official documentation here](https://letsencrypt.org/docs/certificate-compatibility/)
 
 Cert-maanager will ensure certificates are valid and up to date, and attempt to renew certificates at a configured time before expiry.
@@ -50,8 +50,8 @@ Cert-manager works by having administrators create a resource in kubernetes call
 
 Whenever it is time to create a certificate for a specific host or website address, the process follows the pattern seen in the image below.
 
-![](https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png)
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png" width="936px" height="550px">
+![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png)
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png" width="936px" height="550px">
 After we have deployed cert-manager, you will see all of this in action.
 
 ## Deploying Cert-manager 

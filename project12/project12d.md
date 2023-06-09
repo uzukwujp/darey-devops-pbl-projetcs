@@ -48,7 +48,7 @@ or
 `http://<Web1-UAT-Server-Public-IP-or-Public-DNS-Name>/index.php`
 
 Your Ansible architecture now looks like this:
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project12/project12_architecture.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project12/project12_architecture.png" width="936px" height="550px">
 
 In Project 13, you will see the difference between **Static** and **Dynamic** assignments.
 
@@ -56,4 +56,4 @@ In Project 13, you will see the difference between **Static** and **Dynamic** as
 
 You have learned how to deploy and configure UAT Web Servers using Ansible `imports` and `roles`!
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project12/good_job12.jpg" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project12/good_job12.jpg" width="936px" height="550px">

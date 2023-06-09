@@ -26,7 +26,7 @@ What has changed is:
 1. Specified the type of service (Nodeport)
 2. Specified the NodePort number to use.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service.png" width="936px" height="550px">
 To access the service, you must:
 
 - Allow the inbound traffic in your EC2's Security Group to the NodePort range `30000-32767`
@@ -34,7 +34,7 @@ To access the service, you must:
 
 You must understand that the port number `30080` is a port on the node in which the Pod is scheduled to run. If the Pod ever gets rescheduled elsewhere, that the same port number will be used on the new node it is running on. So, if you have multiple Pods running on several nodes at the same time - they all will be exposed on respective nodes' IP addresses with a static port number. 
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service-browser.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nodeport-service-browser.png" width="936px" height="550px">
 Read some more information regarding Services in Kubernetes in [this article](https://medium.com/avmconsulting-blog/service-types-in-kubernetes-24a1587677d6).
 
 #### How Kubernetes ensures desired number of Pods is always running?

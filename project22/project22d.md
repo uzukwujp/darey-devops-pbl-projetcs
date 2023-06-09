@@ -103,10 +103,10 @@ nginx-service   LoadBalancer   10.100.71.130   aab159950f39e43d39195e23c77417f8-
 
 An ELB resource will be created in your AWS console.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-description.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-description.png" width="936px" height="550px">
 A Kubernetes component in the control plane called **[Cloud-controller-manager](https://kubernetes.io/docs/concepts/architecture/cloud-controller)** is responsible for triggeriong this action. It connects to your specific cloud provider's (AWS) APIs and create resources such as Load balancers. It will ensure that the resource is appropriately tagged:
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-type.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Loadbalancer-service-type.png" width="936px" height="550px">
 Get the output of the entire `yaml` for the service. You will some additional  information about this service in which you did not define them in the yaml manifest. Kubernetes did this for you.
 
 ```
@@ -161,7 +161,7 @@ status:
 
 Copy and paste the load balancer's address to the browser, and you will access the Nginx service
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-load-balancer-browser.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-load-balancer-browser.png" width="936px" height="550px">
 #### Do not Use Replication Controllers - Use Deployment Controllers Instead
 
 Kubernetes is loaded with a lot of features, and with its vibrant open source community, these features are constantly evolving and adding up. 
@@ -352,5 +352,5 @@ server {
 
 Now, as we have got acquainted with most common Kubernetes workloads to deploy applications: 
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_workloads.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_workloads.png" width="936px" height="550px">
 it is time to explore how Kubernetes is able to manage persistent data.

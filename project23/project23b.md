@@ -173,7 +173,7 @@ pvc-89ba00d9-68f4-4039-b19e-a6471aad6a1e   2Gi        RWO            Delete     
 
 You can copy the PV Name and search in the AWS console. You will notice that the volum has been dynamically created there.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/PV-volume.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/PV-volume.png" width="936px" height="550px">
 Approach 2 (Attempt this on your own). [See an example here](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-volume-claim-templates.html)
 
 1. Create a `volumeClaimTemplate` within the Pod spec. This approach is simply adding the manifest for PVC right within the Pod spec of the deployment.

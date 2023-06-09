@@ -4,19 +4,19 @@
 
 Learn How to Add EBS Volume to an EC2 instance [here](https://www.youtube.com/watch?v=HPXnXkBzIHw)
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/volume_creation.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/volume_creation.png" width="936px" height="550px">
 
 
 2. Attach all three volumes one by one to your Web Server EC2 instance
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/attach_volume.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/attach_volume.png" width="936px" height="550px">
 
 
 2. Open up the Linux terminal to begin configuration
 
 3. Use [`lsblk`](https://man7.org/linux/man-pages/man8/lsblk.8.html) command to inspect what block devices are attached to the server. Notice names of your newly created devices. All devices in Linux reside in /dev/ directory. Inspect it with `ls /dev/` and make sure you see all 3 newly created block devices there - their names will likely be `xvdf`, `xvdh`, `xvdg`.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/lsblk.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/lsblk.png" width="936px" height="550px">
 
 
 
@@ -67,7 +67,7 @@ Now,  your changes has been configured succesfuly, exit out of the gdisk console
 
 5. Use `lsblk` utility to view the newly configured partition on each of the 3 disks.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/new_partitions.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/new_partitions.png" width="936px" height="550px">
 
 
 6. Install [`lvm2`](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)) package using `sudo yum install lvm2`. Run `sudo lvmdiskscan` command to check for available partitions.
@@ -85,7 +85,7 @@ sudo pvcreate /dev/xvdh1
 
 8. Verify that your Physical volume has been created successfully by running `sudo pvs`
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/pvs.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/pvs.png" width="936px" height="550px">
 
 
 
@@ -98,7 +98,7 @@ sudo vgcreate webdata-vg /dev/xvdh1 /dev/xvdg1 /dev/xvdf1
 
 10. Verify that your VG has been created successfully by running `sudo vgs`
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/vgs.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/vgs.png" width="936px" height="550px">
 
 
 11. Use [`lvcreate`](https://linux.die.net/man/8/lvcreate) utility to create 2 logical volumes.  **apps-lv** (***Use half of the PV size***), and **logs-lv** ***Use the remaining space of the PV size***. **NOTE**: apps-lv will be used to store data for the Website while, logs-lv will be used to store data for logs. 
@@ -111,7 +111,7 @@ sudo lvcreate -n logs-lv -L 14G webdata-vg
 
 12. Verify that your Logical Volume has been created successfully by running `sudo lvs`
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/lvs.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/lvs.png" width="936px" height="550px">
 
 
 13.  Verify the entire setup
@@ -119,7 +119,7 @@ sudo lvcreate -n logs-lv -L 14G webdata-vg
 sudo vgdisplay -v #view complete setup - VG, PV, and LV
 sudo lsblk 
 ```
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/lsblk3.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/lsblk3.png" width="936px" height="550px">
 
 
 
@@ -173,7 +173,7 @@ The UUID of the  device will be used to update the `/etc/fstab` file;
 
 `sudo blkid`
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/blkid.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/blkid.png" width="936px" height="550px">
 
 
 
@@ -181,7 +181,7 @@ sudo vi `/etc/fstab`
 
 Update `/etc/fstab` in this format using your own UUID and rememeber to remove the leading and ending quotes.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/fstab.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/fstab.png" width="936px" height="550px">
 
 
 22.  Test the configuration and reload the daemon
@@ -193,4 +193,4 @@ Update `/etc/fstab` in this format using your own UUID and rememeber to remove t
 
 23.   Verify your setup by running `df -h`, output must look like this:
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/df-h.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project6/df-h.png" width="936px" height="550px">

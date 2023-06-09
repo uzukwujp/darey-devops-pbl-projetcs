@@ -72,7 +72,7 @@ for skills acquisition
 
 5. Check the browser - You should see this
    
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Dareyio-web-pod.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Dareyio-web-pod.png" width="936px" height="550px">
 6. Now, delete the only running Pod so that a new one is automatically recreated.
 
 ```
@@ -82,7 +82,7 @@ pod "nginx-deployment-56466d4948-tg9j8" deleted
 
 7. Refresh the web page - You will see that the content you saved in the container is no longer there. That is because Pods do not store data when they are being recreated - that is why they are called `ephemeral` or `stateless`. (*But not to worry, we will address this with persistent volumes in the next project*)
   
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-page.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/Nginx-page.png" width="936px" height="550px">
 Storage is a critical part of running containers, and Kubernetes offers some powerful primitives for managing it. **Dynamic volume provisioning**, a feature unique to Kubernetes, which allows storage volumes to be created on-demand. Without dynamic provisioning, DevOps engineers must manually make calls to the cloud or storage provider to create new storage volumes, and then create **PersistentVolume** objects to represent them in Kubernetes. The dynamic provisioning feature eliminates the need for DevOps to pre-provision storage. Instead, it automatically provisions storage when it is requested by users.
 
 To make the data persist in case of a Pod's failure, you will need to configure the Pod to use **Volumes**:
@@ -100,4 +100,4 @@ In the next project,
 
 Keep it up!
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_medal.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/k8s_medal.png" width="936px" height="550px">

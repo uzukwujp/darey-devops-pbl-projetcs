@@ -17,7 +17,7 @@ Lets go through the below process so that you can see an example of a `configMap
     ```
       cat /usr/share/nginx/html/index.html 
     ```
-   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/cat-indexfile.png" width="936px" height="550px">
+   <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/cat-indexfile.png" width="936px" height="550px">
 4. Copy the output and save the file on your local pc because we will need it to create a configmap.
 
 ### Persisting configuration data with configMaps
@@ -182,7 +182,7 @@ data:
 
 Without restarting the pod, your site should be loaded automatically.
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/updated-configmap.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project23/updated-configmap.png" width="936px" height="550px">
 
 If you wish to restart the deployment for any reason, simply use the command
 
