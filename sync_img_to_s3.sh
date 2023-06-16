@@ -140,6 +140,8 @@ cd ..
 cd project27
 aws s3 sync images/ s3://darey-io-nonprod-pbl-projects/project27/
 
+cd ..
+
 cd practices
 aws s3 sync images/ s3://darey-io-nonprod-pbl-projects/practices/
 
