@@ -2,30 +2,56 @@
 
 MongoDB stores data in flexible, `JSON-like` documents. Fields in a database can vary from document to document and data structure can be changed over time. For our example application, we are adding book records to MongoDB that contain book name, isbn number, author, and number of pages.
 
+
+Import the Public Key used by Package Management System
+
 ```
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+sudo apt-get install gnupg curl
 ```
 
 ```
-echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
 ```
+
+Create a List file For MongoDB
+
+**For Ubuntu 20.04**
+
+```
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+```
+
+**For Ubuntu 22.04**
+
+```
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+```
+
+Reload Local Packages
+
+```
+sudo apt-get update
+```
+
 
 Install MongoDB
 
 ```
-sudo apt install -y mongodb
+sudo apt-get install -y mongodb-org
 ```
 
-Start The server
+Start and Enable The Mongod Service
 
 ```
-sudo service mongodb start
+sudo systemctl start mongod
+
+sudo systemctl enable mongod
 ```
 
 Verify that the service is up and running
 
 ```
-sudo systemctl status mongodb
+sudo systemctl status mongod
 ```
 
 
