@@ -10,7 +10,7 @@ sudo apt update
 Upgrade ubuntu
 
 ```
-sudo apt upgrade
+sudo apt upgrade -y
 ```
 
 Add certificates
