@@ -25,11 +25,13 @@ Learn How to Add EBS Volume to an EC2 instance [here](https://www.youtube.com/wa
 5. Use `gdisk` utility to create a single partition on each of the 3 disks
 
 
-`sudo gdisk /dev/xvdf`
-
-
 ```
- GPT fdisk (gdisk) version 1.0.3
+sudo gdisk /dev/xvdf
+```
+
+Output
+"""
+GPT fdisk (gdisk) version 1.0.3
 
 Partition table scan:
   MBR: not present
@@ -61,8 +63,8 @@ Do you want to proceed? (Y/N): yes
 OK; writing new GUID partition table (GPT) to /dev/xvdf.
 The operation has completed successfully.
 Now,  your changes has been configured succesfuly, exit out of the gdisk console and do the same for the remaining disks.
+"""
 
-```
 
 
 5. Use `lsblk` utility to view the newly configured partition on each of the 3 disks.
