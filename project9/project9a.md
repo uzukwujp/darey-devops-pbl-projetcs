@@ -21,7 +21,7 @@ Enhance the architecture prepared in Project 8 by adding a Jenkins server, confi
 
 Here is how your update architecture will look like upon competion of this project:
 
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/add_jenkins.png" width="936px" height="550px">
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/add_jenkins.png" width="936px" height="550px">
 
 Let us do it!
 

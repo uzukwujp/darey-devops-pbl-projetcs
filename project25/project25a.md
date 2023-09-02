@@ -1,160 +1,294 @@
-Deploying and Packaging applications into Kubernetes with Helm
-============================================
+### Packaging containerised applications into Helm Charts
 
-In the previous project, you started experiencing helm as a tool used to deploy an application into Kubernetes. You probably also tried installing more tools apart from Jenkins.
+In Project 22, you experienced the use of manifest files to define and deploy resources like pods, deployments, and services into Kubernetes cluster. Here, you will do the same thing except that it will not be passed through `kubectl`. In the real world, Helm is one of the most popular tools used to deploy resources into kubernetes. That is because it has a rich set of features that allows deployments to be packaged as a unit. Rather than have multiple YAML files managed individually - which can quickly become messy.
 
-In this project, you will experience deploying more DevOps tools, get familiar with some of the real world issues faced during such deployments and how to fix them. You will learn how to tweak helm values files to automate the configuration of the applications you deploy. Finally, once you have most of the DevOps tools deployed, you will experience using them and relate with the DevOps cycle and how they fit into the entire  ecosystem.
-
-Our focus will be on the. 
-
-1. Artifactory
-2. Ingress Controllers
-3. Cert-Manager
-
-Then you will attempt to explore these on your own.
-
-4. Prometheus
-5. Grafana
-6. Elasticsearch ELK using [ECK](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-install-helm.html)
-
-For the tools that require paid license, don't worry, you will also learn how to get the license for free and have true experience exactly how they are used in the real world.
-
-Lets start first with Artifactory. What is it exactly?
-
-Artifactory is part of a suit of products from a company called [Jfrog](https://jfrog.com/). Jfrog started out as an artifact repository where software binaries in different formats are stored. Today, Jfrog has transitioned from an artifact repository to a DevOps Platform that includes CI and CD capabilities. This has been achieved by offering more products in which **Jfrog Artifactory** is part of. Other offerings include 
-      
-  - JFrog Pipelines -  a CI-CD product that works well with its Artifactory repository. Think of this product as an alternative to Jenkins.
-  - JFrog Xray - a security product that can be built-into various steps within a JFrog pipeline. Its job is to scan for security vulnerabilities in the stored artifacts. It is able to scan all dependent code.
-
-In this project, the requirement is to use Jfrog Artifactory as a private registry for the organisation's Docker images and Helm charts. This requirement will satisfy part of the company's corporate security policies to never download artifacts directly from the public into production systems. We will eventually have a CI pipeline that initially pulls public docker images and helm charts from the internet, store in artifactory and scan the artifacts for security vulnerabilities before deploying into the corporate infrastructure. Any found vulnerabilities will immediately trigger an action to quarantine such artifacts.
-
-Lets get into action and see how all of these work.
-
-## Deploy Jfrog Artifactory into Kubernetes
-
-The best approach to easily get Artifactory into kubernetes is to use helm.
-
-1. Search for an official helm chart for Artifactory on [Artifact Hub](https://artifacthub.io/)
-
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/search-artifactory-on-artifact-hub.png" width="936px" height="550px">
-2. Click on **See all results**
-3. Use the filter checkbox on the left to limit the return data. As you can see in the image below, "Helm" is selected. In some cases, you might select "Official". Then click on the first option from the result.
-
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/Select-artifactory-chart.png" width="936px" height="550px">
-4. Review the Artifactory page
-
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/Artifactory-helm-page.png" width="936px" height="550px">
-5. Click on the install menu on the right to see the installation commands.
-   
-    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/click-install.png" width="936px" height="550px">
-6. Add the jfrog remote repository on your laptop/computer
+A Helm chart is a definition of the resources that are required to run an application in Kubernetes. Instead of having to think about all of the various deployments/services/volumes/configmaps/ etc that make up your application, you can use a command like
 
 ```
-helm repo add jfrog https://charts.jfrog.io
+helm install stable/mysql
 ```
+and Helm will make sure all the required resources are installed. In addition you will be able to tweak helm configuration by setting a single variable to a particular value and more or less resources will be deployed. For example, enabling slave for MySQL so that it can have read only replicas.
 
-7. Create a namespace called `tools` where all the tools for DevOps will be deployed. (In previous project, you installed Jenkins in the default namespace. You should uninstall Jenkins there and install in the new namespace)
+Behind the scenes, a helm chart is essentially a bunch of YAML manifests that define all the resources required by the application. Helm takes care of creating the resources in Kubernetes (where they don't exist) and removing old resources.
 
-```
-kubectl create ns tools
-```
+#### Lets begin to gradually walk through how to use Helm (Credit - https://andrewlock.net/series/deploying-asp-net-core-applications-to-kubernetes/) @igor please update the texts as much as possible to reduce plagiarism
 
-8. Update the helm repo index on your laptop/computer
+1. Parameterising YAML manifests using Helm templates
 
-```
-helm repo update
-```
-
-9. Install artifactory
+Let's consider that our Tooling app have been Dockerised into an image called `tooling-app`, and that you wish to deploy with Kubernetes. Without helm, you would create the YAML manifests defining the deployment, service, and ingress, and apply them to your Kubernetes cluster using `kubectl apply`. Initially, your application is version 1, and so the Docker image is tagged as `tooling-app:1.0.0`. A simple deployment manifest might look something like the following:
 
 ```
-helm upgrade --install artifactory jfrog/artifactory --version 107.38.10 -n tools
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tooling-app-deployment
+  labels:
+    app: tooling-app
+spec:
+  replicas: 3
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: tooling-app
+  template:
+    metadata:
+      labels:
+        app: tooling-app
+    spec:
+      containers:
+      - name: tooling-app
+        image: "tooling-app:1.0.0"
+        ports:
+        - containerPort: 80
 ```
+Now lets imagine that the developers develops another version of the toolin app, version 1.1.0. How do you deploy that? Assuming nothing needs to be changed with the service or other kubernetes objects, it may be as simple as copying the deployment manifest and replacing the image defined in the spec section. You would then re-apply this manifest to the cluster, and the deployment would be updated, performing a [rolling-update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/).
+
+The main problem with this is that all of the values specific to the tooling app – the labels and the image names etc – are mixed up with the entire definition of the manifest.
+
+Helm tackles this by splitting the configuration of a chart out from its basic definition. For example, instead of hard coding the name of your app or the specific container image into the manifest, you can provide those when you install the "chart" (More on this later) into the cluster.
+
+For example, a simple templated version of the tooling app deployment might look like the following:
 
 ```
-Release "artifactory" does not exist. Installing it now.
-NAME: artifactory
-LAST DEPLOYED: Sat May 28 09:26:08 2022
-NAMESPACE: tools
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: "{{ template "name" . }}"
+spec:
+  replicas: 3
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: "{{ template "name" . }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ template "name" . }}"
+    spec:
+      containers:
+      - name: "{{ template "name" . }}"
+        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80
+```
+
+This example demonstrates a number of features of Helm templates:
+
+The template is based on YAML, with {{ }} mustache syntax defining dynamic sections.
+Helm provides various variables that are populated at install time. For example, the {{.Release.Name}} allows you to change the name of the resource at runtime by using the release name. Installing a Helm chart creates a release (this is a Helm concept rather than a Kubernetes concept).
+You can define helper methods in external files. The {{template "name"}} call gets a safe name for the app, given the name of the Helm chart (but which can be overridden). By using helper functions, you can reduce the duplication of static values (like tooling-app), and hopefully reduce the risk of typos.
+
+You can manually provide configuration at runtime. The {{.Values.image.name}} value for example is taken from a set of default values, or from values provided when you call helm install. There are many different ways to provide the configuration values needed to install a chart using Helm. Typically, you would use two approaches:
+
+A values.yaml file that is part of the chart itself. This typically provides default values for the configuration, as well as serving as documentation for the various configuration values.
+
+When providing configuration on the command line, you can either supply a file of configuration values using the `-f` flag. We will see a lot more on this later on.
+
+
+**Now lets setup Helm and begin to use it.**
+
+According to the official documentation [here](https://helm.sh/docs/intro/install/), there are different options to installing Helm. But we will build the source code to create the binary. 
+
+1. [Download the `tar.gz` file from the project's Github release page](https://github.com/helm/helm/releases). Or simply use `wget` to download version `3.6.3` directly
+
+```
+wget https://github.com/helm/helm/archive/refs/tags/v3.6.3.tar.gz
+```
+
+2. Unpack the `tar.gz`  file
+```
+tar -zxvf v3.6.3.tar.gz 
+```
+
+3. cd into the unpacked directory 
+```
+cd helm-3.6.3
+```
+4. Build the source code using `make` utility
+
+```
+make build
+```
+
+If you do not have `make` installed or for any other reason, you cannot install the tool, simply use the official documentation  [here](https://helm.sh/docs/intro/install/) for other options.
+
+5. Helm binary will be in the `bin` folder. Simply move it to the `bin` directory on your system. You cna check other tools to know where that is. fOr example, check where `pwd` utility is being called from by running `which pwd`. Assuming the output is `/usr/local/bin`. You can move the `helm` binary there.
+
+```
+sudo mv bin/helm /usr/local/bin/
+```
+
+6. Check that Helm is installed
+
+`helm version`
+```
+version.BuildInfo{Version:"v3.6+unreleased", GitCommit:"13f07e8adbc57b0e3f96b42340d6f44bdc8d5016", GitTreeState:"dirty", GoVersion:"go1.15.5"}
+```
+
+#### Deploy Jenkins with Helm
+
+Before we begin to develop our own helm charts, lets make use of publicly available charts to deploy all the tools that we need.
+
+One of the amazing things about helm is the fact that you can deploy applications that are already packaged from a public helm repository directly with very minimal configuration. An example is **Jenkins**.
+
+1. Visit [Artifact Hub](https://artifacthub.io/packages/search) to find packaged applications as Helm Charts
+2. Search for Jenkins
+3. Add the repository to helm so that you can easily download and deploy
+```
+helm repo add jenkins https://charts.jenkins.io
+```
+4. Update helm repo
+```
+helm repo update 
+```
+5. Install the chart 
+```
+helm install [RELEASE_NAME] jenkins/jenkins --kubeconfig [kubeconfig file]
+```
+You should see an output like this 
+
+```
+NAME: jenkins
+LAST DEPLOYED: Sun Aug  1 12:38:53 2021
+NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None
 NOTES:
-Congratulations. You have just deployed JFrog Artifactory!
+1. Get your 'admin' user password by running:
+  kubectl exec --namespace default -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/chart-admin-password && echo
+2. Get the Jenkins URL to visit by running these commands in the same shell:
+  echo http://127.0.0.1:8080
+  kubectl --namespace default port-forward svc/jenkins 8080:8080
 
-1. Get the Artifactory URL by running these commands:
+3. Login with the password from step 1 and the username: admin
+4. Configure security realm and authorization strategy
+5. Use Jenkins Configuration as Code by specifying configScripts in your values.yaml file, see documentation: http:///configuration-as-code and examples: https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
 
-   NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-         You can watch the status of the service by running 'kubectl get svc --namespace tools -w artifactory-artifactory-nginx'
-   export SERVICE_IP=$(kubectl get svc --namespace tools artifactory-artifactory-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-   echo http://$SERVICE_IP/
+For more information on running Jenkins on Kubernetes, visit:
+https://cloud.google.com/solutions/jenkins-on-container-engine
 
-2. Open Artifactory in your browser
-   Default credential for Artifactory:
-   user: admin
-   password: password
+For more information about Jenkins Configuration as Code, visit:
+https://jenkins.io/projects/jcasc/
+
+
+NOTE: Consider using a custom image with pre-installed plugins
 ```
 
+6. Check the Helm deployment
 
-**NOTE:** 
+```
+helm ls --kubeconfig [kubeconfig file]
+```
+Output:
+```
+NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+jenkins default         1               2021-08-01 12:38:53.429471 +0100 BST    deployed        jenkins-3.5.9   2.289.3 
+```
 
-- We have used `upgrade --install` flag here instead of `helm install artifactory jfrog/artifactory` This is a better practice, especially when developing CI pipelines for helm deployments. It ensures that helm does an upgrade if there is an existing installation. But if there isn't, it does the initial install. With this strategy, the command will never fail. It will be smart enough to determine if an upgrade or fresh installation is required.
-- The helm chart version to install is very important to specify. So, the version at the time of writing may be different from what you will see from Artifact Hub. So, replace the version number to the desired. You can see all the versions by clicking on "see all" as shown in the image below.
-  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/click-versions.png" width="936px" height="550px">
-  <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/see-versions.png" width="936px" height="550px">
+7. Check the pods
 
-The output from the installation already gives some Next step directives.
+```
+kubectl get pods --kubeconfig [kubeconfig file]
+```
+Output: 
+```
+NAME        READY   STATUS    RESTARTS   AGE
+jenkins-0   2/2     Running   0          6m14s
+```
 
-### Getting the Artifactory URL
+8. Describe the running pod (review the output and try to understand what you see)
+```
+kubectl describe pod jenkins-0 --kubeconfig [kubeconfig file]
+```
 
-Lets break down the first *Next Step*. 
+9. Check the logs of the running pod
 
-1. The artifactory helm chart comes bundled with the Artifactory software, a PostgreSQL database and an Nginx proxy which it uses to configure routes to the different capabilities of Artifactory. Getting the pods after some time, you should see something like the below.
+```
+kubectl logs jenkins-0 --kubeconfig [kubeconfig file]
+```
 
-     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/pods.png" width="936px" height="550px">
-2. Each of the deployed application have their respective services. This is how you will be able to reach either of them.
-     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/services.png" width="936px" height="550px">
-3. Notice that, the Nginx Proxy has been configured to use the service type of `LoadBalancer`. Therefore, to reach Artifactory, we will need to go through the Nginx proxy's service. Which happens to be a load balancer created in the cloud provider. Run the `kubectl` command to retrieve the Load Balancer URL.
-   
-   ```
-   kubectl get svc artifactory-artifactory-nginx -n tools
-   ```
-   
-4. Copy the URL and paste in the browser
-   
-    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/jfrog-page.png" width="936px" height="550px">
-5. The default username is `admin` 
-6. The default password is `password`
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/jfrog-getting-started.png" width="936px" height="550px">
+You will notice an output with an error
 
-### How the Nginx URL for Artifactory is configured in Kubernetes
+```
+error: a container name must be specified for pod jenkins-0, choose one of: [jenkins config-reload] or one of the init containers: [init]
+```
 
-Without clicking further on the **Get Started** page, lets dig a bit more into Kubernetes and Helm. How did Helm configure the URL in kubernetes?
+This is because the pod has a [Sidecar container](https://www.magalix.com/blog/the-sidecar-pattern) alongside with the Jenkins container. As you can see fromt he error output, there is a list of containers inside the pod `[jenkins config-reload]` i.e `jenkins` and `config-reload` containers. The job of the config-reload is mainly to help Jenkins to reload its configuration without recreating the pod.
 
-Helm uses the `values.yaml` file to set every single configuration that the chart has the capability to configure. THe best place to get started with an off the shelve chart from artifacthub.io is to get familiar with the `DEFAULT VALUES`
+Therefore we need to let `kubectl` know, which pod we are interested to see its log. Hence, the command will be updated like:
+```
+kubectl logs jenkins-0 -c jenkins --kubeconfig [kubeconfig file]
+```
 
+10. Now lets avoid calling the `[kubeconfig file]` everytime. Kubectl expects to find the default kubeconfig file in the location `~/.kube/config`. But what if you already have another cluster using that same file? It doesn't make sense to overwrite it. What you will do is to merge all the kubeconfig files together using a kubectl plugin called `[konfig](https://github.com/corneliusweig/konfig)` and select whichever one you need to be active.
 
-- click on the `DEFAULT VALUES` section on Artifact hub 
-   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/click-default-values.png" width="936px" height="550px">
-- Here you can search for key and value pairs
-   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/search-values.png" width="936px" height="550px">
-- For example, when you type `nginx` in the search bar, it shows all the configured options for the nginx proxy. 
-   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-values.png" width="936px" height="550px">
-- selecting `nginx.enabled` from the list will take you directly to the configuration in the YAML file.
-    <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-values-yaml.png" width="936px" height="550px">
-- Search for `nginx.service` and select `nginx.service.type`
-     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-service.png" width="936px" height="550px">
-- You will see the confired type of Kubernetes service for Nginx. As you can see, it is `LoadBalancer` by default
-     <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-service-type.png" width="936px" height="550px">
-- To work directly with the `values.yaml` file, you can download the file locally by clicking on the download icon.
-   <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/download-values.png" width="936px" height="550px">
-### Is the Load Balancer Service type the Ideal configuration option to use in the Real World?
+      1. Install a package manager for kubectl called [krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/) so that it will enable you to install plugins to extend the functionality of kubectl. Read more about it `[Here](https://github.com/kubernetes-sigs/krew)` 
+     
+      2. Install the `[konfig plugin](https://github.com/corneliusweig/konfig)` 
+          ```
+          kubectl krew install konfig
+          ```
+      3. Import the kubeconfig into the default kubeconfig file. Ensure to accept the prompt to overide.
+          ```
+          sudo kubectl konfig import --save  [kubeconfig file]
+          ```
+      4. Show all the contexts - Meaning all the clusters configured in your kubeconfig. If you have more than 1 Kubernetes clusters configured, you will see them all in the output.
+          ```
+          kubectl config get-contexts
+          ```
+      5. Set the current context to use for all kubectl and helm commands
+          ```
+          kubectl config use-context [name of EKS cluster]
+          ```
+      6. Test that it is working without specifying the `--kubeconfig` flag
+          ```
+          kubectl get po
+          ```
+          Output:
+          ```
+          NAME        READY   STATUS    RESTARTS   AGE
+          jenkins-0   2/2     Running   0          84m
+          ```
+      7. Display the current context. This will let you know the context in which you are using to interact with Kubernetes.
+          ```
+          kubectl config current-context
+          ```
 
-Setting the service type to **Load Balancer** is the easiest way to get started with exposing applications running in kubernetes externally. But provissioning load balancers for each application can become very expensive over time, and more difficult to manage. Especially when tens or even hundreds of applications are deployed.
+11. Now that we can use `kubectl` without the `--kubeconfig` flag, Lets get access to the Jenkins UI. (*In later projects we will further configure Jenkins. For now, it is to set up all the tools we nee*d)
+    1.  There are some commands that was provided on the screen when Jenkins was installed with Helm. See number 5 above. Get the password to the `admin` user
+          ```
+          kubectl exec --namespace default -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/chart-admin-password && echo
+          ```
+    2. Use port forwarding to access Jenkins from the UI 
+          ```
+          kubectl --namespace default port-forward svc/jenkins 8080:8080
+          ```
+          <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project24/Jenkins-Port-forward.png" width="936px" height="550px">
+    3. Go to the browser `localhost:8080` and authenticate with the username and password from number 1 above
+          <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project24/Jenkins-UI.png" width="936px" height="550px">
 
-The best approach is to use [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) instead. But to do that, we will have to deploy an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
+#### Now setup the following tools using Helm
 
-A huge benefit of using the ingress controller is that we will be able to use a single load balancer for different applications we deploy. Therefore, Artifactory and any other tools can reuse the same load balancer. Which reduces cloud cost, and overhead of managing multiple load balancers. more on that later. 
+This section will be quite challenging for you because you will need to spend some time to research the charts, read their documentations and understand how to get an application running in your cluster by simply running a helm install command.
 
-For now, we will leave artifactory, move on to the next phase of configuration (Ingress, DNS(Route53) and Cert Manager), and then return to Artifactory to complete the setup so that it can serve as a private docker registry and repository for private helm charts.
+1. Artifactory
+2. Hashicorp Vault
+3. Prometheus
+4. Grafana
+5. Elasticsearch ELK using [ECK](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-install-helm.html)
 
+Succesfully installing all the 5 tools is a great experience to have. But, joining the [Masterclass](darey.io/masterclass) you will be able to see how this should be done end to end.
+
+In the next project, you will have experience;
+
+1. Deploying Ingress Controller
+2. Configuring Ingress for all the tools and applications running in the cluster
+3. Implementing TLS with applications running inside Kubernetes using Cert-manager

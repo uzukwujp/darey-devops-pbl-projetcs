@@ -1,116 +1,160 @@
-Configuring Ingress for TLS
+Deploying Cert-Manager and managing TLS/SSL for Ingress
 ========================================================
 
-To ensure that every created ingress also has TLS configured, we will need to update the ingress manifest with TLS specific configurations.
+Transport Layer Security (TLS), the successor of the now-deprecated Secure Sockets Layer (SSL), is a cryptographic protocol designed to provide communications security over a computer network.
+
+The TLS protocol aims primarily to provide cryptography, including privacy (confidentiality), integrity, and authenticity through the use of certificates, between two or more communicating computer applications.
+
+The certificates required to implement TLS must be issued by a trusted Certificate Authority (CA).
+
+To see the list of trusted root Certification Authorities (CA) and their certificates used by Google Chrome, you need to use the Certificate Manager built inside Google Chrome as shown below:
+
+1. Open the settings section of google chrome
+   
+2. Search for `security`
+   
+     <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-1.png" width="936px" height="550px">
+3. Select `Manage Certificates` 
+      <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-2.png" width="936px" height="550px">
+4. View the installed certificates in your browser
+   
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-3.png" width="936px" height="550px">
+
+## Certificate Management in Kubernetes
+
+Ensuring that trusted certificates can be requested and issued from certificate authorities dynamically is a tedious process. Managing the certificates per application and keeping track of expiry is also a lot of overhead.
+
+To do this, administrators will have to write complex scripts or programs to handle all the logic.
+
+[Cert-Manager](https://cert-manager.io/) comes to the rescue! 
+
+cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, and simplifies the process of obtaining, renewing and using those certificates.
+
+Similar to how Ingress Controllers are able to enable the creation of *Ingress* resource in the cluster, so also cert-manager enables the possibility to create certificate resource, and a few other resources that makes certificate management seamless.
+
+It can issue certificates from a variety of supported sources, including [Let's Encrypt](https://letsencrypt.org/), [HashiCorp Vault](https://www.vaultproject.io/), and [Venafi](https://www.venafi.com/) as well as [private PKI](https://www.csoonline.com/article/3400836/what-is-pki-and-how-it-secures-just-about-everything-online.html). The issued certificates get stored as kubernetes secret which holds both the private key and public certificate.
+
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-high-level-overview.svg" width="936px" height="550px">
+In this project, We will use Let's Encrypt with cert-manager. The certificates issued by Let's Encrypt will work with most browsers because the root certificate that validates all it's certificates is called **“ISRG Root X1”** which is already trusted by most browsers and servers.
+
+You will find `ISRG Root X1` in the list of certificates already installed in your browser.
+
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/chrome-certificates-4.png" width="936px" height="550px">
+[Read the official documentation here](https://letsencrypt.org/docs/certificate-compatibility/)
+
+Cert-maanager will ensure certificates are valid and up to date, and attempt to renew certificates at a configured time before expiry.
+
+## Cert-Manager high Level Architecture
+
+Cert-manager works by having administrators create a resource in kubernetes called **certificate issuer** which will be configured to work with supported sources of certificates. This issuer can either be scoped **globally** in the cluster or only local to the namespace it is deployed to.
+
+Whenever it is time to create a certificate for a specific host or website address, the process follows the pattern seen in the image below.
+
+![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png)
+<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png" width="936px" height="550px">
+After we have deployed cert-manager, you will see all of this in action.
+
+## Deploying Cert-manager 
+
+- **Self Challenge Task** Find cert-manager helm chart in Artifact Hub, follow the installation guide and deploy into Kubernetes
+
+You should see an output like this 
 
 ```
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+NAME: cert-manager
+LAST DEPLOYED: Fri Mar 11 14:15:51 2022
+NAMESPACE: cert-manager
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+cert-manager v1.7.1 has been deployed successfully!
+
+In order to begin issuing certificates, you will need to set up a ClusterIssuer
+or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
+
+More information on the different types of issuers and how to configure them
+can be found in our documentation:
+
+https://cert-manager.io/docs/configuration/
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Ingress resources, take a look at the `ingress-shim`
+documentation:
+
+https://cert-manager.io/docs/usage/ingress/
+```
+
+### Certificate Issuer
+Next, is to create an Issuer. We will use a **Cluster Issuer** so that it can be scoped globally. Assuming that we will be using **darey.io** domain. Simply update this yaml file and deploy with **kubectl**. In the section that follows, we will break down each part of the file.
+
+
+```
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
 metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    kubernetes.io/ingress.class: nginx
-  name: artifactory
+  namespace: "cert-manager"
+  name: "letsencrypt-prod"
 spec:
-  rules:
-  - host: "tooling.artifactory.sandbox.svc.darey.io"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: artifactory
-            port:
-              number: 8082
-  tls:
-  - hosts:
-    - "tooling.artifactory.sandbox.svc.darey.io"
-    secretName: "tooling.artifactory.sandbox.svc.darey.io"
+  acme:
+    server: "https://acme-v02.api.letsencrypt.org/directory"
+    email: "infradev@oldcowboyshop.com"
+    privateKeySecretRef:
+      name: "letsencrypt-prod"
+    solvers:
+    - selector:
+        dnsZones:
+          - "darey.io"
+      dns01:
+        route53:
+          region: "eu-west-2"
+          hostedZoneID: "Z2CD4NTR2FDPZ"
 ```
 
-The most significat updates to the ingress definition is the `annotations` and `tls` sections.
+Lets break down the content to undertsand all the sections
 
-Lets quickly talk about Annotations. **Annotations** are used similar to `labels` in kubernetes. They are ways to attach metadata to objects.
+- Section 1 - The standard kubernetes section that defines the **apiVersion**, **Kind**, and **metadata**. The Kind here is a ClusterIssuer which means it is scoped globally.
+    ```
+    apiVersion: cert-manager.io/v1
+    kind: ClusterIssuer
+    metadata:
+    namespace: "cert-manager"
+    name: "letsencrypt-prod"
+    ```
 
-## Differences between Annotations and Labels
+- Section 2 - In the spec section, an [**ACME**](https://cert-manager.io/docs/configuration/acme/) - Automated Certificate Management Environment issuer type is specified here. When you create a new ACME Issuer, cert-manager will generate a private key which is used to identify you with the ACME server. 
+  
+  Certificates issued by public ACME servers are typically trusted by client's computers by default. This means that, for example, visiting a website that is backed by an ACME certificate issued for that URL, will be trusted by default by most client's web browsers. ACME certificates are typically free. 
+  
+  Let’s Encrypt uses the ACME protocol to verify that you control a given domain name and to issue you a certificate. You can either use the let's encrypt **Production** server address `https://acme-v02.api.letsencrypt.org/directory` which can be used for all production websites. Or it can be replaced with the staging URL `https://acme-staging-v02.api.letsencrypt.org/directory` for all **Non-Production** sites.
 
-**Labels** are used in conjunction with selectors to identify groups of related resources. Because selectors are used to query labels, this operation needs to be efficient. To ensure efficient queries, labels are constrained by RFC 1123. RFC 1123, among other constraints, restricts labels to a maximum 63 character length. Thus, labels should be used when you want Kubernetes to group a set of related resources.
+    The `privateKeySecretRef` has configuration for the private key name you prefer to use to store the ACME account private key. This can be anything you specify, for example **letsencrypt-prod** 
 
-**Annotations** are used for “non-identifying information” i.e., metadata that Kubernetes does not care about. As such, annotation keys and values have no constraints. Thus, if you want to add information for other humans about a given resource, then annotations are a better choice.
+    ```
+    spec:
+     acme:
+        # The ACME server URL
+        server: "https://acme-v02.api.letsencrypt.org/directory"
+        email: "infradev@darey.io"
+        # Name of a secret used to store the ACME account private key
+        privateKeySecretRef:
+        name: "letsencrypt-prod"
+    ```
 
-The Annotation added to the Ingress resource adds metadata to specify the issuer responsible for requesting certificates. The issuer here will be the same one we have created earlier with the name`letsencrypt-prod`. 
-```
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-```
+    - section 3 - This section is part of the `spec` that configures `solvers` which determines the domain address that the issued certificate will be registered with. `dns01` is one of the different challenges that cert-manager uses to verify domain ownership. [Read more on DNS01 Challenge here](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge). With the **DNS01** configuration, you will need to specify the Route53 DNS Hosted Zone ID and region. Since we are using EKS in AWS, the IAM permission of the worker nodes will be used to access Route53. Therefore if appropriate permissions is not set for EKS worker nodes, it is possible that certificate challenge with Route53 will fail, hence certificates will not get issued.
+  
+        The other possible option is the [HTTP01](https://cert-manager.io/docs/configuration/acme/http01/#configuring-the-http01-ingress-solver) challenge, but we won't be using that here.
+  ```
+      solvers:
+        - selector:
+            dnsZones:
+            - "darey.io"
+        dns01:
+            route53:
+            region: "eu-west-2"
+            hostedZoneID: "Z2CD4NTR2FDPZ"
+    ```
 
-The other section is `tls` where the host name that will require `https` is specified. The `secretName` also holds the name of the secret that will be created which will store details of the certificate key-pair. i.e Private key and public certificate. 
+With the ClusterIssuer properlu configured, it is now time to start getting certificates issued. 
 
-
-```
-  tls:
-  - hosts:
-    - "tooling.artifactory.sandbox.svc.darey.io"
-    secretName: "tooling.artifactory.sandbox.svc.darey.io"
-```
-
-Redeploying the newly updated ingress will go through the process as shown below.
-
- <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png" width="936px" height="550px">
-Once deployed, you can run the following commands to see each resource at each phase.
-
-- kubectl get certificaaterequest
-- kubectl get order
-- kubectl get challenge 
--  kubectl get certificate
-
-At each stage you can run **describe** on each resource to get more information on what cert-manager is doing.
-
-If all goes well, running `kubectl get certificate`,you should see an output like below.
-
-```
-NAME                                           READY                            SECRET                          AGE
-tooling.artifactory.sandbox.svc.darey.io       True             tooling.artifactory.sandbox.svc.darey.io       108s
-```
-
-Notice the secret name there in the above output.  Executing the command `kubectl get secrettooling.artifactory.sandbox.svc.darey.io -o yaml`, you will see the `data` with encoded version of both the private key `tls.key` and the public certificate `tls.crt`. This is the actual certificate configuration that the ingress controller will use as part of Nginx configuration to terminate TLS/SSL on the ingress.
-
-If you now head over to the browser, you should see the padlock sign without warnings of untrusted certificates.
-
- <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-tls-padlocked.png" width="936px" height="550px">
-Finally, one more task for you to do is to ensure that the LoadBalancer created for artifactory is destroyed. If you run a get service kubectl command like below;
-
-```
-kubectl get service -n tools
-```
- <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-nginx-service-output.png" width="936px" height="550px">
-You will see that the load balancer is still there. 
-
-A task for you is to update the helm values file for artifactory, and ensure that the `artifactory-artifactory-nginx` service uses `ClusterIP`
-
-Your final output should look like this.
-
- <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-nginx-service-output2.png" width="936px" height="550px">
-Finally, update the ingress to use `artifactory-artifactory-nginx` as the backend service instead of using `artifactory`. Remember to update the port number as well.
-
-If everything goes well, you will be prompted at login to set the BASE URL. It will pick up the new `https` address. Simply click next 
-
- <img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-11.png" width="936px" height="550px">
-Skip the `proxy` part of the setup.
-
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-12.png" width="936px" height="550px">
-Skip repositories creation because you will do this in the next poject.
-
-<img src="https://dareyio-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-13.png" width="936px" height="550px">
-Then complete the setup.
-
-Congratulations! for completing Project 25
-
-With the knowledge you now have, see if you can deploy Grafana, Prometheus and Elasticsearch yourself. Do some research into these tools, and assume you are being tasked at work to work on tools you have never worked on before
-
-In the next project, you will experience;
-
-
-1. Configuring private container registry using Artifactory
-2. Configuring private helm repository using Artifactory
+Lets see what that looks like in the next section.
