@@ -542,7 +542,7 @@ NOTES:
 
 3. Login with the password from step 1 and the username: admin
 4. Configure security realm and authorization strategy
-5. Use Jenkins Configuration as Code by specifying configScripts in your values.yaml file, see documentation: http:///configuration-as-code and examples: https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
+5. Use Jenkins Configuration as Code by specifying configScripts in your values.yaml file, see documentation: http://127.0.0.1:8080/configuration-as-code and examples: https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
 
 For more information on running Jenkins on Kubernetes, visit:
 https://cloud.google.com/solutions/jenkins-on-container-engine
@@ -637,7 +637,7 @@ kubectl logs jenkins-0 -c jenkins --kubeconfig [kubeconfig file]
 11. Now that we can use `kubectl` without the `--kubeconfig` flag, Lets get access to the Jenkins UI. (*In later projects we will further configure Jenkins. For now, it is to set up all the tools we nee*d)
     1.  There are some commands that was provided on the screen when Jenkins was installed with Helm. See number 5 above. Get the password to the `admin` user
           ```
-          kubectl exec --namespace default -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/chart-admin-password && echo
+          kubectl exec --namespace default -it svc/jenkins -c jenkins -- /bin/cat /run/secrets/additional/chart-admin-password && echo
           ```
     2. Use port forwarding to access Jenkins from the UI 
           ```
