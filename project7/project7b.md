@@ -26,7 +26,7 @@ sudo systemctl status nfs-server.service
 5. Export the mounts for webservers' `subnet cidr` to connect as clients. For simplicity, you will install your all three Web Servers inside the same subnet, but in production set up you would probably want to separate each tier inside its own subnet for higher level of security.
 To check your `subnet cidr` - open your EC2 details in AWS web console and locate 'Networking' tab and open a Subnet link:
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/EC2_subnet.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/EC2_subnet.png" width="936px" height="550px">
 
 
 Make sure we set up permission that will allow our Web servers to read, write and execute files on NFS:
@@ -62,10 +62,10 @@ sudo exportfs -arv
 rpcinfo -p | grep nfs
 ```
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/nfs_port.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/nfs_port.png" width="936px" height="550px">
 
 
 **Important note:** In order for NFS server to be accessible from your client, you must also open following ports: TCP 111, UDP 111, UDP 2049
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/nfs_port_open.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/nfs_port_open.png" width="936px" height="550px">
 

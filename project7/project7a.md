@@ -34,6 +34,14 @@ In this project you will implement a solution that consists of following compone
 
 ## For Rhel 8 server use this ami `RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2 (ami-035c5dc086849b5de)`
 
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/AMI-prj7.PNG" width="936px" height="550px">
+
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/public+images+prj7.PNG" width="936px" height="550px">
+
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/search+for+AMI.PNG" width="936px" height="550px">
+
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/launch+instance+from+template.PNG" width="936px" height="550px">
+
 ![](./images/AMI-prj7.PNG)
 
 ![](./images/public%20images%20prj7.PNG) ![](./images/search%20for%20AMI.PNG)
@@ -42,7 +50,7 @@ In this project you will implement a solution that consists of following compone
 
 On the diagram below you can see a common pattern where several stateless Web Servers share a common database and also access the same files using [Network File Sytem (NFS)](https://en.wikipedia.org/wiki/Network_File_System) as a shared file storage. Even though the NFS server might be located on a completely separate hardware - for Web Servers it look like a local file system from where they can serve the same files.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/Tooling-Website-Infrastructure.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/Tooling-Website-Infrastructure.png" width="936px" height="550px">
 
 
 It is important to know what storage solution is suitable for what use cases, for this - you need to answer following questions: what data will be stored, in what format, how this data will be accessed, by whom, from where, how frequently, etc. Base on this you will be able to choose the right storage system for your solution. 

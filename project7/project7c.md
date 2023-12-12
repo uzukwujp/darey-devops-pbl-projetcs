@@ -85,7 +85,7 @@ setsebool -P httpd_execmem 1
 To make this change permanent - open following config file `sudo vi /etc/sysconfig/selinux` and set `SELINUX=disabled`, then restrt httpd.
 
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/Tooling-Website-Html.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/Tooling-Website-Html.png" width="936px" height="550px">
 
 
 10. Update the website's configuration to connect to the database (in `/var/www/html/functions.php` file). Apply `tooling-db.sql` script to your database using this command `mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql`
@@ -99,12 +99,12 @@ INSERT INTO 'users' ('id', 'username', 'password', 'email', 'user_type', 'status
 
 12. Open the website in your browser `http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php` and make sure you can login into the websute with `myuser` user.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/tooling_screenshot.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/tooling_screenshot.png" width="936px" height="550px">
 
 
 #### Congratulations!
 
 You have just implemented a web solution for a DevOps team using LAMP stack with remote Database and NFS servers.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project7/great_job.jpg" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project7/great_job.jpg" width="936px" height="550px">
 

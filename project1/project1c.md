@@ -25,7 +25,7 @@ Before we can receive any traffic by our Web Server, we need to open TCP port 80
 
 As we know, we have TCP port 22 open by default on our EC2 machine to access it via SSH, so we need to add a rule to EC2 configuration to open inbound connection through port 80:
 
-![Open inbound port 80](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/OpenPort80.gif)
+![Open inbound port 80](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project1/OpenPort80.gif)
 
 Our server is running and we can access it locally and from the Internet (Source 0.0.0.0/0 means 'from any IP address').
 
@@ -56,6 +56,6 @@ The URL in browser shall also work if you do not specify port number since all w
 
 If you see following page, then your web server is now correctly installed and accessible through your firewall.
 
-![Apache Ubuntu Default Page](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/apache_ubuntu_default.png)
+![Apache Ubuntu Default Page](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project1/apache_ubuntu_default.png)
 
 In fact, it is the same content that you previously got by 'curl' command, but represented in nice [HTML](https://en.wikipedia.org/wiki/HTML) formatting by your web browser.

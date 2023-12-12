@@ -35,7 +35,7 @@ ssh -i <Your-private-key.pem> ubuntu@<EC2-Public-IP-address>
 
 It will look like this:
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project2/gitbash_EC2.png"  width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project2/gitbash_EC2.png"  width="936px" height="550px">
 
 
 

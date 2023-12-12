@@ -29,6 +29,6 @@ At this point, your LAMP stack is completely installed and fully operational.
 
 To test your setup with a PHP script, it’s best to set up a proper [Apache Virtual Host](https://httpd.apache.org/docs/2.4/vhosts/) to hold your website’s files and folders. Virtual host allows you to have multiple websites located on a single machine and users of the websites will not even notice it.
 
-![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project1/VirtualHost.png)
+![](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project1/VirtualHost.png)
 
 We will configure our first Virtual Host in the next step.
