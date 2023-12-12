@@ -145,4 +145,7 @@ cd ..
 cd practices/aws-networking-implementation
 aws s3 sync images/ s3://darey-io-pbl-projects-images/practices/
 
+cd ..
 
+cd practices
+aws s3 sync images/ s3://darey-io-pbl-projects-images/practices/images/

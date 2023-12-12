@@ -28,7 +28,7 @@ To do this,
 
 3. Create a new pipeline 
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Create-Pipeline.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Create-Pipeline.png" width="936px" height="550px">
 
 4. Select GitHub
 
@@ -54,7 +54,7 @@ To do this,
 
 9. Create a new Pipeline
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Create-Pipeline.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Create-Pipeline.png" width="936px" height="550px">
 
 At this point you may not have a [Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/) in the Ansible repository, so Blue Ocean will attempt to give you some guidance to create one. But we do not need that. We will rather create one ourselves. So, click on Administration to exit the Blue Ocean console.
 
@@ -62,7 +62,7 @@ At this point you may not have a [Jenkinsfile](https://www.jenkins.io/doc/book/p
 
 Here is our newly created pipeline. It takes the name of your GitHub repository. 
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Ansible-Pipeline.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Ansible-Pipeline.png" width="936px" height="550px">
 
 ### Let us create our `Jenkinsfile`
 
@@ -100,7 +100,7 @@ Scroll down to `Build Configuration` section and specify the location of the **J
 
 Back to the pipeline again, this time click "Build now"
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Build-Now.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Build-Now.png" width="936px" height="550px">
 
 This will trigger a build and you will be able to see the effect of our basic `Jenkinsfile` configuration by going through the console output of the build.
 
@@ -108,11 +108,11 @@ To really appreciate and feel the difference of Cloud Blue UI, it is recommended
 
 1. Click on Blue Ocean
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Click-Blue-Ocean.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Click-Blue-Ocean.png" width="936px" height="550px">
 2. Select your project
 3. Click on the play button against the branch
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Ansible-Blue-Ocean-Start-Pipeline.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Ansible-Blue-Ocean-Start-Pipeline.png" width="936px" height="550px">
 Notice that this pipeline is a multibranch one. This means, if there were more than one branch in GitHub, Jenkins would have scanned the repository to discover them all and we would have been able to trigger a build for each branch. 
 
 Let us see this in action.
@@ -149,7 +149,7 @@ Let us see this in action.
 
    1. Click on the "Administration" button
    
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Ansible-Administration-Button.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Ansible-Administration-Button.png" width="936px" height="550px">
    2. Navigate to the Ansible project and click on "Scan repository now"
       ![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Scan-Repository-Now.png)
 
@@ -172,4 +172,4 @@ Let us see this in action.
     5. Verify in Blue Ocean that all the stages are working, then merge your feature branch to the main branch
     6. Eventually, your main branch should have a successful pipeline like this in blue ocean
     
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Jenkins-Complete-Initial-Pipeline.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Complete-Initial-Pipeline.png" width="936px" height="550px">

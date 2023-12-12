@@ -194,7 +194,7 @@ Notice that with the current state of the code, it cannot be deployed to Integra
 
 Congratulations! You have just experienced one of the most interesting and complex projects in your Project Based Learning journey so far. The vast experience and knowledge you have acquired here will set the stage for the next 6 projects to come. You should be ready to start applying for DevOps jobs after completing Project 20.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/awesome14.jpg" width="936px" height="550px">
+<img src="hhttps://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/awesome14.jpg" width="936px" height="550px">
 #### Instructions On How To Submit Your Work For Review And Feedback
 
 To submit your work for review and feedback - follow [**this instruction**](https://starter-pbl.darey.io/en/latest/submission.html).

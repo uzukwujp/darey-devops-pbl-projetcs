@@ -30,7 +30,7 @@ The general idea behind multiple commits is to avoid what is generally considere
 
 To emphasize a typical CI Pipeline further, let us explore the diagram below a little deeper.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/CI-Pipeline-Regular.pn" title="Source: whitesourcesoftware" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/CI-Pipeline-Regular.png" title="Source: whitesourcesoftware" width="936px" height="550px">
 
 - **Version Control**: This is the stage where developers' code gets committed and pushed after they have tested their work locally.
 - **Build**: Depending on the type of language or technology used, we may need to build the codes into [binary executable files](https://en.wikipedia.org/wiki/Executable) (in case of **compiled** languages) or just package the codes together with all necessary dependencies into a deployable package (in case of **interpreted** languages).
