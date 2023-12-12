@@ -20,13 +20,12 @@ sudo mkdir /home/ubuntu/ansible-config-artifact
 5. This project will be triggered by completion of your existing `ansible` project. Configure it accordingly:
 
 ![](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project12/copy_artifact_trigger.png)
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/ansible_version.png" width="936px" height="550px">
+
 **Note**: You can configure number of builds to keep in order to save space on the server, for example, you might want to keep only last 2 or 5 build results. You can also make this change to your `ansible` job.
 
 6. The main idea of `save_artifacts` project is to save artifacts into `/home/ubuntu/ansible-config-artifact` directory. To achieve this, create a `Build` step and choose `Copy artifacts from other project`, specify `ansible` as a source project and `/home/ubuntu/ansible-config-artifact` as a target directory.
 
 ![](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project12/copy_artifact_build.png)
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/ansible_version.png" width="936px" height="550px">
 
 7. Test your set up by making some change in README.MD file inside your `ansible-config-mgt` repository (right inside `master` branch).
 

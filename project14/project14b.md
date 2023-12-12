@@ -24,7 +24,7 @@ After all, DevOps is all about continuous delivery or deployment, and being able
 
     Presenting error rate metrics like this simply gives greater insights into where to focus attention.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Error-Rate.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Error-Rate.png" width="936px" height="550px">
 10 **Application usage & traffic**: After a deployment, we want to see if the number of transactions or users accessing our system looks normal. If we suddenly have no traffic or a giant spike in traffic, something could be wrong. An attacker may be routing traffic elsewhere, or initiating a [DDOS attack](https://us.norton.com/internetsecurity-emerging-threats-what-is-a-ddos-attack-30sectech-by-norton.html)
 
 11 **Application performance**: Before we even perform a deployment, we should configure monitoring tools like [Retrace](https://stackify.com/retrace/), [DataDog](https://www.datadoghq.com), [New Relic](https://newrelic.com), or [AppDynamics](https://en.wikipedia.org/wiki/AppDynamics) to look for performance problems, hidden errors, and other issues. During and after the deployment, we should also look for any changes in overall application performance and establish some benchmarks to know when things deviate from the norm.
