@@ -10,7 +10,7 @@ On main dashboard select "Manage Jenkins" and choose "Manage Plugins" menu item.
 
 On "Available" tab search for "Publish Over SSH" plugin and install it
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/plugin_ssh_install.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project9/plugin_ssh_install.png" width="936px" height="550px">
 
 2. Configure the job/project to copy artifacts over to NFS server.
 
@@ -26,16 +26,16 @@ Scroll down to Publish over SSH plugin configuration section and configure it to
 
 Test the configuration and make sure the connection returns `Success`. Remember, that TCP port 22 on NFS server must be open to receive SSH connections.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/publish_ssh_config.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project9/publish_ssh_config.png" width="936px" height="550px">
 
 Save the configuration, open your Jenkins job/project configuration page and add another one "Post-build Action" 
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/send_build.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project9/send_build.png" width="936px" height="550px">
 
 Configure it to send all files probuced by the build into our previouslys define remote directory. In our case we want to copy all files and directories - so we use `**`.
 If you want to apply some particular pattern to define which files to send - [use this syntax](http://ant.apache.org/manual/dirtasks.html#patterns). 
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project9/send_build1.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project9/send_build1.png" width="936px" height="550px">
 
 Save this configuration and go ahead, change something in `README.MD` file in your GitHub Tooling repository.
 
@@ -59,6 +59,5 @@ If you see the changes you had previously made in your GitHub - the job works as
 
 You have just implemented your first Continous Integration solution using Jenkins CI. Watch out for advanced CI configurations in upcoming projects.
 
-![](./images/well_done9.png)
-<img src="./images/well_done9.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project9/well_done9.png" width="936px" height="550px">
 

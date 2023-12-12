@@ -12,7 +12,7 @@ sudo apt install ansible
 
 Check your Ansible version by running `ansible --version`
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/ansible_version.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project11/ansible_version.png" width="936px" height="550px">
 
 4. Configure Jenkins build job to archive your repository content every time you change it - this will solidify your Jenkins configuration skills acquired in [Project 9](https://professional-pbl.darey.io/en/latest/project9.html).
 
@@ -30,7 +30,7 @@ ls /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/
 
 Now your setup will look like this:
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project11/jenkins_ansible.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project11/jenkins_ansible.png" width="936px" height="550px">
 
 **Tip:** Every time you stop/start your `Jenkins-Ansible` server - you have to reconfigure GitHub webhook to a new IP address, in order to avoid it, it makes sense to allocate an [Elastic IP](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) to your `Jenkins-Ansible` server (you have done it before to your LB server in [Project 10](https://professional-pbl.darey.io/en/latest/project10.html)). Note that Elastic IP is free only when it is being allocated to an EC2 Instance, so do not forget to release Elastic IP once you terminate your EC2 Instance.
 

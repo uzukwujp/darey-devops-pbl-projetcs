@@ -27,7 +27,7 @@ If you do not have an AWS account - go back to **[Project 1 Step 0](https://star
 
 **Hint:** In previous projects we used different tools to connect to an EC2 instance, but if you do not want to install or launch anything outside of AWS, you can open youc CLI straight from Web Console in AWS, like this:
 
-![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project4/WebConsole.gif)
+![](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project4/WebConsole.gif)
 
 #### Task
 
