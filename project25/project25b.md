@@ -36,17 +36,17 @@ The best approach to easily get Artifactory into kubernetes is to use helm.
 
 1. Search for an official helm chart for Artifactory on [Artifact Hub](https://artifacthub.io/)
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/search-artifactory-on-artifact-hub.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/search-artifactory-on-artifact-hub.png" width="936px" height="550px">
 2. Click on **See all results**
 3. Use the filter checkbox on the left to limit the return data. As you can see in the image below, "Helm" is selected. In some cases, you might select "Official". Then click on the first option from the result.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/Select-artifactory-chart.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/Select-artifactory-chart.png" width="936px" height="550px">
 4. Review the Artifactory page
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/Artifactory-helm-page.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/Artifactory-helm-page.png" width="936px" height="550px">
 5. Click on the install menu on the right to see the installation commands.
    
-    <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/click-install.png" width="936px" height="550px">
+    <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/click-install.png" width="936px" height="550px">
 6. Add the jfrog remote repository on your laptop/computer
 
 ```
@@ -100,8 +100,8 @@ Congratulations. You have just deployed JFrog Artifactory!
 
 - We have used `upgrade --install` flag here instead of `helm install artifactory jfrog/artifactory` This is a better practice, especially when developing CI pipelines for helm deployments. It ensures that helm does an upgrade if there is an existing installation. But if there isn't, it does the initial install. With this strategy, the command will never fail. It will be smart enough to determine if an upgrade or fresh installation is required.
 - The helm chart version to install is very important to specify. So, the version at the time of writing may be different from what you will see from Artifact Hub. So, replace the version number to the desired. You can see all the versions by clicking on "see all" as shown in the image below.
-  <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/click-versions.png" width="936px" height="550px">
-  <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/see-versions.png" width="936px" height="550px">
+  <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/click-versions.png" width="936px" height="550px">
+  <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/see-versions.png" width="936px" height="550px">
 
 The output from the installation already gives some Next step directives.
 
@@ -111,9 +111,9 @@ Lets break down the first *Next Step*.
 
 1. The artifactory helm chart comes bundled with the Artifactory software, a PostgreSQL database and an Nginx proxy which it uses to configure routes to the different capabilities of Artifactory. Getting the pods after some time, you should see something like the below.
 
-     <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/pods.png" width="936px" height="550px">
+     <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/pods.png" width="936px" height="550px">
 2. Each of the deployed application have their respective services. This is how you will be able to reach either of them.
-     <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/services.png" width="936px" height="550px">
+     <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/services.png" width="936px" height="550px">
 3. Notice that, the Nginx Proxy has been configured to use the service type of `LoadBalancer`. Therefore, to reach Artifactory, we will need to go through the Nginx proxy's service. Which happens to be a load balancer created in the cloud provider. Run the `kubectl` command to retrieve the Load Balancer URL.
    
    ```
@@ -122,10 +122,10 @@ Lets break down the first *Next Step*.
    
 4. Copy the URL and paste in the browser
    
-    <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/jfrog-page.png" width="936px" height="550px">
+    <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/jfrog-page.png" width="936px" height="550px">
 5. The default username is `admin` 
 6. The default password is `password`
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/jfrog-getting-started.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/jfrog-getting-started.png" width="936px" height="550px">
 
 ### How the Nginx URL for Artifactory is configured in Kubernetes
 
@@ -135,19 +135,19 @@ Helm uses the `values.yaml` file to set every single configuration that the char
 
 
 - click on the `DEFAULT VALUES` section on Artifact hub 
-   <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/click-default-values.png" width="936px" height="550px">
+   <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/click-default-values.png" width="936px" height="550px">
 - Here you can search for key and value pairs
-   <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/search-values.png" width="936px" height="550px">
+   <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/search-values.png" width="936px" height="550px">
 - For example, when you type `nginx` in the search bar, it shows all the configured options for the nginx proxy. 
-   <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-values.png" width="936px" height="550px">
+   <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/nginx-values.png" width="936px" height="550px">
 - selecting `nginx.enabled` from the list will take you directly to the configuration in the YAML file.
-    <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-values-yaml.png" width="936px" height="550px">
+    <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/nginx-values-yaml.png" width="936px" height="550px">
 - Search for `nginx.service` and select `nginx.service.type`
-     <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-service.png" width="936px" height="550px">
+     <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/nginx-service.png" width="936px" height="550px">
 - You will see the confired type of Kubernetes service for Nginx. As you can see, it is `LoadBalancer` by default
-     <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/nginx-service-type.png" width="936px" height="550px">
+     <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/nginx-service-type.png" width="936px" height="550px">
 - To work directly with the `values.yaml` file, you can download the file locally by clicking on the download icon.
-   <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/download-values.png" width="936px" height="550px">
+   <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/download-values.png" width="936px" height="550px">
 ### Is the Load Balancer Service type the Ideal configuration option to use in the Real World?
 
 Setting the service type to **Load Balancer** is the easiest way to get started with exposing applications running in kubernetes externally. But provissioning load balancers for each application can become very expensive over time, and more difficult to manage. Especially when tens or even hundreds of applications are deployed.

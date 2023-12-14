@@ -115,7 +115,7 @@ docker compose ls
 
 #### Congratulations!
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project20/docker_great20.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project20/docker_great20.png" width="936px" height="550px">
 You have started your journey into migrating an application running on virtual machines into the Cloud with containerization.
 
 Now you know how to prepare a `Dockerfile`, build an image with `Docker build` and deploy it with `Docker Compose`!

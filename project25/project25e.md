@@ -57,7 +57,7 @@ The other section is `tls` where the host name that will require `https` is spec
 
 Redeploying the newly updated ingress will go through the process as shown below.
 
- <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png" width="936px" height="550px">
+ <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/cert-manager-1.png" width="936px" height="550px">
 Once deployed, you can run the following commands to see each resource at each phase.
 
 - kubectl get certificaaterequest
@@ -78,20 +78,20 @@ Notice the secret name there in the above output.  Executing the command `kubect
 
 If you now head over to the browser, you should see the padlock sign without warnings of untrusted certificates.
 
- <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-tls-padlocked.png" width="936px" height="550px">
+ <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/artifactory-tls-padlocked.png" width="936px" height="550px">
 Finally, one more task for you to do is to ensure that the LoadBalancer created for artifactory is destroyed. If you run a get service kubectl command like below;
 
 ```
 kubectl get service -n tools
 ```
- <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-nginx-service-output.png" width="936px" height="550px">
+ <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/artifactory-nginx-service-output.png" width="936px" height="550px">
 You will see that the load balancer is still there. 
 
 A task for you is to update the helm values file for artifactory, and ensure that the `artifactory-artifactory-nginx` service uses `ClusterIP`
 
 Your final output should look like this.
 
- <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-nginx-service-output2.png" width="936px" height="550px">
+ <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/artifactory-nginx-service-output2.png" width="936px" height="550px">
 Finally, update the ingress to use `artifactory-artifactory-nginx` as the backend service instead of using `artifactory`. Remember to update the port number as well.
 
 If everything goes well, you will be prompted at login to set the BASE URL. It will pick up the new `https` address. Simply click next 
@@ -99,10 +99,10 @@ If everything goes well, you will be prompted at login to set the BASE URL. It w
  <img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-11.png" width="936px" height="550px">
 Skip the `proxy` part of the setup.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-12.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-12.png" width="936px" height="550px">
 Skip repositories creation because you will do this in the next poject.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-13.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project25/artifactory-get-started-13.png" width="936px" height="550px">
 Then complete the setup.
 
 Congratulations! for completing Project 25

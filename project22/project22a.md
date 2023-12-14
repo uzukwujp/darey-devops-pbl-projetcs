@@ -54,7 +54,7 @@ It it a great combination of tools responsible for different parts of your appli
 - **Ansible** for cluster master and worker nodes configuration
 - **Kubernetes** for deploying your containerized application and orchestrating the deployment
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/ter_ans_kub.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project22/ter_ans_kub.png" width="936px" height="550px">
 Other options will be to leverage a [Managed Service](https://www.adept.co.uk/the-benefits-of-cloud-managed-services-for-business/) Kubernetes cluster from public cloud providers such as: [AWS EKS](https://aws.amazon.com/eks), [Microsoft AKS](https://azure.microsoft.com/en-gb/services/kubernetes-service), or [Google Cloud Platform GKE](https://cloud.google.com/kubernetes-engine). There are so many more options out there. Regardless of whichever one you choose, the experience is usually very similar.
 
 Most organisations choose Managed Service options for obvious reasons such as:
@@ -72,7 +72,7 @@ However, there is usually strong reasons why organisations with very strict comp
 
 Some setup options can combine both public and private cloud together. For example, the master nodes, `etcd` clusters, and some worker nodes that run [stateful](https://whatis.techtarget.com/definition/stateful-app) applications can be configured in private datacentres, while worker nodes that require heavy computations and [stateless](https://www.redhat.com/en/topics/cloud-native-apps/stateful-vs-stateless) applications can run in public clouds. This kind of hybrid architecture is ideal to satisfy compliance, while also benefiting from other public cloud capabilities.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project22/hybrid_k8s.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project22/hybrid_k8s.png" width="936px" height="550px">
 ### Deploying the Tooling app using Kubernetes objects
 
 In this section, you will begin to write configuration files for Kubernetes objects (they are usually referred as `manifests`) in the form of files with `yaml` syntax and deploy them using `kubectl` console. But first, let us understand what a Kubernetes object is.

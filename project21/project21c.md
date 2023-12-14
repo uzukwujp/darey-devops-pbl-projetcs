@@ -168,7 +168,7 @@ LOAD_BALANCER_ARN=$(aws elbv2 create-load-balancer \
   --type network \
   --output text --query 'LoadBalancers[].LoadBalancerArn')
 ```
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Network-Load-Balancer.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/Network-Load-Balancer.png" width="936px" height="550px">
 **Tagret Group**
 
 12. Create a target group: (For now it will be unhealthy because there are no real targets yet.)
@@ -182,7 +182,7 @@ TARGET_GROUP_ARN=$(aws elbv2 create-target-group \
   --target-type ip \
   --output text --query 'TargetGroups[].TargetGroupArn')
 ```
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Target-Group.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/Target-Group.png" width="936px" height="550px">
 
 13. Register targets: (Just like above, no real targets. You will just put the IP addresses so that, when the nodes become available, they will be used as targets.)
 
@@ -192,7 +192,7 @@ aws elbv2 register-targets \
   --targets Id=172.31.0.1{0,1,2}
 ```
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Registered-targets.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/Registered-targets.png" width="936px" height="550px">
 14. Create a listener to listen for requests and forward to the target nodes on TCP port `6443`
 ```
 aws elbv2 create-listener \
@@ -202,7 +202,7 @@ aws elbv2 create-listener \
   --default-actions Type=forward,TargetGroupArn=${TARGET_GROUP_ARN} \
   --output text --query 'Listeners[].ListenerArn'
 ```
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Load-balancer-Listener.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/Load-balancer-Listener.png" width="936px" height="550px">
 **K8s Public Address**
 
 15. Get the Kubernetes Public address

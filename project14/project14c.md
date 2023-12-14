@@ -29,11 +29,11 @@ What we want to achieve, is having Nginx to serve as a [reverse proxy](https://e
 
 ###   CI-Environment
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-CI-Environment.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Project-14-CI-Environment.png" width="936px" height="550px">
 
 ###             Other Environments from Lower To Higher
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project14/Project-14-Pentest-Environment.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Project-14-Pentest-Environment.png" width="936px" height="550px">
 
 ### DNS requirements
 

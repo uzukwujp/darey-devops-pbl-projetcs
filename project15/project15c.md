@@ -72,7 +72,7 @@ Create other records such as [`CNAME`, `alias` and `A` records](https://docs.aws
 
 #### Congratulations! 
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project15/awesome_15.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project15/awesome_15.png" width="936px" height="550px">
 You have just created a secured, scalable and cost-effective infrastructure to host 2 enterprise websites using various Cloud services from AWS. At this point, your infrastructure is ready to host real websites' load. Since it is a pretty expensive infrastructure to keep it up and running, we are going to start using [Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool [Terraform](https://www.terraform.io) to easily provision and destroy this set up. 
 
 Move on for more amazing and challenging projects ahead!
