@@ -4,7 +4,7 @@
 
 In the home directory, you should have the certificates and `kubeconfig` file for each node. A list in the home folder should look like below:
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Worker-nodes-home-folder.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/Worker-nodes-home-folder.png" width="936px" height="550px">
 **Configuring the network**
 
 Get the POD_CIDR that will be used as part of network configuration
@@ -39,7 +39,7 @@ For a better understanding, of Kubernetes networking, let us assume that we have
 
 Network configuration will look like this:
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/k8s_network.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/k8s_network.png" width="936px" height="550px">
 Notice, that both containers share a single virtual network interface `veth0` that belongs to a virtual network within a single node. This virtual interface `veth0` is used to allow communication from a pod to the outer world through a bridge `cbr0` (custom bridge). This bridge is an interface that forwards the traffic from the Pods on one node to other nodes through a physical network interface `eth0`. Routing between the nodes is done by means of a router with the routing table. 
 
 For more detailed explanation of different aspects of Kubernetes networking - watch [this video](https://www.youtube.com/watch?v=5cNrTU6o3Fw).
@@ -227,7 +227,7 @@ EOF
 ```
 Now you should have the worker nodes joined to the cluster, and in a **READY** state.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/Ready-worker-nodes.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/Ready-worker-nodes.png" width="936px" height="550px">
 
 **Troubleshooting Tips**: If you have issues at this point. Consider the below:
 
@@ -239,6 +239,6 @@ Now you should have the worker nodes joined to the cluster, and in a **READY** s
 
 You have created your first Kubernetes cluster From-Ground-Up! It was not an easy task, but you have learned how different components of K8s work together - it will help you not just in creation of clusters in the real work experience, but will also help you with sound skills to maintain and troubleshoot them further.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project21/kube-hero.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project21/kube-hero.png" width="936px" height="550px">
 Proceed to the next exciting PBL projects to practice more Kubernetes and other cool technologies with us!
 

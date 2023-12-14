@@ -9,7 +9,7 @@ Open your Visual Studio Code and:
 
 Your setup should look like this.
 
-<img src="https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/terraform1.png" width="936px" height="550px">
+<img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project16/terraform1.png" width="936px" height="550px">
 #### Provider and VPC resource section
 
 Set up Terraform CLI as per [this instruction](https://learn.hashicorp.com/tutorials/terraform/install-cli).
@@ -38,7 +38,7 @@ resource "aws_vpc" "main" {
 * The next thing we need to do, is to download necessary plugins for Terraform to work. These plugins are used by `providers` and `provisioners`. At this stage, we only have `provider` in our `main.tf` file. So, Terraform will just download plugin for AWS provider.
 * Lets accomplish this with `terraform init` command as seen in the below demonstration.
 
-![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/Terraform1.gif)
+![](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project16/Terraform1.gif)
 ***Observations***: 
 - Notice that a new directory has been created: `.terraform\...`. This is where Terraform keeps plugins. Generally, it is safe to delete this folder. It just means that you must execute `terraform init` again, to download them.
 
@@ -47,7 +47,7 @@ Moving on, let us create the only resource we just defined. `aws_vpc`. But befor
 * Run `terraform plan`
 * Then, if you are happy with changes planned, execute `terraform apply`
 
-![](https://darey-io-nonprod-pbl-projects.s3.eu-west-2.amazonaws.com/project16/Terraform2.gif)
+![](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project16/Terraform2.gif)
 
 ***Observations***: 
 
