@@ -149,3 +149,8 @@ cd ..
 
 cd practices
 aws s3 sync images/ s3://darey-io-pbl-projects-images/practices/images/
+
+cd ..
+
+cd practices/linux-practice-project
+aws s3 sync images2/ s3://darey-io-pbl-projects-images/practices/images2/
