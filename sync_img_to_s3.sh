@@ -152,5 +152,10 @@ aws s3 sync images/ s3://darey-io-pbl-projects-images/practices/images/
 
 cd ..
 
+cd practices/ip-address-submask-cidr
+aws s3 sync images3/ s3://darey-io-pbl-projects-images/practices/images3/
+
+cd ..
+
 cd practices/linux-practice-project
 aws s3 sync images2/ s3://darey-io-pbl-projects-images/practices/images2/
