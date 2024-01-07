@@ -246,11 +246,11 @@ The purpose of this stage is to validate the syntax, consistency, and correctnes
 Add a final stage named 'Cleanup' that runs regardless of whether previous stages succeeded or failed (use the post directive).
 In this stage, include commands to clean up any temporary files or state that the pipeline may have created. [Here is documentation ](https://www.jenkins.io/doc/book/pipeline/syntax/#post) on Jenkinsfile "Post" directive 
 
-5. Implement Error Handling
+6. Implement Error Handling
 
 Add error handling to the pipeline. For instance, if 'Terraform Apply' fails, the pipeline should handle this gracefully, perhaps by sending a notification or logging detailed error messages.
 
-6. Document the Pipeline
+7. Document the Pipeline
 
 Add comments to the pipeline script explaining each stage and important commands. This will make the pipeline more maintainable and understandable.
 
