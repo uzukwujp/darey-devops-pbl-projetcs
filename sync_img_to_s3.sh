@@ -142,6 +142,11 @@ aws s3 sync images/ s3://darey-io-pbl-projects-images/project27/
 
 cd ..
 
+cd project28/
+aws s3 sync images/ s3://darey-io-pbl-projects-images/project28/
+
+cd ..
+
 cd practices/aws-networking-implementation
 aws s3 sync images/ s3://darey-io-pbl-projects-images/practices/
 

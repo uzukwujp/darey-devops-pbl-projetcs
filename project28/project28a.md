@@ -197,7 +197,7 @@ Make sure that you are inside the folder containing the `Dockerfile`. This is ge
    ```
 4. Access the Jenkins server from the web browser on `localhost:8080`
 
-![Alt text](images/jenkins-ui.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/jenkins-ui.png)
 
 5. Access the Jenkins Server directly inside the container
 ```
@@ -249,15 +249,15 @@ a845868b3a404f39b48b1b05137b4888
 - Paste the initial password in the web
 - Click on "Install suggested plugins 
 
-![Alt text](images/install-plugins.png)
-![Alt text](images/install-plugins2.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/install-plugins.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/install-plugins2.png)
 
 8. Create first admin user and access Jenkins 
 
-![Alt text](images/admin-user.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/admin-user.png)
 
-![Alt text](images/instance-configuration.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/instance-configuration.png)
 
-![Alt text](images/jenkins-is-ready.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/jenkins-is-ready.png)
 
-![Alt text](images/welcome-to-jenkins.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/welcome-to-jenkins.png)
