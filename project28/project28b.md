@@ -79,7 +79,7 @@ docker restart 800f8f48466b
 - Then go back to the browser and access Jenkins.
 
 - Back in Jenkins UI, navigate to the **"Installed plugins"** section and you should now see the newly installed plugin and it is enabled
-  ![Alt text](images/installed-github-plugin-jenkins.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/installed-github-plugin-jenkins.png)
 
 This plugin basically connects Jenkins, with GitHub. It allows Jenkins to automatically perform tasks like building and testing code whenever changes are made in a GitHub repository.
 
@@ -103,70 +103,70 @@ The AWS Credentials plugin is essential for securely managing and utilizing AWS 
    
     - In Github, navigate to your profile -> Click on "Settings" -> then scroll down to -> "Developer Settings"
   
-    ![Alt text](images/github-developer-settings.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/github-developer-settings.png)
 
    - Generate an access token 
-    ![Alt text](images/generate-github-access-token-1.png)
-    ![Alt text](images/generate-github-access-token-2.png)
-    ![Alt text](images/generate-github-access-token-3.png)
+    ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/generate-github-access-token-1.png)
+    ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/generate-github-access-token-2.png)
+    ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/generate-github-access-token-3.png)
 
   - Copy the access token and save in a notepad for use later
-  ![Alt text](images/copy-access-token.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/copy-access-token.png)
 
 
     - In Jenkins, navigate to "Manage Jenkins" -> Click on "Credentials"
 
-        ![Alt text](images/jenkins-credentials.png)
+        ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/jenkins-credentials.png)
     - Click on the arrow next to "global" and select "Add credentials"
-        ![Alt text](images/add-jenkiins-credentials.png)
+        ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/add-jenkiins-credentials.png)
      - Select username and password. Use the Access token generated earlier as your password, and specify the anything descriptive as your ID
-        ![Alt text](images/jenkins-credential-password.png)
+        ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/jenkins-credential-password.png)
     - In the credentials section, you will be able to see the created credential
-        ![Alt text](images/jenkiins-credentials-view.png)
+        ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/jenkiins-credentials-view.png)
     - Create a second credential for AWS secret and access key. If you have installed the AWS credentials plugin, you will see the "AWS Credentials" Kind as shown below. Simply add the AWS secret and access key generated from AWS console.  If you need a reminder on how to create an IAM user Access and secrete key in AWS console, [click here](https://youtu.be/HuE-QhrmE1c)
-        ![Alt text](images/aws-credentials.png)
+        ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/aws-credentials.png)
 
 
 
 1. Set Up a Jenkins Multibranch Pipeline:
 
 - From the Jenkins dashboard, click on "New Item"
-  ![Alt text](image.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image.png)
 
 - Give it a name and description
-  ![Alt text](image-1.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-1.png)
 
 - Select the type of source of the code and the Jenkinsfile
 
-  ![Alt text](image-2.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-2.png)
 
 - Select the credentials to be used to connect to Github from Jenkins
-  ![Alt text](image-3.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-3.png)
 
 - Add the repository URL. Ensure you have forked it from https://github.com/darey-devops/terraform-aws-pipeline.git/
 
-  ![Alt text](image-4.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-4.png)
 
 - Leave everything at default and hit save 
-  ![Alt text](image-5.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-5.png)
 
 - You will immediately see the scanning of the repository for branches, and the Jenkinsfile 
-  ![Alt text](image-6.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-6.png)
 
 - The terraform-cicd pipeline and main branch scanned
-  ![Alt text](image-7.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-7.png)
 
 - Pipeline run and Console output
-  ![Alt text](image-8.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-8.png)
 
 
 - Click on "Build now" for a second run and check the console output
 
-  ![Alt text](image-9.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-9.png)
 
 
 - Show the plan and decide to proceed to apply or abort
-  ![Alt text](image-10.png)
+  ![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-10.png)
 
 
 ## Now lets talk about the Jenkinsfile:
@@ -220,7 +220,7 @@ Let's break down each section. Open the Jenkins file in a separate tab and follo
 
 `input message: 'Do you want to apply changes?', ok: 'Yes'`: A manual intervention step asking for confirmation before proceeding. If `yes` is clicked, it runs the `terraform init & apply` otherwise, the pipeline is aborted.
 
-![Alt text](image-11.png)
+![Alt text](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project28/image-11.png)
 
 
 
