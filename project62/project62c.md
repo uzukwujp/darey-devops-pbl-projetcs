@@ -1,27 +1,42 @@
-# Deploy  and configure ELK stack
+# Deploying and Configuring the ELK Stack in Kubernetes
+
+1. **Create a directory:**
+
+`Bash`
 
 ```
 mkdir elastic stack
 cd elastic stack
 
 ```
-## Create fluentd-config file
+2. **Configure Fluentd:**
 
-Create a fluentd manifestfile [fluentd.yaml](../project62/fluentd.yaml).
+- Create a fluentd manifest file named [fluentd.yaml](../project62/fluentd.yaml).
 
-This is created in kube-system because its a management related service.
+- Specify the deployment kind as `DaemonSet` to ensure Fluentd runs on every node.
 
-Fluentd deployment kind is **DeamonSet**.
+- Use vi fluentd.yaml to edit the configuration, defining log sources and sending them to Elasticsearch.
 
 ```
 vi fluentd.yaml
+```
+- Apply the configuration:
+
+```
 kubectl apply -f fluentd.yaml
+
+```
+- Verify deployment:
+
+```
 kubectl get configmap -n kube-system
 ```
 
-## Deploy elastic-stack
+## Deploying the ELK Stack
 
-Create  elastic-stack manifestfile [elastic-stack](../project62/elastic-stack.yaml)
+1. **Create a Manifest file:**
+
+Create  a file named elastic-stack [elastic-stack](../project62/elastic-stack.yaml)
 
 This file will deploy both Kibana and Elasticsearch.
 
@@ -29,100 +44,92 @@ This file will deploy both Kibana and Elasticsearch.
 vi elastic-stack.yaml
 
 ```
-**ServiceAccount** - fluentd-es service account will be created
-**ClusteRole** is use to create a role with a kind. This give permission.
+2.  **Configure the manifest:**
 
-Whatever service using the role will have permision to "list,get,watch" on `pod and namespaces`.
-
-**ClusterRoleBinding** - who to use the role i.e fluentd-es service account should use the role called **fluentd-es.
-
-If you use **DeamonSet** controller kind of deployment, you will not need to state replicas set controller count. If there are 4 workernode, there will be 4 fluentd pod. This is manage/created automatically when you use daemonset deployment type.
-The Elasticsearch image is pull from google registry.
-The kibana image is pull from docker registry.
+* Define a ServiceAccount named fluentd-es for secure communication.
+* Create a ClusterRole with permissions to "list, get, watch" pods and namespaces.
+* Establish a ClusterRoleBinding to link the fluentd-es service account with the role.
+* Specify pod replicas and image sources for Elasticsearch and Kibana.
 
 
-Elastic-stack are manageged services and they are not customized as they are generic applications.
+3. **Apply the configuration**
 
 ```
 kubectl apply -f elastic-stack.yaml
+
+```
+4. **Verify deployment**
+
+```
 kubectl get pods -n kube-system
 kubectl get nodes
 ```
-Fluentd will be created for each nodes within your cluster.
 
-To see all the service in the kube-system namespace.
-```
-kubectl get service -n kube-system
-```
+* Fluentd will be created for each nodes within your cluster.
 
-After deployment, use kubectl get service kibana to find the assigned NodePort. This will be a random port number within a specific range based on your cluster configuration.
-Access Kibana from any device within your cluster network using 
+5. **Access Kibana:**
 
-Get the NodePort assigned to the Kibana service:
+* Get the kibana service's NodePort:
 
 ```
 kubectl get service kibana-logging -n kube-system
 ```
-Forward the NodePort to your local machine's port 5601:
+* Forward the port to your local machine (using caution for security):
 
 ```
 kubectl port-forward service/kibana-logging -n kube-system 5601:5601
 ```
-Access Kibana at:
+
+* Access Kibana in your browser: http://localhost:5601
 
 ```
 http://localhost:5601 in your browser
 ```
 ![kibana-dashboard](../project62/images/kibana-dashboard.png)
 
-**Note**
+## Setting Up Kibana
 
-* Port forwarding exposes Kibana externally, so exercise caution and implement security measures if you choose this method.
-* For production environments, consider using an Ingress controller with appropriate security restrictions.
-* Avoid using kubectl proxy for production due to potential vulnerabilities.
+1. **Go to Management > Advanced Settings**
 
-### Additional options for production environments:
+2. **Create an index pattern:**
 
-* Internal load balancer: This offers more control and security than NodePort services.
-* Move Kibana to a dedicated namespace: This eliminates the need for a NetworkPolicy to access Kibana from other namespaces.
+    * In the "Index name" field, enter "logstash-2024.02.17" (or your desired pattern).
+    * Click "Next Step".
 
+    ![index-pattern](../project62/images/define-index-pattern.png)
 
-# Step to create index pattern (setting up kibana)
+3. Configure settings:
 
-This settings will allow kibana to get data from elasticsearch.
+    * Set "Time filter field name" to "@Timestamp".
+    * Click "Create index pattern".
 
-Management - Advanced Setting
+    ![configure-setting](../project62/images/configure-setting.png)
 
-Table is to database why index is to elasticsearch.
+## Exploring Kibana
 
-1. Define index pattern
+1. **Click on "Discover"**
+
+2. **Search for logs with the word "error"**
+
+ ![logstash](../project62/images/logstash.png)
+
+3. **Analyze the results:**
+    * See the number of generated logs and timestamps.
+    * Identify containers reporting errors, types of errors, and timestamps.
+
+4. **Drill down for specific pods:**
+    * Search for logs based on pod names if you know which ones have issues.
+
+    ![logs-pods](../project62/images/pods-logs.png)
     
-   -  copy logstah-2024.02.17 to the space given for the index name.
+5. **View logs at different levels:**
+    * Explore logs at pod, namespace, and other levels.
 
-   -  click on next step
+## Additional Considerations
 
-   ![index-pattern](../project62/images/define-index-pattern.png)
-
-2. configure settings
-    - Time filter field name - @Timestamp
-    - create index pattern
-
-![configure-setting](../project62/images/configure-setting.png)
-
-## created index pattern
-
-Click on discovery
-
-![logstash](../project62/images/logstash.png)
-
-![logs-pods](../project62/images/pods-logs.png)
-
-You can see how many logs are generated by your pods and what time.
-
-you can search for pods logs that have word call **error**.
-
-you can see time error occurs, which contaer is reporting the problem and what type of error.
-You will see the error reported.
-
-You can check log of a specific pod, if you know the pod that has problem.
-You can see logs at pods, namespace level etc
+* **Production deployments:**
+    * Use an internal load balancer instead of NodePort for better security.
+    * Move Kibana to a dedicated namespace.
+    * Avoid kubectl proxy due to potential vulnerabilities.
+* **Further options:**
+    * Explore external tools and integrations for advanced log analysis.
