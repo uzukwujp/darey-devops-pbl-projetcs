@@ -1,29 +1,41 @@
+# Dive into Kubernetes Logging with Hands-on Practice
 
-# Logging in Kubernetes
+## Intoduction
 
-Welcome to the comprehensive hands-on project on "**Logging in kubernetes**."
-Are you ready to embark on a quest to unlock the secrets of your cluster's operations?
-Think of this project as your key to unlocking its secrets! We'll show you how to use kubectl, a handy tool, to peek into the lives of your kubernetes pods and understand what's going on.
+Are you curious about what's happening within your Kubernetes cluster? This hands-on project will equip you with the knowledge and tools to unlock the secrets hidden in your logs. Imagine yourself as a detective, wielding powerful commands to uncover the stories your pods are telling.
 
-## Before we start:
+## Prerequisites:
 
-Make sure you have [Kubectl](https://kubernetes.io/docs/reference/kubectl/) installed on your computer. It's like a magic wand for interacting with Kubernetes! You can find instructions for your operating system here: https://kubernetes.io/docs/tasks/tools/
-You'll also need a special password called a "kubeconfig" to access your cluster. Think of it as the secret handshake to get in.
+* **Kubectl**: Your key to interacting with Kubernetes. Install it following the guide for your operating system: [https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/reference/kubectl/)
 
-Ready to begin? Let's go!
+* **Kubeconfig**: This acts as your access code to the cluster. Retrieve it from your cluster administrator.
 
-**Set the Stage:** Imagine choosing the right path on a map. We need to tell kubectl which Kubernetes cluster you want to explore.
+**Setting the stage:**
 
-- Install [Terraform](https://developer.hashicorp.com/terraform/install)
-- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
-- Install [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) with version 1.27.
-- create key-pair with the name **ed-office** from the **AWS Console**
+Choosing the right Kubernetes cluster to explore is like picking the right path on a map. Let's tell kubectl which cluster you want to investigate.
 
-Clone [terraform repo]((https://gitlab.com/bml4/terraform/-/tree/main/eks/eks-using-custom?ref_type=heads))
- 
- Edit the EKS version to 1.27.
+**Optional Setup (If using AWS EKS):**
 
- The Kubectl must be compatible with kubernetes version.
+This guide walks you through setting up and interacting with your AWS EKS cluster using Terraform and kubectl.
+* **AWS Account**: With neccessary permissions.
+
+* **Terraform**: For infrastructure provisioning (https://developer.hashicorp.com/terraform/install)
+
+* **AWS CLI:** To interact with AWS services (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+* **Kubectl for EKS:** Install version 1.27 following the EKS documentation (https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
+
+* **Key Pair:** Create a key pair named "ed-office" on the AWS Console
+
+1. **Git Clone and Configure:**
+
+Start by cloning the terraform repository and navigating to the appropriate directory:
+
+```
+git clone https://gitlab.com/bml4/terraform/-/tree/main/eks/eks-using-custom?ref_type=heads
+cd eks/eks-using-custom
+
+```
 
 ```
 cd eks/eks-using-custom
@@ -37,28 +49,25 @@ AWS Secret Access Key [****************S/nN]: +gQSbGAWt621vweasaLHidy9XM6If585ql
 Default region name [us-east-1]:
 Default output format [none]:
 ```
-```
-aws get-caller-identity
 
-```
+2. **Infrastructure Provisioning with Terraform**
 
+Initialize Terraform and review the proposed plan:
 ```
 terraform init
-terraform -version
-terraform apply
+terraform plan
+```
+If everything looks good, proceed with applying the configuration:
 
 ```
+terraform plan
+```
+3. **Update Kubeconfig and Verify Connection:**
 
-**Check the Connection:** Is everything working? 
-
-At the client side you need to generate certificate to connect to the api server.
-
-The Authority certificate is automatically created on the server side.
-The Cluster IAm role is managed by AWS.
+After successful provisioning, update your kubeconfig to access the cluster:
 
 ```
 aws eks update-kubeconfig --name ed-eks-01 --region us-east-1
-Added new context arn:aws:eks:us-east-1:546194917726:cluster/ed-eks-01 to C:\Users\prin\.kube\config
 
 ```
 The generated client certificate is kept in the home directory of the client system.
@@ -66,18 +75,16 @@ The generated client certificate is kept in the home directory of the client sys
 ```
 cat ~/.kube/config
 ```
-Run kubectl get nodes to see if you can connect and list the available nodes in your cluster. Think of them as the busy bees keeping your system running!
+
+Verify the connection by listing the available nodes:
 
 ```
 kubectl get nodes
-NAME                           STATUS   ROLES    AGE   VERSION
-ip-192-168-1-30.ec2.internal   Ready    <none>   36m   v1.22.17-eks-0a21954
-ip-192-168-2-32.ec2.internal   Ready    <none>   35m   v1.22.17-eks-0a21954
-
 ```
-**Deploy a pod**
+4. **Deploy a sample pod**
+Create a file named [pod.yaml](https://kubernetes.io/docs/concepts/workloads/pods/) containing the following Pod definition: 
 
-Create a file in your vscode folder, name it **pod.yaml** and paste the below and read more about [pod](https://kubernetes.io/docs/concepts/workloads/pods/).
+**YAML**
 
 ```
 apiVersion: v1
@@ -95,21 +102,22 @@ spec:
     - containerPort: 80 
 ```
 
+Deploy the Pod using kubectl:
+
 ```
 kubectl apply -f pod.yaml
-pod/nginx created
 ```
+
+Check if the Pod is running successfully:
 
 ```
 kubectl get pods
-NAME    READY   STATUS    RESTARTS   AGE
-nginx   1/1     Running   0          2m34s
 
 ```
 
-**Unlock the Pod Logs**: Now that you're connected, it's time to see what's happening inside those pods. 
+5. **View Pod Logs:**
 
-Use kubectl logs pod_name to view the logs of a specific pod. Think of it like reading a diary to see what's going on inside.
+Utilize kubectl to view the logs of your deployed Pod:
 
 ```
 kubectl logs nginx
