@@ -1,4 +1,3 @@
-
 # Dive into Kubernetes Logging with Hands-on Practice
 
 ## Intoduction
@@ -28,7 +27,7 @@ This guide walks you through setting up and interacting with your AWS EKS cluste
 
 * **Key Pair:** Create a key pair named "ed-office" on the AWS Console
 
-**Git Clone and Configure:**
+1. **Git Clone and Configure:**
 
 Start by cloning the terraform repository and navigating to the appropriate directory:
 
@@ -51,7 +50,7 @@ Default region name [us-east-1]:
 Default output format [none]:
 ```
 
-**Infrastructure Provisioning with Terraform**
+2. **Infrastructure Provisioning with Terraform**
 
 Initialize Terraform and review the proposed plan:
 ```
@@ -63,7 +62,7 @@ If everything looks good, proceed with applying the configuration:
 ```
 terraform plan
 ```
-**Update Kubeconfig and Verify Connection:**
+3. **Update Kubeconfig and Verify Connection:**
 
 After successful provisioning, update your kubeconfig to access the cluster:
 
@@ -82,7 +81,7 @@ Verify the connection by listing the available nodes:
 ```
 kubectl get nodes
 ```
-**Deploy a sample pod**
+4. **Deploy a sample pod**
 Create a file named [pod.yaml](https://kubernetes.io/docs/concepts/workloads/pods/) containing the following Pod definition: 
 
 **YAML**
@@ -116,7 +115,7 @@ kubectl get pods
 
 ```
 
-**View Pod Logs:**
+5. **View Pod Logs:**
 
 Utilize kubectl to view the logs of your deployed Pod:
 
