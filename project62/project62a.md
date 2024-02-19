@@ -17,6 +17,9 @@ Choosing the right Kubernetes cluster to explore is like picking the right path 
 
 **Optional Setup (If using AWS EKS):**
 
+This guide walks you through setting up and interacting with your AWS EKS cluster using Terraform and kubectl.
+* **AWS Account**: With neccessary permissions.
+
 * **Terraform**: For infrastructure provisioning (https://developer.hashicorp.com/terraform/install)
 
 * **AWS CLI:** To interact with AWS services (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
@@ -25,7 +28,9 @@ Choosing the right Kubernetes cluster to explore is like picking the right path 
 
 * **Key Pair:** Create a key pair named "ed-office" on the AWS Console
 
-**Clone Git Repository:**
+**Git Clone and Configure:**
+
+Start by cloning the terraform repository and navigating to the appropriate directory:
 
 ```
 git clone https://gitlab.com/bml4/terraform/-/tree/main/eks/eks-using-custom?ref_type=heads
@@ -45,28 +50,25 @@ AWS Secret Access Key [****************S/nN]: +gQSbGAWt621vweasaLHidy9XM6If585ql
 Default region name [us-east-1]:
 Default output format [none]:
 ```
-```
-aws get-caller-identity
 
-```
+**Infrastructure Provisioning with Terraform**
 
+Initialize Terraform and review the proposed plan:
 ```
 terraform init
-terraform -version
-terraform apply
+terraform plan
+```
+If everything looks good, proceed with applying the configuration:
 
 ```
+terraform plan
+```
+**Update Kubeconfig and Verify Connection:**
 
-**Check the Connection:** Is everything working? 
-
-At the client side you need to generate certificate to connect to the api server.
-
-The Authority certificate is automatically created on the server side.
-The Cluster IAm role is managed by AWS.
+After successful provisioning, update your kubeconfig to access the cluster:
 
 ```
 aws eks update-kubeconfig --name ed-eks-01 --region us-east-1
-Added new context arn:aws:eks:us-east-1:546194917726:cluster/ed-eks-01 to C:\Users\prin\.kube\config
 
 ```
 The generated client certificate is kept in the home directory of the client system.
@@ -74,18 +76,16 @@ The generated client certificate is kept in the home directory of the client sys
 ```
 cat ~/.kube/config
 ```
-Run kubectl get nodes to see if you can connect and list the available nodes in your cluster. Think of them as the busy bees keeping your system running!
+
+Verify the connection by listing the available nodes:
 
 ```
 kubectl get nodes
-NAME                           STATUS   ROLES    AGE   VERSION
-ip-192-168-1-30.ec2.internal   Ready    <none>   36m   v1.22.17-eks-0a21954
-ip-192-168-2-32.ec2.internal   Ready    <none>   35m   v1.22.17-eks-0a21954
-
 ```
-**Deploy a pod**
+**Deploy a sample pod**
+Create a file named [pod.yaml](https://kubernetes.io/docs/concepts/workloads/pods/) containing the following Pod definition: 
 
-Create a file in your vscode folder, name it **pod.yaml** and paste the below and read more about [pod](https://kubernetes.io/docs/concepts/workloads/pods/).
+**YAML**
 
 ```
 apiVersion: v1
@@ -103,21 +103,22 @@ spec:
     - containerPort: 80 
 ```
 
+Deploy the Pod using kubectl:
+
 ```
 kubectl apply -f pod.yaml
-pod/nginx created
 ```
+
+Check if the Pod is running successfully:
 
 ```
 kubectl get pods
-NAME    READY   STATUS    RESTARTS   AGE
-nginx   1/1     Running   0          2m34s
 
 ```
 
-**Unlock the Pod Logs**: Now that you're connected, it's time to see what's happening inside those pods. 
+**View Pod Logs:**
 
-Use kubectl logs pod_name to view the logs of a specific pod. Think of it like reading a diary to see what's going on inside.
+Utilize kubectl to view the logs of your deployed Pod:
 
 ```
 kubectl logs nginx
