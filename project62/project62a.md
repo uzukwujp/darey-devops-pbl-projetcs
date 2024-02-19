@@ -1,29 +1,37 @@
 
-# Logging in Kubernetes
+# Dive into Kubernetes Logging with Hands-on Practice
 
-Welcome to the comprehensive hands-on project on "**Logging in kubernetes**."
-Are you ready to embark on a quest to unlock the secrets of your cluster's operations?
-Think of this project as your key to unlocking its secrets! We'll show you how to use kubectl, a handy tool, to peek into the lives of your kubernetes pods and understand what's going on.
+## Intoduction
 
-## Before we start:
+Are you curious about what's happening within your Kubernetes cluster? This hands-on project will equip you with the knowledge and tools to unlock the secrets hidden in your logs. Imagine yourself as a detective, wielding powerful commands to uncover the stories your pods are telling.
 
-Make sure you have [Kubectl](https://kubernetes.io/docs/reference/kubectl/) installed on your computer. It's like a magic wand for interacting with Kubernetes! You can find instructions for your operating system here: https://kubernetes.io/docs/tasks/tools/
-You'll also need a special password called a "kubeconfig" to access your cluster. Think of it as the secret handshake to get in.
+## Prerequisites:
 
-Ready to begin? Let's go!
+* **Kubectl**: Your key to interacting with Kubernetes. Install it following the guide for your operating system: [https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/reference/kubectl/)
 
-**Set the Stage:** Imagine choosing the right path on a map. We need to tell kubectl which Kubernetes cluster you want to explore.
+* **Kubeconfig**: This acts as your access code to the cluster. Retrieve it from your cluster administrator.
 
-- Install [Terraform](https://developer.hashicorp.com/terraform/install)
-- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
-- Install [Kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) with version 1.27.
-- create key-pair with the name **ed-office** from the **AWS Console**
+**Setting the stage:**
 
-Clone [terraform repo]((https://gitlab.com/bml4/terraform/-/tree/main/eks/eks-using-custom?ref_type=heads))
- 
- Edit the EKS version to 1.27.
+Choosing the right Kubernetes cluster to explore is like picking the right path on a map. Let's tell kubectl which cluster you want to investigate.
 
- The Kubectl must be compatible with kubernetes version.
+**Optional Setup (If using AWS EKS):**
+
+* **Terraform**: For infrastructure provisioning (https://developer.hashicorp.com/terraform/install)
+
+* **AWS CLI:** To interact with AWS services (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+* **Kubectl for EKS:** Install version 1.27 following the EKS documentation (https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
+
+* **Key Pair:** Create a key pair named "ed-office" on the AWS Console
+
+**Clone Git Repository:**
+
+```
+git clone https://gitlab.com/bml4/terraform/-/tree/main/eks/eks-using-custom?ref_type=heads
+cd eks/eks-using-custom
+
+```
 
 ```
 cd eks/eks-using-custom
