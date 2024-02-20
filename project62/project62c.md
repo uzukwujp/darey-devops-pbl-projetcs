@@ -98,10 +98,18 @@ kubectl get nodes
 
 * Get the kibana service's NodePort:
 
+Since this is a practice project, we're using a simpler approach to access Kibana called **NodePort**. 
+
+This exposes Kibana on a specific port on each node in the cluster, similar to opening a specific door on each building in a practice village. While convenient, keep in mind that NodePort might be less secure than using a load balancer in real-world scenarios.
+
+For projects requiring scalability, reliability, and advanced routing, choose a load balancer instead.
+
 ```
 kubectl get service kibana-logging -n kube-system
 ```
 * Forward the port to your local machine (using caution for security):
+
+**Port forwarding** is useful for accessing a private service from the outside world by directing external traffic to a specific device on your network. Think of it like opening a specific door in your house for someone outside to reach a hidden room. It's handy for running personal servers, gaming with friends, or remotely accessing devices when away from home. But remember, use it with caution as it creates an open pathway, so prioritize strong passwords and proper security measures.
 
 ```
 kubectl port-forward service/kibana-logging -n kube-system 5601:5601
