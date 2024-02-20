@@ -6,7 +6,7 @@ Are you curious about what's happening within your Kubernetes cluster? This hand
 
 ## Prerequisites:
 
-* **Kubectl**: Your key to interacting with Kubernetes. Install it following the guide for your operating system: [https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/reference/kubectl/)
+* **Kubectl**: Your key to interacting with Kubernetes. Install [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 
 * **Kubeconfig**: This acts as your access code to the cluster. Retrieve it from your cluster administrator.
 
@@ -19,20 +19,19 @@ Choosing the right Kubernetes cluster to explore is like picking the right path 
 This guide walks you through setting up and interacting with your AWS EKS cluster using Terraform and kubectl.
 * **AWS Account**: With neccessary permissions.
 
-* **Terraform**: For infrastructure provisioning (https://developer.hashicorp.com/terraform/install)
+* **Terraform**: For [infrastructure provisioning](https://developer.hashicorp.com/terraform/install)
 
-* **AWS CLI:** To interact with AWS services (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* **AWS CLI:** [AWL CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) is use to interact with AWS services.
 
-* **Kubectl for EKS:** Install version 1.27 following the EKS documentation (https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
+* **Kubectl for EKS:** Install version 1.27 following the [EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
 
-* **Key Pair:** Create a key pair named "ed-office" on the AWS Console
 
 1. **Git Clone and Configure:**
 
 Start by cloning the terraform repository and navigating to the appropriate directory:
 
 ```
-git clone https://gitlab.com/bml4/terraform/-/tree/main/eks/eks-using-custom?ref_type=heads
+git clone https://gitlab.com/bml4/terraform.git
 cd eks/eks-using-custom
 
 ```
@@ -60,7 +59,7 @@ terraform plan
 If everything looks good, proceed with applying the configuration:
 
 ```
-terraform plan
+terraform apply
 ```
 3. **Update Kubeconfig and Verify Connection:**
 
@@ -103,6 +102,7 @@ spec:
 ```
 
 Deploy the Pod using kubectl:
+
 
 ```
 kubectl apply -f pod.yaml
