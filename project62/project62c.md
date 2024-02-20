@@ -2,7 +2,6 @@
 
 1. **Create a directory:**
 
-`Bash`
 
 ```
 mkdir elastic stack
@@ -13,9 +12,19 @@ cd elastic stack
 
 - Create a fluentd manifest file named [fluentd.yaml](../project62/fluentd.yaml).
 
-- Specify the deployment kind as `DaemonSet` to ensure Fluentd runs on every node.
+This fluentd yaml file is a configuration file that defines how Fluentd, a log aggregator and processor, collects and sends logs to Elasticsearch in a Kubernetes environment. Here's a breakdown of its key components:
 
-- Use vi fluentd.yaml to edit the configuration, defining log sources and sending them to Elasticsearch.
+**Data sources (sources):**
+
+* **system.conf:** This section defines how Fluentd reads logs from Docker containers running on the host system. It uses the tail plugin to follow log files and parses them using specific formats based on the source (e.g., Docker, Kubernetes logs).
+* **journald-*:** These sections collect logs from systemd journal for specific services like Docker, kubelet, and kernel.
+* **forward.input.conf:** This defines a source for receiving log messages sent over TCP, but it's not configured with any details in this snippet.
+* **elasticsearch:** This section defines how Fluentd sends logs to Elasticsearch on the elasticsearch-logging host at port 9200. It buffers logs before sending them in batches for efficiency and uses exponential backoff for retries in case of temporary issues.
+* **monitoring.conf:** This section enables Prometheus metrics collection for various Fluentd components.
+* **system.input.conf:** This section defines additional log sources like minion logs and startupscript logs.
+
+Overall, this configuration file ensures that logs from various sources within a Kubernetes cluster are collected, parsed, enriched with metadata, and sent to Elasticsearch for centralized storage and analysis.
+
 
 ```
 vi fluentd.yaml
@@ -46,10 +55,28 @@ vi elastic-stack.yaml
 ```
 2.  **Configure the manifest:**
 
-* Define a ServiceAccount named fluentd-es for secure communication.
-* Create a ClusterRole with permissions to "list, get, watch" pods and namespaces.
-* Establish a ClusterRoleBinding to link the fluentd-es service account with the role.
-* Specify pod replicas and image sources for Elasticsearch and Kibana.
+This file sets up a comprehensive logging and visualization system for your Kubernetes cluster, utilizing Fluentd, Elasticsearch, and Kibana. Here's a breakdown of the key components, incorporating the additional information you provided:
+
+**Fluentd DaemonSet:**
+
+* **Deployment kind:** DaemonSet ensures Fluentd runs on every node of your cluster, collecting logs from various sources like Docker containers, systemd journals, and more.
+ServiceAccount: fluentd-es provides secure communication by granting specific permissions to Fluentd pods.
+* **ClusterRole:** Defines permissions for Fluentd to "list, get, watch" pods and namespaces within the cluster, enabling it to discover and access log sources effectively.
+* **ClusterRoleBinding:** Links the fluentd-es service account with the ClusterRole, establishing the necessary authorization.
+
+**Elasticsearch:**
+
+* **Pod replicas:** Deploys a cluster of Elasticsearch instances using StatefulSets, providing distributed storage and fault tolerance for your logs. The exact number of replicas (2 in this example) can be adjusted based on your needs and cluster resources.
+* **Image source: **The configuration references the official k8s.gcr.io/elasticsearch:v6.2.5 image for deploying Elasticsearch pods.
+
+**Kibana Deployment:**
+
+* **Replicas:** Runs a single Kibana instance, providing a web-based interface for visualizing and analyzing logs stored in Elasticsearch.
+* **Image source:** Utilizes the official docker.elastic.co/kibana/kibana-oss:6.2.4 image to deploy the Kibana pod.
+
+**Kibana Service:**
+
+* Type: Leverages the NodePort service type to expose Kibana through a specific port on each node, allowing external access via the assigned NodePort.
 
 
 3. **Apply the configuration**
