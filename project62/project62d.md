@@ -38,7 +38,7 @@ This guide walks you through building a pie chart in Kibana to visualize your co
 Read more on [Dashboard](https://www.elastic.co/videos/training-how-to-series-stack?elektra=kibana-dashboard).
 
 
-![kibana-visualize](../project62/images/kibana-visualiza.png)
+![kibana-visualize](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/practices/project62/kibana-visualiza.png)
 
 **Additional Tips:**
 

@@ -25,7 +25,7 @@ This section explores a common centralized logging approach utilizing the ELK St
 
 **Architecture:**
 
-![elastic-stack](../project62/images/elastic-stack.png)
+![elastic-stack](https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/practices/project62/elastic-stack.png)
 
 **Key Components:**
 
