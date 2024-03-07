@@ -19,6 +19,7 @@ You can [watch a 10 minutes video here](https://youtu.be/PRpEbFZi7nI) to guide y
 https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Workspace-Env-Var.png" width="936px" height="550px">
+
 **Possible issues to watch out for when you implement this**
 
 1. Remember that `ansible.cfg` must be exported to environment variable so that Ansible knows where to find `Roles`. But because you will possibly run Jenkins from different git branches, the location of Ansible roles will change. Therefore, you must handle this dynamically. You can use Linux [**Stream Editor** `sed`](https://www.gnu.org/software/sed/manual/sed.html) to update the section `roles_path` each time there is an execution. You may not have this issue if you run only from the **main** branch.
@@ -117,9 +118,11 @@ https://github.com/darey-devops/php-todo.git
 4. In Jenkins UI configure Artifactory
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System1.png" width="936px" height="550px">
+
 Configure the server ID, URL and Credentials, run Test Connection.
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Configure-System2.png" width="936px" height="550px">
+
 #### Phase 2 - Integrate Artifactory repository with Jenkins
 
 1. Create a dummy `Jenkinsfile` in the repository
@@ -227,6 +230,7 @@ This plugin provides generic plotting (or graphing) capabilities in Jenkins. It 
 You should now see a `Plot` menu item on the left menu. Click on it to see the charts. (The analytics may not mean much to you as it is meant to be read by developers. So, you need not worry much about it - this is just to give you an idea of the real-world implementation).
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-PHPloc-Plot.png" width="936px" height="550px">
+
 3. Bundle the application code for into an artifact (archived package) upload to Artifactory
 
 ```
@@ -691,6 +695,7 @@ http://server_IP:9000 OR http://localhost:9000
 Login to SonarQube with default administrator username and password - `admin`
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/sonarqube-web-interface.png" width="936px" height="550px">
+
 Now, when SonarQube is up and running, it is time to setup our Quality gate in Jenkins.
 
 
@@ -703,22 +708,27 @@ Now, when SonarQube is up and running, it is time to setup our Quality gate in J
   ```
   
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Sonar-Server.png" width="936px" height="550px">
+
 - Generate authentication token in SonarQube 
   ```
   User > My Account > Security > Generate Tokens
   ```
   
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Token.png" width="936px" height="550px">
+
 - Configure Quality Gate Jenkins Webhook in SonarQube - The URL should point to your Jenkins server http://{JENKINS_HOST}/sonarqube-webhook/
   ```
   Administration > Configuration > Webhooks > Create
   ```
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Sonar-Jenkins-Webhook.png" width="936px" height="550px">
+
 - Setup SonarQube scanner from Jenkins - Global Tool Configuration
   ```
   Manage Jenkins > Global Tool Configuration 
   ``` 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarScanner.png" width="936px" height="550px">
+
+
 ### Update Jenkins Pipeline to include SonarQube scanning and Quality Gate
 
 Below is the snippet for a **Quality Gate** stage in `Jenkinsfile`. 
@@ -794,9 +804,11 @@ Dashboard > php-todo > Pipeline Syntax
 ```
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Pipeline-Syntax.png" width="936px" height="550px">
+
 - Click on Steps and select `withSonarQubeEnv` - This appears in the list because of the previous SonarQube configurations you have done in Jenkins. Otherwise, it would not be there.
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-SonarQube-Pipeline-Syntax.png" width="936px" height="550px">
+
 Within the generated block, you will use the `sh` command to run shell on the server. For more advanced usage in other projects, you can add to bookmarks this [SonarQube documentation page](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/) in your browser.
 
 ### End-to-End Pipeline Overview
@@ -804,6 +816,7 @@ Within the generated block, you will use the `sh` command to run shell on the se
 Indeed, this has been one of the longest projects from Project 1, and if everything has worked out for you so far, you should have a view like below:
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-End-To-End.png" width="936px" height="550px">
+
 But we are not completely done yet!
 
 The quality gate we just included has no effect. Why? Well, because if you go to the SonarQube UI, you will realise that we just pushed a poor-quality code onto the development environment. 
@@ -811,11 +824,13 @@ The quality gate we just included has no effect. Why? Well, because if you go to
 - Navigate to `php-todo` project in SonarQube
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Sonarqube-Anaysis.png" width="936px" height="550px">
+
 There are bugs, and there is 0.0% code coverage. (*code coverage is a percentage of unit tests added by developers to test functions and objects in the code*)
 
 - If you click on `php-todo` project for further analysis, you will see that there is 6 hours' worth of technical debt, code smells and security issues in the code.
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/SonarQube-Analysis2.png" width="936px" height="550px">
+
 In the development environment, this is acceptable as developers will need to keep iterating over their code towards perfection. But as a DevOps engineer working on the pipeline, we must ensure that the quality gate step causes the pipeline to fail if the conditions for quality are not met.
 
 ### Conditionally deploy to higher environments
@@ -875,6 +890,7 @@ To test, create different branches and push to GitHub. You will realise that onl
 If everything goes well, you should be able to see something like this:
 
 <img src="https://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/Jenkins-Skipped-Deployment.png" width="936px" height="550px">
+
 Notice that with the current state of the code, it cannot be deployed to Integration environments due to its quality. In the real world, DevOps engineers will push this back to developers to work on the code further, based on SonarQube quality report. Once everything is good with code quality, the pipeline will pass and proceed with sipping the codes further to a higher environment.
 
 ## Complete the following tasks to finish Project 14
@@ -883,14 +899,17 @@ Notice that with the current state of the code, it cannot be deployed to Integra
 3. Configure webhook between Jenkins and GitHub to automatically run the pipeline when there is a code push. 
 4. Deploy the application to all the environments
 5. **Optional** - Experience pentesting in pentest environment by configuring [Wireshark](https://www.wireshark.org) there and just explore for information sake only. [Watch Wireshark Tutorial here](https://youtu.be/Yo8zGbCbqd0) 
+
  - Ansible Role for Wireshark:
-   - https://github.com/ymajik/ansible-role-wireshark (Ubuntu) 
-   - https://github.com/wtanaka/ansible-role-wireshark (RedHat) 
+   - [Ubuntu](https://github.com/ymajik/ansible-role-wireshark) 
+   - [RedHat](https://github.com/wtanaka/ansible-role-wireshark) 
 
 
 Congratulations! You have just experienced one of the most interesting and complex projects in your Project Based Learning journey so far. The vast experience and knowledge you have acquired here will set the stage for the next 6 projects to come. You should be ready to start applying for DevOps jobs after completing Project 20.
 
 <img src="hhttps://darey-io-pbl-projects-images.s3.eu-west-2.amazonaws.com/project14/awesome14.jpg" width="936px" height="550px">
+
+
 #### Instructions On How To Submit Your Work For Review And Feedback
 
 To submit your work for review and feedback - follow [**this instruction**](https://starter-pbl.darey.io/en/latest/submission.html).
